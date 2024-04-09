@@ -1,0 +1,604 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Foodprinting and Reconnaissances - Checklist</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="foodprinting_and_reconnaissances.html" class="active"><strong aria-hidden="true">1.</strong> Foodprinting and Reconnaissances</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Checklist</li><li class="chapter-item expanded "><a href="Checklist/Web-App-Pentest-Checklist.html"><strong aria-hidden="true">2.</strong> Web Application</a></li><li class="chapter-item expanded "><a href="Checklist/report_writing.html"><strong aria-hidden="true">3.</strong> Report Writing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recon</li><li class="chapter-item expanded "><a href="recon/public-info-gathering.html"><strong aria-hidden="true">4.</strong> Public info gathering</a></li><li class="chapter-item expanded "><a href="recon/domain-enum.html"><strong aria-hidden="true">5.</strong> Root domains</a></li><li class="chapter-item expanded "><a href="recon/subdomain-enum/index.html"><strong aria-hidden="true">6.</strong> Subdomain Enum</a></li><li class="chapter-item expanded "><a href="recon/subdomain-enum/subdomain-takeover.html"><strong aria-hidden="true">7.</strong> Subdomain Takeover</a></li><li class="chapter-item expanded "><a href="recon/webs-recon.html"><strong aria-hidden="true">8.</strong> Webs recon</a></li><li class="chapter-item expanded "><a href="recon/network-scanning.html"><strong aria-hidden="true">9.</strong> Network Scanning</a></li><li class="chapter-item expanded "><a href="recon/host-scanning.html"><strong aria-hidden="true">10.</strong> Host Scanning</a></li><li class="chapter-item expanded "><a href="recon/packet-scanning.html"><strong aria-hidden="true">11.</strong> Packet Scanning</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Enumeration</li><li class="chapter-item expanded "><a href="enumeration/files.html"><strong aria-hidden="true">12.</strong> Files</a></li><li class="chapter-item expanded "><a href="enumeration/ssl-tls.html"><strong aria-hidden="true">13.</strong> SSL/TLS</a></li><li class="chapter-item expanded "><a href="enumeration/ports.html"><strong aria-hidden="true">14.</strong> Ports</a></li><li class="chapter-item expanded affix "><li class="part-title">Web</li><li class="chapter-item expanded "><a href="enumeration/web/index.html"><strong aria-hidden="true">15.</strong> Web Attacks</a></li><li class="chapter-item expanded "><a href="enumeration/web/general-info.html"><strong aria-hidden="true">16.</strong> General Info</a></li><li class="chapter-item expanded "><a href="enumeration/web/quick-tricks.html"><strong aria-hidden="true">17.</strong> Quick tricks</a></li><li class="chapter-item expanded "><a href="enumeration/web/header-injections.html"><strong aria-hidden="true">18.</strong> Header injections</a></li><li class="chapter-item expanded "><a href="enumeration/web/bruteforcing.html"><strong aria-hidden="true">19.</strong> Bruteforcing</a></li><li class="chapter-item expanded "><a href="enumeration/web/online-hashes-cracked.html"><strong aria-hidden="true">20.</strong> Online hashes cracked</a></li><li class="chapter-item expanded "><a href="enumeration/web/crawl-fuzz.html"><strong aria-hidden="true">21.</strong> Crawl/Fuzz</a></li><li class="chapter-item expanded "><a href="enumeration/web/lfi-rfi.html"><strong aria-hidden="true">22.</strong> LFI/RFI</a></li><li class="chapter-item expanded "><a href="enumeration/web/upload-bypasses.html"><strong aria-hidden="true">23.</strong> File upload</a></li><li class="chapter-item expanded "><a href="enumeration/web/sqli.html"><strong aria-hidden="true">24.</strong> SQLi</a></li><li class="chapter-item expanded "><a href="enumeration/web/ssrf.html"><strong aria-hidden="true">25.</strong> SSRF</a></li><li class="chapter-item expanded "><a href="enumeration/web/open-redirects.html"><strong aria-hidden="true">26.</strong> Open redirects</a></li><li class="chapter-item expanded "><a href="enumeration/web/xss.html"><strong aria-hidden="true">27.</strong> XSS</a></li><li class="chapter-item expanded "><a href="enumeration/web/csp.html"><strong aria-hidden="true">28.</strong> CSP</a></li><li class="chapter-item expanded "><a href="enumeration/web/xxe.html"><strong aria-hidden="true">29.</strong> XXE</a></li><li class="chapter-item expanded "><a href="enumeration/web/cookie-padding.html"><strong aria-hidden="true">30.</strong> Cookie Padding</a></li><li class="chapter-item expanded "><a href="enumeration/web/web-shells.html"><strong aria-hidden="true">31.</strong> Webshells</a></li><li class="chapter-item expanded "><a href="enumeration/web/cors.html"><strong aria-hidden="true">32.</strong> CORS</a></li><li class="chapter-item expanded "><a href="enumeration/web/csrf.html"><strong aria-hidden="true">33.</strong> CSRF</a></li><li class="chapter-item expanded "><a href="enumeration/web/web-cache-poisoning.html"><strong aria-hidden="true">34.</strong> Web Cache Poisoning</a></li><li class="chapter-item expanded "><a href="enumeration/web/broken-links.html"><strong aria-hidden="true">35.</strong> Broken Links</a></li><li class="chapter-item expanded "><a href="enumeration/web/clickjacking.html"><strong aria-hidden="true">36.</strong> Clickjacking</a></li><li class="chapter-item expanded "><a href="enumeration/web/request-smuggling.html"><strong aria-hidden="true">37.</strong> HTTP Request Smuggling</a></li><li class="chapter-item expanded "><a href="enumeration/web/web-sockets.html"><strong aria-hidden="true">38.</strong> Web Sockets</a></li><li class="chapter-item expanded "><a href="enumeration/web/crlf.html"><strong aria-hidden="true">39.</strong> CRLF</a></li><li class="chapter-item expanded "><a href="enumeration/web/idor.html"><strong aria-hidden="true">40.</strong> IDOR</a></li><li class="chapter-item expanded "><a href="enumeration/web/web-cache-deception.html"><strong aria-hidden="true">41.</strong> Web Cache Deception</a></li><li class="chapter-item expanded "><a href="enumeration/web/session-fixation.html"><strong aria-hidden="true">42.</strong> Session fixation</a></li><li class="chapter-item expanded "><a href="enumeration/web/email-attacks.html"><strong aria-hidden="true">43.</strong> Email attacks</a></li><li class="chapter-item expanded "><a href="enumeration/web/pastejacking.html"><strong aria-hidden="true">44.</strong> Pastejacking</a></li><li class="chapter-item expanded "><a href="enumeration/web/parameter-pollution.html"><strong aria-hidden="true">45.</strong> HTTP Parameter pollution</a></li><li class="chapter-item expanded "><a href="enumeration/web/ssti.html"><strong aria-hidden="true">46.</strong> SSTI</a></li><li class="chapter-item expanded "><a href="enumeration/web/prototype-pollution.html"><strong aria-hidden="true">47.</strong> Prototype Pollution</a></li><li class="chapter-item expanded "><a href="enumeration/web/command-injection.html"><strong aria-hidden="true">48.</strong> Command Injection</a></li><li class="chapter-item expanded "><a href="enumeration/web/deserialization.html"><strong aria-hidden="true">49.</strong> Deserialization</a></li><li class="chapter-item expanded "><a href="enumeration/web/dns-rebinding.html"><strong aria-hidden="true">50.</strong> DNS rebinding</a></li><li class="chapter-item expanded affix "><li class="part-title">Web-Service</li><li class="chapter-item expanded "><a href="enumeration/webservices/index.html"><strong aria-hidden="true">51.</strong> Web Technologies</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/apis.html"><strong aria-hidden="true">52.</strong> APIs</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/js.html"><strong aria-hidden="true">53.</strong> JS</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/.net.html"><strong aria-hidden="true">54.</strong> ASP.NET</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/jwt.html"><strong aria-hidden="true">55.</strong> JWT</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/github.html"><strong aria-hidden="true">56.</strong> GitHub</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/gitlab.html"><strong aria-hidden="true">57.</strong> GitLab</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/wafs.html"><strong aria-hidden="true">58.</strong> WAFs</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/firebird.html"><strong aria-hidden="true">59.</strong> Firebird</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/wordpress.html"><strong aria-hidden="true">60.</strong> Wordpress</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/webdav.html"><strong aria-hidden="true">61.</strong> WebDav</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/joomla.html"><strong aria-hidden="true">62.</strong> Joomla</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/jenkins.html"><strong aria-hidden="true">63.</strong> Jenkins</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/iis.html"><strong aria-hidden="true">64.</strong> IIS</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/vhosts.html"><strong aria-hidden="true">65.</strong> VHosts</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/firebase.html"><strong aria-hidden="true">66.</strong> Firebase</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/owa.html"><strong aria-hidden="true">67.</strong> OWA</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/oauth.html"><strong aria-hidden="true">68.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/flask.html"><strong aria-hidden="true">69.</strong> Flask</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/symfony-and-and-twig.html"><strong aria-hidden="true">70.</strong> Symfony && Twig</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/drupal.html"><strong aria-hidden="true">71.</strong> Drupal</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/nosql-and-and-mongodb.html"><strong aria-hidden="true">72.</strong> NoSQL (MongoDB, CouchDB)</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/php.html"><strong aria-hidden="true">73.</strong> PHP</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/ror-ruby-on-rails.html"><strong aria-hidden="true">74.</strong> RoR (Ruby on Rails)</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/jboss-java-deserialization.html"><strong aria-hidden="true">75.</strong> JBoss - Java Deserialization</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/onelogin-saml-login.html"><strong aria-hidden="true">76.</strong> OneLogin - SAML Login</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/flash-swf.html"><strong aria-hidden="true">77.</strong> Flash SWF</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/nginx.html"><strong aria-hidden="true">78.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/python.html"><strong aria-hidden="true">79.</strong> Python</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/tomcat.html"><strong aria-hidden="true">80.</strong> Tomcat</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/adobe-aem.html"><strong aria-hidden="true">81.</strong> Adobe AEM</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/magento.html"><strong aria-hidden="true">82.</strong> Magento</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/sap.html"><strong aria-hidden="true">83.</strong> SAP</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/mfa.html"><strong aria-hidden="true">84.</strong> MFA</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/gwt.html"><strong aria-hidden="true">85.</strong> GWT</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/jira.html"><strong aria-hidden="true">86.</strong> Jira</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/oidc-open-id-connect.html"><strong aria-hidden="true">87.</strong> OIDC (Open ID Connect)</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/elk.html"><strong aria-hidden="true">88.</strong> ELK</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/sharepoint.html"><strong aria-hidden="true">89.</strong> Sharepoint</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/others.html"><strong aria-hidden="true">90.</strong> Others</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud</li><li class="chapter-item expanded "><a href="enumeration/cloud/index.html"><strong aria-hidden="true">91.</strong> Cloud</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/general.html"><strong aria-hidden="true">92.</strong> General</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/cloud-info-recon.html"><strong aria-hidden="true">93.</strong> Cloud Info Gathering</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/aws.html"><strong aria-hidden="true">94.</strong> AWS</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/azure.html"><strong aria-hidden="true">95.</strong> Azure</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/gcp.html"><strong aria-hidden="true">96.</strong> GCP</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/docker-and-and-kubernetes.html"><strong aria-hidden="true">97.</strong> Docker && Kubernetes</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/cdn-comain-fronting.html"><strong aria-hidden="true">98.</strong> CDN - Comain Fronting</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Exploitation</li><li class="chapter-item expanded "><a href="exploitation/payloads.html"><strong aria-hidden="true">99.</strong> Payloads</a></li><li class="chapter-item expanded "><a href="exploitation/reverse-shells.html"><strong aria-hidden="true">100.</strong> Reverse Shells</a></li><li class="chapter-item expanded "><a href="exploitation/file-transfer.html"><strong aria-hidden="true">101.</strong> File transfer</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Post-Exploitation</li><li class="chapter-item expanded "><a href="post-exploitation/linux.html"><strong aria-hidden="true">102.</strong> Linux</a></li><li class="chapter-item expanded "><a href="post-exploitation/pivoting.html"><strong aria-hidden="true">103.</strong> Pivoting</a></li><li class="chapter-item expanded "><a href="post-exploitation/windows/index.html"><strong aria-hidden="true">104.</strong> Windows</a></li><li class="chapter-item expanded "><a href="post-exploitation/windows/ad/index.html"><strong aria-hidden="true">105.</strong> AD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="post-exploitation/windows/ad/kerberos-attacks.html"><strong aria-hidden="true">105.1.</strong> Kerberos</a></li></ol></li><li class="chapter-item expanded "><a href="post-exploitation/windows/ps-tips-and-tricks.html"><strong aria-hidden="true">106.</strong> PS tips & tricks</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Mobile</li><li class="chapter-item expanded "><a href="mobile/general.html"><strong aria-hidden="true">107.</strong> General</a></li><li class="chapter-item expanded "><a href="mobile/android.html"><strong aria-hidden="true">108.</strong> Android</a></li><li class="chapter-item expanded "><a href="mobile/ios.html"><strong aria-hidden="true">109.</strong> iOS</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Others</li><li class="chapter-item expanded "><a href="others/burp.html"><strong aria-hidden="true">110.</strong> Burp Suite</a></li><li class="chapter-item expanded "><a href="others/password-cracking.html"><strong aria-hidden="true">111.</strong> Password cracking</a></li><li class="chapter-item expanded "><a href="others/virtualbox.html"><strong aria-hidden="true">112.</strong> VirtualBox</a></li><li class="chapter-item expanded "><a href="others/code-review.html"><strong aria-hidden="true">113.</strong> Code review</a></li><li class="chapter-item expanded "><a href="others/web-checklist.html"><strong aria-hidden="true">114.</strong> Pentesting Web checklist</a></li><li class="chapter-item expanded "><a href="others/internal-pentest.html"><strong aria-hidden="true">115.</strong> Internal Pentest</a></li><li class="chapter-item expanded "><a href="others/web-fuzzers-comparision.html"><strong aria-hidden="true">116.</strong> Web fuzzers review</a></li><li class="chapter-item expanded "><a href="others/recon-suites-review.html"><strong aria-hidden="true">117.</strong> Recon suites review</a></li><li class="chapter-item expanded "><a href="others/subdomain-tools-review.html"><strong aria-hidden="true">118.</strong> Subdomain tools review</a></li><li class="chapter-item expanded "><a href="others/dictionaries.html"><strong aria-hidden="true">119.</strong> Random</a></li><li class="chapter-item expanded "><a href="others/master-assessment-mindmap.html"><strong aria-hidden="true">120.</strong> Master assessment mindmaps</a></li><li class="chapter-item expanded "><a href="others/bugbounty.html"><strong aria-hidden="true">121.</strong> BugBounty</a></li><li class="chapter-item expanded "><a href="others/exploiting.html"><strong aria-hidden="true">122.</strong> Exploiting</a></li><li class="chapter-item expanded "><a href="others/tools-everywhere.html"><strong aria-hidden="true">123.</strong> tools everywhere</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Checklist</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="footprinting-and-reconnaissance"><a class="header" href="#footprinting-and-reconnaissance">footprinting and reconnaissance</a></h1>
+<h3 id="learning-objectives"><a class="header" href="#learning-objectives">Learning Objectives</a></h3>
+<h2 id="understanding-footprinting-and-reconnaissance-in-cybersecurity"><a class="header" href="#understanding-footprinting-and-reconnaissance-in-cybersecurity">Understanding Footprinting and Reconnaissance in Cybersecurity</a></h2>
+<p><strong>Introduction:</strong>
+Footprinting and reconnaissance are fundamental steps in the process of information gathering. They play a crucial role in cybersecurity, ethical hacking, and competitive intelligence by providing valuable insights into a target, be it a network, organization, or individual.</p>
+<p><strong>Footprinting:</strong>
+Footprinting marks the initial phase of information gathering. It involves the discreet collection and analysis of data about the target without any direct interaction. The primary goal is to acquire as much relevant information as possible while avoiding detection. Passive techniques, such as examining public sources, social media profiles, domain registrations, DNS records, and web server banners, are used to build a comprehensive profile of the target. Additionally, this phase identifies potential vulnerabilities and areas of interest within the target's infrastructure.</p>
+<p><strong>Reconnaissance:</strong>
+Reconnaissance, also known as active information gathering or probing, follows footprinting. This phase involves actively probing the target to gather specific and detailed information. Unlike footprinting, reconnaissance is more intrusive.</p>
+<p>It's important to note that while these activities are essential for security professionals to understand and protect against potential threats, they can also be used maliciously by hackers or cybercriminals. Unauthorized or malicious footprinting and reconnaissance activities are illegal and unethical, as they can lead to security breaches, data theft, or other harmful actions. Ethical hacking, also known as penetration testing, involves performing these activities with proper authorization to identify and mitigate security weaknesses.</p>
+<p>In summary, footprinting and reconnaissance are crucial phases in information gathering that can be used for both legitimate security purposes and potentially malicious activities, depending on the intent and authorization of the person conducting them.</p>
+<h1 id="reconnaissance-in-ethical-hacking"><a class="header" href="#reconnaissance-in-ethical-hacking">Reconnaissance in Ethical Hacking</a></h1>
+<p>Reconnaissance, also known as Footprinting or Information Gathering, is a crucial stage in ethical hacking that involves gathering information about a target system or network. In this guide, we will explore the various techniques and tools used in reconnaissance to identify vulnerabilities that could be exploited.</p>
+<h2 id="types-of-reconnaissance"><a class="header" href="#types-of-reconnaissance">Types of Reconnaissance</a></h2>
+<p>There are two main types of reconnaissance:</p>
+<h3 id="passive-reconnaissance"><a class="header" href="#passive-reconnaissance">Passive Reconnaissance</a></h3>
+<p>Passive reconnaissance involves gathering information without directly interacting with the target system. This can be done through publicly available sources, such as websites and search engines.</p>
+<h3 id="active-reconnaissance"><a class="header" href="#active-reconnaissance">Active Reconnaissance</a></h3>
+<p>Active reconnaissance involves directly interacting with the target system. This can include techniques such as network scans and vulnerability scans and can raise the risk of detection.</p>
+<h2 id="what-ethical-hackers-and-pentesters-look-for"><a class="header" href="#what-ethical-hackers-and-pentesters-look-for">What Ethical Hackers and Pentesters Look For</a></h2>
+<p>Ethical hackers and pentesters look for various pieces of information during the reconnaissance phase, including:</p>
+<ul>
+<li>Network Information
+<ul>
+<li>Domain name</li>
+<li>Internal Domain</li>
+<li>IP Address</li>
+<li>Unmonitored/private websites</li>
+<li>TCP/UDP Services</li>
+<li>VPN/IDS/IPS/access controls</li>
+<li>VPN info</li>
+<li>Phone numbers/VoIP</li>
+<li>Network topology</li>
+<li>Network device</li>
+</ul>
+</li>
+<li>Operating System Information
+<ul>
+<li>Users and group names/info</li>
+<li>Banner grabbing</li>
+<li>Routing tables</li>
+<li>SNMP</li>
+<li>System architecture</li>
+<li>Remote systems</li>
+<li>System names</li>
+<li>Passwords</li>
+<li>Dumpster diving</li>
+<li>Version</li>
+<li>Patch level</li>
+</ul>
+</li>
+<li>Organization Information
+<ul>
+<li>Organization website</li>
+<li>Company directory</li>
+<li>Employee information</li>
+<li>Business structure</li>
+<li>Location details</li>
+<li>Comments in HTML source code</li>
+<li>Security policies deployed</li>
+<li>Webserver links</li>
+<li>Background of organization</li>
+<li>Marketing and advertising</li>
+<li>Prevailing events</li>
+<li>Partners</li>
+<li>Phone</li>
+<li>Financial information</li>
+</ul>
+</li>
+</ul>
+<h2 id="external-network-pentester"><a class="header" href="#external-network-pentester">External Network Pentester</a></h2>
+<p>External network pentesters focus on evaluating the security of an organization’s external network infrastructure. They look for:</p>
+<ul>
+<li>Whois</li>
+<li>Operating systems and applications</li>
+<li>Publicly accessible information</li>
+<li>Google and Search Engine</li>
+<li>Website Mirroring</li>
+<li>Archive Sites</li>
+<li>Github recon</li>
+<li>Network Information</li>
+<li>Web server Content</li>
+<li>Email Header</li>
+<li>People Sites</li>
+<li>Social Network</li>
+<li>Alert Website</li>
+</ul>
+<h2 id="internal-network-pentester"><a class="header" href="#internal-network-pentester">Internal Network Pentester</a></h2>
+<p>Internal network penetration testing focuses on evaluating the security of an organization’s internal network infrastructure. They look for:</p>
+<ul>
+<li>IP Address</li>
+<li>Internal DNS</li>
+<li>Private Website</li>
+<li>Dumpster Diving</li>
+<li>Shoulder Surfing</li>
+</ul>
+<h2 id="web-application-pentester"><a class="header" href="#web-application-pentester">Web Application Pentester</a></h2>
+<p>Web application pentesters focus on evaluating the security of an organization’s web applications. They look for:</p>
+<ul>
+<li>Network Information
+<ul>
+<li>IP address</li>
+<li>Domain name</li>
+<li>Network topology</li>
+<li>Open ports and services</li>
+</ul>
+</li>
+<li>Web Application Information
+<ul>
+<li>Web server technology used</li>
+<li>Application framework</li>
+<li>Source code (if accessible)</li>
+<li>Session management</li>
+<li>Input validation and data handling</li>
+<li>Authentication and authorization mechanisms</li>
+</ul>
+</li>
+<li>Web Server Information
+<ul>
+<li>Operating system</li>
+<li>Web server software version</li>
+<li>Server-side scripting language and version</li>
+<li>Database management system and version</li>
+</ul>
+</li>
+<li>Web Application Components
+<ul>
+<li>
+<p>Dynamic content generation</p>
+</li>
+<li>
+<p>Client-side scripting languages</p>
+</li>
+<li>
+<p>Third-party components and libraries</p>
+<p><img src="https://github.com/masshuvo/full_ceh_guide/assets/108648096/885a1761-17c0-4f04-bd17-a96c8b6ea91d" alt="images (4)" /></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>Reconnaissance is an essential stage in ethical hacking that involves gathering information about a target system or network. It helps ethical hackers and pentesters identify vulnerabilities that could be exploited. By understanding the various techniques and tools used in reconnaissance, you can enhance your skills as an ethical hacker or pentester.</p>
+<h1 id="footprinting-in-cybersecurity"><a class="header" href="#footprinting-in-cybersecurity">Footprinting in Cybersecurity</a></h1>
+<p>Footprinting involves gathering information about a target system that can be used to execute a successful cyber attack. To obtain this information, hackers use various methods and tools. This information serves as the initial step for the hacker to exploit a system. There are two types of footprinting:</p>
+<h2 id="active-footprinting"><a class="header" href="#active-footprinting">Active Footprinting</a></h2>
+<p>Active footprinting involves direct interaction with the target machine.</p>
+<h2 id="passive-footprinting"><a class="header" href="#passive-footprinting">Passive Footprinting</a></h2>
+<p>Passive footprinting involves collecting information about a system located remotely from the attacker.</p>
+<h3 id="information-gathered-through-footprinting"><a class="header" href="#information-gathered-through-footprinting">Information Gathered Through Footprinting</a></h3>
+<ul>
+<li>The operating system of the target machine</li>
+<li>Firewall information</li>
+<li>IP address</li>
+<li>Network map</li>
+<li>Security configurations of the target machine</li>
+<li>Email IDs and passwords</li>
+<li>Server configurations</li>
+<li>URLs</li>
+<li>VPN details</li>
+</ul>
+<h3 id="sources-for-footprinting"><a class="header" href="#sources-for-footprinting">Sources for Footprinting</a></h3>
+<ol>
+<li>
+<p><strong>Social Media</strong>: Hackers leverage the tendency of many individuals to share sensitive information online. They may create fake accounts to befriend or follow someone to gather their information.</p>
+</li>
+<li>
+<p><strong>JOB Websites</strong>: Organizations often share confidential data on job websites. For example, a job posting mentioning "Job Opening for Lighttpd 2.0 Server Administrator" reveals that an organization uses the Lighttpd web server version 2.0.</p>
+</li>
+<li>
+<p><strong>Google</strong>: Search engines like Google can be used for advanced searches, known as "Google hacking." Operators like "inurl," "allinurl," and "filetype" combined with basic search techniques can reveal sensitive information. For example, searching "inurl:ViewerFrame?Mode=" can find public web cameras.</p>
+</li>
+<li>
+<p><strong>Social Engineering</strong>: Various techniques fall under this category, including eavesdropping and shoulder surfing, where attackers attempt to record personal information through communication mediums.</p>
+</li>
+<li>
+<p><strong>Archive.org</strong>: This website collects snapshots of older website versions, providing information that may no longer exist on the current site.</p>
+</li>
+<li>
+<p><strong>Organization's Website</strong>: The organization's website is a prime source for open-source information provided to clients, customers, or the public.</p>
+</li>
+<li>
+<p><strong>Using Neo Trace</strong>: NeoTrace is a powerful tool for tracing network paths. It displays the route between the user and the remote site, including intermediate nodes and their information.</p>
+</li>
+<li>
+<p><strong>Whois</strong>: This website allows hackers to trace information about domain names, email IDs, domain owners, and more, serving as a valuable tool for website footprinting.</p>
+</li>
+</ol>
+<p>By understanding these techniques and sources, individuals can enhance their knowledge of footprinting in cybersecurity.</p>
+<p><img src="https://github.com/masshuvo/full_ceh_guide/assets/108648096/309fc493-67fc-47fa-85e6-727ff407e55d" alt="images (2)" /></p>
+<h1 id="fingerprinting-in-ethical-hacking"><a class="header" href="#fingerprinting-in-ethical-hacking">Fingerprinting in Ethical Hacking</a></h1>
+<p>Fingerprinting refers to the methods used in ethical hacking to determine the operating system running on a remote computer. There are two main types of fingerprinting:</p>
+<h2 id="active-fingerprinting"><a class="header" href="#active-fingerprinting">Active Fingerprinting</a></h2>
+<p>Active fingerprinting involves sending specially crafted packets to a target machine and analyzing its response to determine the target's operating system. Tools like NMAP can be used for this purpose.</p>
+<h2 id="passive-fingerprinting"><a class="header" href="#passive-fingerprinting">Passive Fingerprinting</a></h2>
+<p>Passive fingerprinting relies on sniffer traces from the remote system, such as Wireshark data. By analyzing these traces, you can deduce the operating system of the remote host.</p>
+<h3 id="factors-analyzed-for-os-determination"><a class="header" href="#factors-analyzed-for-os-determination">Factors Analyzed for OS Determination</a></h3>
+<p>To determine the operating system, four important elements are examined:</p>
+<ul>
+<li>TTL (Time-To-Live) set on outbound packets</li>
+<li>Window Size</li>
+<li>DF (Don't Fragment) bit</li>
+<li>TOS (Type of Service) settings</li>
+</ul>
+<p>These factors help in OS identification, although it's not always 100% accurate and may work better for some operating systems than others.</p>
+<h3 id="basic-steps"><a class="header" href="#basic-steps">Basic Steps</a></h3>
+<p>Before attacking a system, it's crucial to determine the target's operating system. Once known, it's easier to identify potential vulnerabilities for exploitation.</p>
+<p>Here's a simple NMAP command to identify the OS and open ports of a website:</p>
+<pre><code class="language-shell">nmap -O -v tutorialspoint.com
+</code></pre>
+<h1 id="port-scanning"><a class="header" href="#port-scanning">Port Scanning</a></h1>
+<p>Port scanning reveals open ports on a server. For example:</p>
+<p>PORT      STATE   SERVICE
+22/tcp    open    ssh
+80/tcp    open    http
+443/tcp   open    https
+3306/tcp  open    mysql</p>
+<p>Ping Sweep
+A ping sweep (ICMP sweep) helps find live hosts in a range of IP addresses. For example, using fping:</p>
+<pre><code class="language-shell">fping -a -g 192.168.0.1 192.168.0.255
+</code></pre>
+<h1 id="dns-enumeration"><a class="header" href="#dns-enumeration">DNS Enumeration</a></h1>
+<p>DNS enumeration gathers information about DNS servers and their records. Tools like nslookup and scripts like DNSenum.pl can assist in this process.</p>
+<p>Quick fixes and precautions are also discussed to safeguard systems against potential attacks.</p>
+<p>These techniques and tools are essential in ethical hacking to gather information about target systems and enhance security.</p>
+<h1 id="ip-track"><a class="header" href="#ip-track">IP Track</a></h1>
+<h2 id="ip-logger-"><a class="header" href="#ip-logger-">IP Logger:-</a></h2>
+<ul>
+<li>https://iplogger.org/</li>
+<li>https://grabify.link/</li>
+</ul>
+<h2 id="ip-locator-"><a class="header" href="#ip-locator-">IP Locator:-</a></h2>
+<ul>
+<li>https://www.iplocation.net/</li>
+</ul>
+<h2 id="google-maplocation-track"><a class="header" href="#google-maplocation-track">Google Map(Location Track)</a></h2>
+<p>Latitude &amp; Longitude in Google Maps</p>
+<ul>
+<li>https://www.google.com/maps</li>
+</ul>
+<h1 id="domain-website-info--part-1"><a class="header" href="#domain-website-info--part-1">Domain (Website Info) &gt;&gt; Part-1</a></h1>
+<ul>
+<li><a href="https://whois.domaintools.com/">https://whois.domaintools.com/</a></li>
+<li><a href="https://domainbigdata.com/">https://domainbigdata.com/</a></li>
+</ul>
+<p><strong>DNS:</strong></p>
+<ul>
+<li><a href="https://smallseotools.com/domain-ip-lookup/">https://smallseotools.com/domain-ip-lookup/</a></li>
+<li><a href="https://dnsdumpster.com/">https://dnsdumpster.com/</a></li>
+<li><a href="https://www.ultratools.com/tools/dnsLookup">https://www.ultratools.com/tools/dnsLookup</a></li>
+<li><a href="https://dnschecker.org/ns-lookup.php">https://dnschecker.org/ns-lookup.php</a></li>
+</ul>
+<p><strong>Site Hosting Company Info:</strong></p>
+<ul>
+<li><a href="https://smallseotools.com/domain-hosting-checker/">https://smallseotools.com/domain-hosting-checker/</a></li>
+<li><a href="https://hostingchecker.com">https://hostingchecker.com</a></li>
+</ul>
+<h1 id="domain-website-info--part-2"><a class="header" href="#domain-website-info--part-2">Domain (Website Info) &gt;&gt; Part-2</a></h1>
+<p>❑ Reverse Ip</p>
+<ul>
+<li><a href="https://www.yougetsignal.com/tools/web-sites-on-web-server/">https://www.yougetsignal.com/tools/web-sites-on-web-server/</a></li>
+<li><a href="https://hackertarget.com/reverse-ip-lookup/">https://hackertarget.com/reverse-ip-lookup/</a></li>
+<li><a href="https://www.whoishostingthis.com/">https://www.whoishostingthis.com/</a></li>
+<li><a href="https://smallseotools.com/reverse-ip-lookup/">https://smallseotools.com/reverse-ip-lookup/</a></li>
+</ul>
+<h1 id="which-platform-used-for-developing-ping-to-identify-server-details-cms-check"><a class="header" href="#which-platform-used-for-developing-ping-to-identify-server-details-cms-check">Which platform used for developing Ping to identify server details (CMS Check)</a></h1>
+<p>❑ CMS Check</p>
+<ul>
+<li>https://whatcms.org/</li>
+<li>https://cmsdetect.com/</li>
+<li>https://www.wpthemedetector.com/</li>
+</ul>
+<h2 id="chrome-extension"><a class="header" href="#chrome-extension">Chrome Extension</a></h2>
+<ul>
+<li>https://chrome.google.com/webstore/detail/what-cms-is-this/gamohlpmdjkdjepgdgjohkbfpmeelmem</li>
+<li>https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg?hl=en</li>
+</ul>
+<h1 id="which-platform-used-for-developing-ping-to-identify-server-details-site-builtwith-chrome-extension-whatruns"><a class="header" href="#which-platform-used-for-developing-ping-to-identify-server-details-site-builtwith-chrome-extension-whatruns">Which platform used for developing Ping to identify server details (Site BuiltWith) Chrome Extension WhatRuns</a></h1>
+<ul>
+<li>https://chrome.google.com/webstore/detail/whatruns/cmkdbmfndkfgebldhnkbfhlneefdaaip?hl=enBuiltWith</li>
+</ul>
+<h2 id="online-tools"><a class="header" href="#online-tools">Online Tools</a></h2>
+<ul>
+<li>https://builtwith.com/</li>
+<li>https://sitereport.netcraft.com/</li>
+<li>https://w3techs.com/site</li>
+</ul>
+<h1 id="extra-site-info"><a class="header" href="#extra-site-info">Extra Site Info</a></h1>
+<p>Domain Country Checker Alexa, Country Flag Etc Browser Extension</p>
+<h2 id="domain-age-checker"><a class="header" href="#domain-age-checker">Domain Age Checker</a></h2>
+<ul>
+<li>https://www.duplichecker.com/domain-age-checker.php
+<h2 id="ssl-checker"><a class="header" href="#ssl-checker">SSL Checker</a></h2>
+</li>
+<li>https://www.digicert.com/help/</li>
+</ul>
+<h2 id="check-server-status"><a class="header" href="#check-server-status">Check Server Status</a></h2>
+<ul>
+<li>https://smallseotools.com/check-server-status/</li>
+</ul>
+<h2 id="website-speed-checker"><a class="header" href="#website-speed-checker">Website Speed Checker</a></h2>
+<ul>
+<li>https://tools.pingdom.com/</li>
+<li>https://gtmetrix.com/</li>
+</ul>
+<h2 id="website-link-counter-checker"><a class="header" href="#website-link-counter-checker">WEBSITE LINK COUNTER CHECKER</a></h2>
+<ul>
+<li>https://smallseotools.com/website-links-count-checker/</li>
+</ul>
+<h1 id="email-header"><a class="header" href="#email-header">Email Header</a></h1>
+<h2 id="online-tools-1"><a class="header" href="#online-tools-1">Online Tools</a></h2>
+<ul>
+<li>https://mxtoolbox.com/EmailHeaders.aspx</li>
+<li>https://www.whatismyip.com/email-header-analyzer/</li>
+<li>https://chrome.google.com/webstore/detail/email-tracker-for-gmail-m/ndnaehgpjlnokgebbaldlmgkapkpjkkb</li>
+</ul>
+<h1 id="valid-email-address-checker"><a class="header" href="#valid-email-address-checker">Valid Email Address Checker</a></h1>
+<h2 id="online-valid-mail-checker"><a class="header" href="#online-valid-mail-checker">Online Valid Mail Checker</a></h2>
+<ul>
+<li>https://quickemailverification.com/</li>
+<li>https://network-tools.com/</li>
+</ul>
+<h1 id="valid-mail-verifier-tool"><a class="header" href="#valid-mail-verifier-tool">Valid Mail Verifier Tool</a></h1>
+<p>To check mail address valid or invalid</p>
+<h1 id="ip-locator-best-one"><a class="header" href="#ip-locator-best-one">IP Locator Best One</a></h1>
+<ul>
+<li>https://ipinfo.io</li>
+</ul>
+<h1 id="data-breach-checker"><a class="header" href="#data-breach-checker">Data Breach Checker</a></h1>
+<ul>
+<li>https://breachdirectory.org/</li>
+<li>https://haveibeenpwned.com/</li>
+</ul>
+<h1 id="epieos-tools-email-recon"><a class="header" href="#epieos-tools-email-recon">epieos Tools |Email Recon</a></h1>
+<h2 id="epieos-tools---email-checking-tool---leaks-google-profiles--osint-recon"><a class="header" href="#epieos-tools---email-checking-tool---leaks-google-profiles--osint-recon">epieos Tools - Email Checking Tool - Leaks, Google Profiles | OSINT Recon</a></h2>
+<ul>
+<li>https://tools.epieos.com/</li>
+</ul>
+<h1 id="subdomain-enumeration-suite"><a class="header" href="#subdomain-enumeration-suite">Subdomain Enumeration Suite</a></h1>
+<p>❑ Sub3 Suite is a research-grade suite of tools for Subdomain Enumeration, OSINT
+Information gathering &amp; Attack Surface Mapping. Supports both manual and automated
+analysis on variety of target types with many available features &amp; tools.
+❑ Github: 3nock/sub3suite: a free, open source, cross platform Intelligence
+gathering tool. (github.com)</p>
+<h1 id="osint-sites-list"><a class="header" href="#osint-sites-list">OSINT Sites List</a></h1>
+<ul>
+<li><a href="https://start.me/p/b5Aow7/asint_collection">Biggest OSINT Sites List</a></li>
+</ul>
+<h1 id="recon"><a class="header" href="#recon">Recon</a></h1>
+<ul>
+<li><a href="https://github.com/Teammatrixx/Reconator">GitHub: Reconator</a></li>
+</ul>
+<h1 id="tryhackme-room"><a class="header" href="#tryhackme-room">TryHackMe Room</a></h1>
+<ul>
+<li><a href="https://tryhackme.com/room/threatinteltools">https://tryhackme.com/room/threatinteltools</a></li>
+</ul>
+<h1 id="theory"><a class="header" href="#theory">Theory</a></h1>
+<ul>
+<li><a href="https://tryhackme.com/room/geolocatingimages">https://tryhackme.com/room/geolocatingimages</a></li>
+<li><a href="https://tryhackme.com/room/ohsint">https://tryhackme.com/room/ohsint</a></li>
+<li><a href="https://tryhackme.com/room/searchlightosint">https://tryhackme.com/room/searchlightosint</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="Checklist/Web-App-Pentest-Checklist.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="Checklist/Web-App-Pentest-Checklist.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

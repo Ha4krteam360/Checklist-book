@@ -1,0 +1,930 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Introduction - Checklist</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html" class="active">Introduction</a></li><li class="chapter-item expanded "><a href="foodprinting_and_reconnaissances.html"><strong aria-hidden="true">1.</strong> Foodprinting and Reconnaissances</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Checklist</li><li class="chapter-item expanded "><a href="Checklist/Web-App-Pentest-Checklist.html"><strong aria-hidden="true">2.</strong> Web Application</a></li><li class="chapter-item expanded "><a href="Checklist/report_writing.html"><strong aria-hidden="true">3.</strong> Report Writing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recon</li><li class="chapter-item expanded "><a href="recon/public-info-gathering.html"><strong aria-hidden="true">4.</strong> Public info gathering</a></li><li class="chapter-item expanded "><a href="recon/domain-enum.html"><strong aria-hidden="true">5.</strong> Root domains</a></li><li class="chapter-item expanded "><a href="recon/subdomain-enum/index.html"><strong aria-hidden="true">6.</strong> Subdomain Enum</a></li><li class="chapter-item expanded "><a href="recon/subdomain-enum/subdomain-takeover.html"><strong aria-hidden="true">7.</strong> Subdomain Takeover</a></li><li class="chapter-item expanded "><a href="recon/webs-recon.html"><strong aria-hidden="true">8.</strong> Webs recon</a></li><li class="chapter-item expanded "><a href="recon/network-scanning.html"><strong aria-hidden="true">9.</strong> Network Scanning</a></li><li class="chapter-item expanded "><a href="recon/host-scanning.html"><strong aria-hidden="true">10.</strong> Host Scanning</a></li><li class="chapter-item expanded "><a href="recon/packet-scanning.html"><strong aria-hidden="true">11.</strong> Packet Scanning</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Enumeration</li><li class="chapter-item expanded "><a href="enumeration/files.html"><strong aria-hidden="true">12.</strong> Files</a></li><li class="chapter-item expanded "><a href="enumeration/ssl-tls.html"><strong aria-hidden="true">13.</strong> SSL/TLS</a></li><li class="chapter-item expanded "><a href="enumeration/ports.html"><strong aria-hidden="true">14.</strong> Ports</a></li><li class="chapter-item expanded affix "><li class="part-title">Web</li><li class="chapter-item expanded "><a href="enumeration/web/index.html"><strong aria-hidden="true">15.</strong> Web Attacks</a></li><li class="chapter-item expanded "><a href="enumeration/web/general-info.html"><strong aria-hidden="true">16.</strong> General Info</a></li><li class="chapter-item expanded "><a href="enumeration/web/quick-tricks.html"><strong aria-hidden="true">17.</strong> Quick tricks</a></li><li class="chapter-item expanded "><a href="enumeration/web/header-injections.html"><strong aria-hidden="true">18.</strong> Header injections</a></li><li class="chapter-item expanded "><a href="enumeration/web/bruteforcing.html"><strong aria-hidden="true">19.</strong> Bruteforcing</a></li><li class="chapter-item expanded "><a href="enumeration/web/online-hashes-cracked.html"><strong aria-hidden="true">20.</strong> Online hashes cracked</a></li><li class="chapter-item expanded "><a href="enumeration/web/crawl-fuzz.html"><strong aria-hidden="true">21.</strong> Crawl/Fuzz</a></li><li class="chapter-item expanded "><a href="enumeration/web/lfi-rfi.html"><strong aria-hidden="true">22.</strong> LFI/RFI</a></li><li class="chapter-item expanded "><a href="enumeration/web/upload-bypasses.html"><strong aria-hidden="true">23.</strong> File upload</a></li><li class="chapter-item expanded "><a href="enumeration/web/sqli.html"><strong aria-hidden="true">24.</strong> SQLi</a></li><li class="chapter-item expanded "><a href="enumeration/web/ssrf.html"><strong aria-hidden="true">25.</strong> SSRF</a></li><li class="chapter-item expanded "><a href="enumeration/web/open-redirects.html"><strong aria-hidden="true">26.</strong> Open redirects</a></li><li class="chapter-item expanded "><a href="enumeration/web/xss.html"><strong aria-hidden="true">27.</strong> XSS</a></li><li class="chapter-item expanded "><a href="enumeration/web/csp.html"><strong aria-hidden="true">28.</strong> CSP</a></li><li class="chapter-item expanded "><a href="enumeration/web/xxe.html"><strong aria-hidden="true">29.</strong> XXE</a></li><li class="chapter-item expanded "><a href="enumeration/web/cookie-padding.html"><strong aria-hidden="true">30.</strong> Cookie Padding</a></li><li class="chapter-item expanded "><a href="enumeration/web/web-shells.html"><strong aria-hidden="true">31.</strong> Webshells</a></li><li class="chapter-item expanded "><a href="enumeration/web/cors.html"><strong aria-hidden="true">32.</strong> CORS</a></li><li class="chapter-item expanded "><a href="enumeration/web/csrf.html"><strong aria-hidden="true">33.</strong> CSRF</a></li><li class="chapter-item expanded "><a href="enumeration/web/web-cache-poisoning.html"><strong aria-hidden="true">34.</strong> Web Cache Poisoning</a></li><li class="chapter-item expanded "><a href="enumeration/web/broken-links.html"><strong aria-hidden="true">35.</strong> Broken Links</a></li><li class="chapter-item expanded "><a href="enumeration/web/clickjacking.html"><strong aria-hidden="true">36.</strong> Clickjacking</a></li><li class="chapter-item expanded "><a href="enumeration/web/request-smuggling.html"><strong aria-hidden="true">37.</strong> HTTP Request Smuggling</a></li><li class="chapter-item expanded "><a href="enumeration/web/web-sockets.html"><strong aria-hidden="true">38.</strong> Web Sockets</a></li><li class="chapter-item expanded "><a href="enumeration/web/crlf.html"><strong aria-hidden="true">39.</strong> CRLF</a></li><li class="chapter-item expanded "><a href="enumeration/web/idor.html"><strong aria-hidden="true">40.</strong> IDOR</a></li><li class="chapter-item expanded "><a href="enumeration/web/web-cache-deception.html"><strong aria-hidden="true">41.</strong> Web Cache Deception</a></li><li class="chapter-item expanded "><a href="enumeration/web/session-fixation.html"><strong aria-hidden="true">42.</strong> Session fixation</a></li><li class="chapter-item expanded "><a href="enumeration/web/email-attacks.html"><strong aria-hidden="true">43.</strong> Email attacks</a></li><li class="chapter-item expanded "><a href="enumeration/web/pastejacking.html"><strong aria-hidden="true">44.</strong> Pastejacking</a></li><li class="chapter-item expanded "><a href="enumeration/web/parameter-pollution.html"><strong aria-hidden="true">45.</strong> HTTP Parameter pollution</a></li><li class="chapter-item expanded "><a href="enumeration/web/ssti.html"><strong aria-hidden="true">46.</strong> SSTI</a></li><li class="chapter-item expanded "><a href="enumeration/web/prototype-pollution.html"><strong aria-hidden="true">47.</strong> Prototype Pollution</a></li><li class="chapter-item expanded "><a href="enumeration/web/command-injection.html"><strong aria-hidden="true">48.</strong> Command Injection</a></li><li class="chapter-item expanded "><a href="enumeration/web/deserialization.html"><strong aria-hidden="true">49.</strong> Deserialization</a></li><li class="chapter-item expanded "><a href="enumeration/web/dns-rebinding.html"><strong aria-hidden="true">50.</strong> DNS rebinding</a></li><li class="chapter-item expanded affix "><li class="part-title">Web-Service</li><li class="chapter-item expanded "><a href="enumeration/webservices/index.html"><strong aria-hidden="true">51.</strong> Web Technologies</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/apis.html"><strong aria-hidden="true">52.</strong> APIs</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/js.html"><strong aria-hidden="true">53.</strong> JS</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/.net.html"><strong aria-hidden="true">54.</strong> ASP.NET</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/jwt.html"><strong aria-hidden="true">55.</strong> JWT</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/github.html"><strong aria-hidden="true">56.</strong> GitHub</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/gitlab.html"><strong aria-hidden="true">57.</strong> GitLab</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/wafs.html"><strong aria-hidden="true">58.</strong> WAFs</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/firebird.html"><strong aria-hidden="true">59.</strong> Firebird</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/wordpress.html"><strong aria-hidden="true">60.</strong> Wordpress</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/webdav.html"><strong aria-hidden="true">61.</strong> WebDav</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/joomla.html"><strong aria-hidden="true">62.</strong> Joomla</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/jenkins.html"><strong aria-hidden="true">63.</strong> Jenkins</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/iis.html"><strong aria-hidden="true">64.</strong> IIS</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/vhosts.html"><strong aria-hidden="true">65.</strong> VHosts</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/firebase.html"><strong aria-hidden="true">66.</strong> Firebase</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/owa.html"><strong aria-hidden="true">67.</strong> OWA</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/oauth.html"><strong aria-hidden="true">68.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/flask.html"><strong aria-hidden="true">69.</strong> Flask</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/symfony-and-and-twig.html"><strong aria-hidden="true">70.</strong> Symfony && Twig</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/drupal.html"><strong aria-hidden="true">71.</strong> Drupal</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/nosql-and-and-mongodb.html"><strong aria-hidden="true">72.</strong> NoSQL (MongoDB, CouchDB)</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/php.html"><strong aria-hidden="true">73.</strong> PHP</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/ror-ruby-on-rails.html"><strong aria-hidden="true">74.</strong> RoR (Ruby on Rails)</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/jboss-java-deserialization.html"><strong aria-hidden="true">75.</strong> JBoss - Java Deserialization</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/onelogin-saml-login.html"><strong aria-hidden="true">76.</strong> OneLogin - SAML Login</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/flash-swf.html"><strong aria-hidden="true">77.</strong> Flash SWF</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/nginx.html"><strong aria-hidden="true">78.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/python.html"><strong aria-hidden="true">79.</strong> Python</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/tomcat.html"><strong aria-hidden="true">80.</strong> Tomcat</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/adobe-aem.html"><strong aria-hidden="true">81.</strong> Adobe AEM</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/magento.html"><strong aria-hidden="true">82.</strong> Magento</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/sap.html"><strong aria-hidden="true">83.</strong> SAP</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/mfa.html"><strong aria-hidden="true">84.</strong> MFA</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/gwt.html"><strong aria-hidden="true">85.</strong> GWT</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/jira.html"><strong aria-hidden="true">86.</strong> Jira</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/oidc-open-id-connect.html"><strong aria-hidden="true">87.</strong> OIDC (Open ID Connect)</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/elk.html"><strong aria-hidden="true">88.</strong> ELK</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/sharepoint.html"><strong aria-hidden="true">89.</strong> Sharepoint</a></li><li class="chapter-item expanded "><a href="enumeration/webservices/others.html"><strong aria-hidden="true">90.</strong> Others</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud</li><li class="chapter-item expanded "><a href="enumeration/cloud/index.html"><strong aria-hidden="true">91.</strong> Cloud</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/general.html"><strong aria-hidden="true">92.</strong> General</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/cloud-info-recon.html"><strong aria-hidden="true">93.</strong> Cloud Info Gathering</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/aws.html"><strong aria-hidden="true">94.</strong> AWS</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/azure.html"><strong aria-hidden="true">95.</strong> Azure</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/gcp.html"><strong aria-hidden="true">96.</strong> GCP</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/docker-and-and-kubernetes.html"><strong aria-hidden="true">97.</strong> Docker && Kubernetes</a></li><li class="chapter-item expanded "><a href="enumeration/cloud/cdn-comain-fronting.html"><strong aria-hidden="true">98.</strong> CDN - Comain Fronting</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Exploitation</li><li class="chapter-item expanded "><a href="exploitation/payloads.html"><strong aria-hidden="true">99.</strong> Payloads</a></li><li class="chapter-item expanded "><a href="exploitation/reverse-shells.html"><strong aria-hidden="true">100.</strong> Reverse Shells</a></li><li class="chapter-item expanded "><a href="exploitation/file-transfer.html"><strong aria-hidden="true">101.</strong> File transfer</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Post-Exploitation</li><li class="chapter-item expanded "><a href="post-exploitation/linux.html"><strong aria-hidden="true">102.</strong> Linux</a></li><li class="chapter-item expanded "><a href="post-exploitation/pivoting.html"><strong aria-hidden="true">103.</strong> Pivoting</a></li><li class="chapter-item expanded "><a href="post-exploitation/windows/index.html"><strong aria-hidden="true">104.</strong> Windows</a></li><li class="chapter-item expanded "><a href="post-exploitation/windows/ad/index.html"><strong aria-hidden="true">105.</strong> AD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="post-exploitation/windows/ad/kerberos-attacks.html"><strong aria-hidden="true">105.1.</strong> Kerberos</a></li></ol></li><li class="chapter-item expanded "><a href="post-exploitation/windows/ps-tips-and-tricks.html"><strong aria-hidden="true">106.</strong> PS tips & tricks</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Mobile</li><li class="chapter-item expanded "><a href="mobile/general.html"><strong aria-hidden="true">107.</strong> General</a></li><li class="chapter-item expanded "><a href="mobile/android.html"><strong aria-hidden="true">108.</strong> Android</a></li><li class="chapter-item expanded "><a href="mobile/ios.html"><strong aria-hidden="true">109.</strong> iOS</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Others</li><li class="chapter-item expanded "><a href="others/burp.html"><strong aria-hidden="true">110.</strong> Burp Suite</a></li><li class="chapter-item expanded "><a href="others/password-cracking.html"><strong aria-hidden="true">111.</strong> Password cracking</a></li><li class="chapter-item expanded "><a href="others/virtualbox.html"><strong aria-hidden="true">112.</strong> VirtualBox</a></li><li class="chapter-item expanded "><a href="others/code-review.html"><strong aria-hidden="true">113.</strong> Code review</a></li><li class="chapter-item expanded "><a href="others/web-checklist.html"><strong aria-hidden="true">114.</strong> Pentesting Web checklist</a></li><li class="chapter-item expanded "><a href="others/internal-pentest.html"><strong aria-hidden="true">115.</strong> Internal Pentest</a></li><li class="chapter-item expanded "><a href="others/web-fuzzers-comparision.html"><strong aria-hidden="true">116.</strong> Web fuzzers review</a></li><li class="chapter-item expanded "><a href="others/recon-suites-review.html"><strong aria-hidden="true">117.</strong> Recon suites review</a></li><li class="chapter-item expanded "><a href="others/subdomain-tools-review.html"><strong aria-hidden="true">118.</strong> Subdomain tools review</a></li><li class="chapter-item expanded "><a href="others/dictionaries.html"><strong aria-hidden="true">119.</strong> Random</a></li><li class="chapter-item expanded "><a href="others/master-assessment-mindmap.html"><strong aria-hidden="true">120.</strong> Master assessment mindmaps</a></li><li class="chapter-item expanded "><a href="others/bugbounty.html"><strong aria-hidden="true">121.</strong> BugBounty</a></li><li class="chapter-item expanded "><a href="others/exploiting.html"><strong aria-hidden="true">122.</strong> Exploiting</a></li><li class="chapter-item expanded "><a href="others/tools-everywhere.html"><strong aria-hidden="true">123.</strong> tools everywhere</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Checklist</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction-to-ethical-hacking"><a class="header" href="#introduction-to-ethical-hacking">Introduction to Ethical Hacking</a></h1>
+<h1 id="introduction-to-cybersecurity"><a class="header" href="#introduction-to-cybersecurity">Introduction to Cybersecurity</a></h1>
+<h1 id="ethical-hacker-career-roadmap"><a class="header" href="#ethical-hacker-career-roadmap">Ethical Hacker Career Roadmap</a></h1>
+<h1 id="hacker-lab-and-environment-setup"><a class="header" href="#hacker-lab-and-environment-setup">Hacker Lab and Environment setup</a></h1>
+<h3 id="learning-objectives"><a class="header" href="#learning-objectives">Learning Objectives</a></h3>
+<ul>
+<li>
+<p><a href="#introducing-to-ethical-hacking">Ethical Hacking Basics</a></p>
+</li>
+<li>
+<p><a href="#types-of-hackers">Types of Hackers</a></p>
+</li>
+<li>
+<p><a href="#lab-setup-for-ethical-hacking">Lab Setup for Ethical Hacking</a></p>
+</li>
+<li>
+<p><a href="#hackers-team-membership">Hacker's Team Membership</a></p>
+</li>
+<li>
+<p><a href="#freelancing-in-cybersecurity">Freelancing in Cybersecurity</a></p>
+<ul>
+<li><a href="#vulnerability-scoring-systems-and-databases">Vulnerability Scoring Systems and Databases</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#want-to-become-an-ethical-hacker">Want to Become an Ethical Hacker?</a></p>
+</li>
+<li>
+<p><a href="#some-very-common-hacking-tools">Some Very Common Hacking Tools</a></p>
+<ul>
+<li><a href="#common-hacking-techniques">Common Hacking Techniques</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#hacking-devices">Hacking Devices</a></p>
+</li>
+<li>
+<p><a href="#hacker-lab-setup">Hacker Lab Setup</a></p>
+</li>
+</ul>
+<hr />
+<h1 id="introducing-to-ethical-hacking"><a class="header" href="#introducing-to-ethical-hacking">introducing to Ethical hacking</a></h1>
+<p>Certified Ethical Hacker A to Z for self learner.</p>
+<p>https://www.tutorialspoint.com/ethical_hacking/ethical_hacking_reconnaissance.htm</p>
+<p> An ethical hacker, also known as a white-hat hacker, is a cybersecurity professional who legally and ethically attempts to penetrate computer systems, networks, and applications to identify and fix security vulnerabilities. They use their skills to strengthen security measures, protect against malicious hackers, and help organizations safeguard their digital assets. Ethical hackers often perform activities such as penetration testing, vulnerability assessments, and security audits to enhance cybersecurity. Their work plays a crucial role in maintaining the integrity and confidentiality of digital information. </p>
+<h1 id="types-of-hackers"><a class="header" href="#types-of-hackers">Types of Hackers</a></h1>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNjF7zSDMVEeokxZOGbIT5PyNZLfUwsPmU8w&amp;usqp=CAU" alt="myImage" /></p>
+<p>Hackers can be categorized into several types based on their intent and activities. Understanding these hacker types is crucial for maintaining cybersecurity and protecting digital assets. Here are some common types of hackers:</p>
+<h2 id="1-black-hat-hackers"><a class="header" href="#1-black-hat-hackers">1. Black Hat Hackers</a></h2>
+<ul>
+<li><strong>Intent:</strong> Malicious and illegal activities, such as unauthorized system breaches, data theft, or causing harm.</li>
+<li><strong>Actions:</strong> Engage in criminal hacking with the goal of personal gain or damage.</li>
+</ul>
+<h2 id="2-white-hat-hackers"><a class="header" href="#2-white-hat-hackers">2. White Hat Hackers</a></h2>
+<ul>
+<li><strong>Intent:</strong> Ethical hackers who legally identify and fix security vulnerabilities to enhance cybersecurity.</li>
+<li><strong>Actions:</strong> Hired by organizations to strengthen security defenses through activities like penetration testing.</li>
+</ul>
+<h2 id="3-grey-hat-hackers"><a class="header" href="#3-grey-hat-hackers">3. Grey Hat Hackers</a></h2>
+<ul>
+<li><strong>Intent:</strong> Activities fall between black-hat and white-hat hackers, often without explicit authorization.</li>
+<li><strong>Actions:</strong> May disclose vulnerabilities they find but operate in a legally ambiguous space.</li>
+</ul>
+<h2 id="4-hacktivists"><a class="header" href="#4-hacktivists">4. Hacktivists</a></h2>
+<ul>
+<li><strong>Intent:</strong> Use hacking skills to promote political or social causes.</li>
+<li><strong>Actions:</strong> Target organizations or individuals they believe act against their causes, with actions often straddling legality.</li>
+</ul>
+<h2 id="5-script-kiddies"><a class="header" href="#5-script-kiddies">5. Script Kiddies</a></h2>
+<ul>
+<li><strong>Intent:</strong> Limited technical skills, relying on pre-written scripts or tools.</li>
+<li><strong>Actions:</strong> Often engage in illegal activities without a deep understanding of hacking.</li>
+</ul>
+<h2 id="6-state-sponsored-hackers"><a class="header" href="#6-state-sponsored-hackers">6. State-Sponsored Hackers</a></h2>
+<ul>
+<li><strong>Intent:</strong> Employed or supported by governments for cyber espionage or cyber warfare.</li>
+<li><strong>Actions:</strong> Operate on behalf of a nation-state, with potentially significant geopolitical consequences.</li>
+</ul>
+<h2 id="7-phreakers"><a class="header" href="#7-phreakers">7. Phreakers</a></h2>
+<ul>
+<li><strong>Intent:</strong> Manipulate and exploit telecommunications systems, especially for unauthorized access or free calls.</li>
+</ul>
+<h2 id="8-cybercriminals"><a class="header" href="#8-cybercriminals">8. Cybercriminals</a></h2>
+<ul>
+<li><strong>Intent:</strong> Engage in criminal activities for financial gain.</li>
+<li><strong>Actions:</strong> Steal data, launch ransomware attacks, commit fraud, or engage in other illegal online activities.</li>
+</ul>
+<h2 id="9-red-teamers"><a class="header" href="#9-red-teamers">9. Red Teamers</a></h2>
+<ul>
+<li><strong>Role:</strong> Simulate cyberattacks on organizations to assess and enhance their security posture.</li>
+<li><strong>Actions:</strong> Work alongside blue teamers who defend against these simulated attacks.</li>
+</ul>
+<h2 id="10-bug-bounty-hunters"><a class="header" href="#10-bug-bounty-hunters">10. Bug Bounty Hunters</a></h2>
+<ul>
+<li><strong>Role:</strong> Actively search for and report security vulnerabilities in software or websites.</li>
+<li><strong>Actions:</strong> Do this legally and often receive rewards or bounties for their findings.</li>
+</ul>
+<p>Understanding the motivations and actions of these hacker types is essential for developing effective cybersecurity strategies and protecting digital environments.</p>
+<h1 id="lab-setup-for-ethical-hacking"><a class="header" href="#lab-setup-for-ethical-hacking">Lab Setup for Ethical Hacking</a></h1>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFMd1v_6nryNGx4WU1w3smDSVxKFFdaqB-xQ&amp;usqp=CAU" alt="myImage" /></p>
+<p>Setting up a dedicated lab environment for ethical hacking is essential for practicing and honing your skills without risking real systems. Here's a step-by-step guide on how to set up your ethical hacking lab:</p>
+<h2 id="hardware-and-software"><a class="header" href="#hardware-and-software">Hardware and Software</a></h2>
+<ul>
+<li>
+<p><strong>Hardware:</strong> Ensure you have a powerful computer with sufficient RAM and storage to run virtual machines (VMs).</p>
+</li>
+<li>
+<p><strong>Virtualization Software:</strong> Install virtualization software like VMware Workstation or Oracle VirtualBox to create and manage VMs.</p>
+</li>
+<li>
+<p><strong>Operating Systems:</strong> Set up various operating systems, including Windows, Linux (e.g., Kali Linux, Ubuntu), and vulnerable systems (e.g., Metasploitable).</p>
+</li>
+</ul>
+<h2 id="network-configuration"><a class="header" href="#network-configuration">Network Configuration</a></h2>
+<ul>
+<li>
+<p><strong>Virtual Network:</strong> Create a virtual network within your virtualization software to isolate your lab environment from your production network.</p>
+</li>
+<li>
+<p><strong>Router and Firewall:</strong> Use software routers or firewall VMs to simulate network configurations and segmentation.</p>
+</li>
+</ul>
+<h2 id="lab-components"><a class="header" href="#lab-components">Lab Components</a></h2>
+<ul>
+<li>
+<p><strong>Kali Linux:</strong> Install Kali Linux as your primary ethical hacking operating system, preloaded with a variety of hacking tools.</p>
+</li>
+<li>
+<p><strong>Metasploitable:</strong> Use Metasploitable VMs to practice exploiting vulnerabilities and running penetration tests.</p>
+</li>
+<li>
+<p><strong>Web Applications:</strong> Set up vulnerable web applications like DVWA (Damn Vulnerable Web Application) or OWASP WebGoat.</p>
+</li>
+<li>
+<p><strong>Capture The Flag (CTF) Challenges:</strong> Find and install CTF challenges and platforms to practice various hacking skills.</p>
+</li>
+</ul>
+<h2 id="networking-tools"><a class="header" href="#networking-tools">Networking Tools</a></h2>
+<ul>
+<li>
+<p>Use tools like Wireshark for network packet analysis.</p>
+</li>
+<li>
+<p>Set up a DNS server to practice DNS-related attacks.</p>
+</li>
+</ul>
+<h2 id="security-tools"><a class="header" href="#security-tools">Security Tools</a></h2>
+<ul>
+<li>
+<p>Install and configure intrusion detection systems (IDS) and intrusion prevention systems (IPS).</p>
+</li>
+<li>
+<p>Use vulnerability scanning tools like Nessus or OpenVAS to identify weaknesses in your lab environment.</p>
+</li>
+</ul>
+<h2 id="practice-safe-practices"><a class="header" href="#practice-safe-practices">Practice Safe Practices</a></h2>
+<ul>
+<li>
+<p>Always operate within the bounds of the law and obtain proper permissions before attempting any penetration tests on real systems.</p>
+</li>
+<li>
+<p>Keep all software and systems in your lab up to date with security patches.</p>
+</li>
+<li>
+<p>Maintain regular backups of your lab VMs and configurations.</p>
+</li>
+</ul>
+<h2 id="documentation"><a class="header" href="#documentation">Documentation</a></h2>
+<ul>
+<li>Keep detailed notes and documentation of your lab setup, configurations, and findings. This is crucial for learning and reference.</li>
+</ul>
+<h2 id="continuous-learning"><a class="header" href="#continuous-learning">Continuous Learning</a></h2>
+<ul>
+<li>Stay updated with the latest ethical hacking techniques, tools, and methodologies. Join online forums, communities, and attend training courses.</li>
+</ul>
+<h2 id="legal-and-ethical-considerations"><a class="header" href="#legal-and-ethical-considerations">Legal and Ethical Considerations</a></h2>
+<ul>
+<li>Understand the legal and ethical responsibilities of ethical hacking. Never attempt any activities without proper authorization and consent.</li>
+</ul>
+<h2 id="security"><a class="header" href="#security">Security</a></h2>
+<ul>
+<li>Ensure that your lab environment is properly secured. Change default passwords, use strong authentication, and restrict access to your lab.</li>
+</ul>
+<p>By following these steps, you can create a safe and effective environment for practicing ethical hacking techniques and improving your cybersecurity skills responsibly.</p>
+<h1 id="hackers-team-membership"><a class="header" href="#hackers-team-membership">Hacker's Team Membership</a></h1>
+<p>If you're exploring the world of hacking and cybersecurity, you may encounter various team memberships, each with its own roles and responsibilities. Here's a list of common hacker team memberships:</p>
+<h2 id="1-programmer"><a class="header" href="#1-programmer">1. Programmer</a></h2>
+<ul>
+<li>Skilled in coding and scripting, often used to develop tools and scripts for hacking.</li>
+</ul>
+<h2 id="2-cracker"><a class="header" href="#2-cracker">2. Cracker</a></h2>
+<ul>
+<li>Focuses on breaking software protections, such as cracking software licenses or copy protection.</li>
+</ul>
+<h2 id="3-defacer"><a class="header" href="#3-defacer">3. Defacer</a></h2>
+<ul>
+<li>Specializes in altering the appearance of websites by replacing their content with their own messages.</li>
+</ul>
+<h2 id="4-carder"><a class="header" href="#4-carder">4. Carder</a></h2>
+<ul>
+<li>Engages in credit card fraud and unauthorized financial transactions.</li>
+</ul>
+<h2 id="5-bug-hunter"><a class="header" href="#5-bug-hunter">5. Bug Hunter</a></h2>
+<ul>
+<li>Searches for and reports software vulnerabilities to help improve security.</li>
+</ul>
+<h2 id="6-ctf-player-capture-the-flag"><a class="header" href="#6-ctf-player-capture-the-flag">6. CTF Player (Capture The Flag)</a></h2>
+<ul>
+<li>Enjoys solving hacking challenges and puzzles in Capture The Flag competitions.</li>
+</ul>
+<h2 id="7-spammer"><a class="header" href="#7-spammer">7. Spammer</a></h2>
+<ul>
+<li>Sends unsolicited emails or messages in large volumes, often for malicious purposes.</li>
+</ul>
+<h2 id="8-black-hat"><a class="header" href="#8-black-hat">8. Black Hat</a></h2>
+<ul>
+<li>Engages in malicious and illegal hacking activities with criminal intent.</li>
+</ul>
+<h2 id="9-white-hat"><a class="header" href="#9-white-hat">9. White Hat</a></h2>
+<ul>
+<li>Ethical hacker who legally identifies and fixes security vulnerabilities to enhance cybersecurity.</li>
+</ul>
+<h2 id="10-gray-hat"><a class="header" href="#10-gray-hat">10. Gray Hat</a></h2>
+<ul>
+<li>Operates in a morally ambiguous space, conducting hacking activities without explicit authorization but without malicious intent.</li>
+</ul>
+<h2 id="11-developer"><a class="header" href="#11-developer">11. Developer</a></h2>
+<ul>
+<li>Creates software and tools, often used by hackers to automate tasks or exploit vulnerabilities.</li>
+</ul>
+<h2 id="12-beta-crew"><a class="header" href="#12-beta-crew">12. Beta Crew</a></h2>
+<ul>
+<li>Testers who evaluate new hacking tools and techniques before wider release.</li>
+</ul>
+<h2 id="13-crew-member"><a class="header" href="#13-crew-member">13. Crew Member</a></h2>
+<ul>
+<li>A member of a hacking group or crew.</li>
+</ul>
+<h2 id="14-zone-admin"><a class="header" href="#14-zone-admin">14. Zone Admin</a></h2>
+<ul>
+<li>Manages specific areas or zones on a network, often responsible for security.</li>
+</ul>
+<h2 id="15-admin"><a class="header" href="#15-admin">15. Admin</a></h2>
+<ul>
+<li>Has administrative privileges, often within a hacker forum or system.</li>
+</ul>
+<h2 id="16-ceo-chief-executive-officer"><a class="header" href="#16-ceo-chief-executive-officer">16. CEO (Chief Executive Officer)</a></h2>
+<ul>
+<li>The leader or top authority figure within a hacking group or organization.</li>
+</ul>
+<p>These team memberships reflect the diverse roles and responsibilities within the world of hacking and cybersecurity. Keep in mind that ethical considerations and legal boundaries should always be respected in any hacking activity.</p>
+<h1 id="freelancing-in-cybersecurity"><a class="header" href="#freelancing-in-cybersecurity">Freelancing in Cybersecurity</a></h1>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuLpJf0R4GLqEQXuZzrbXefCs53dWkDCP_-w&amp;usqp=CAU" alt="myImage" /></p>
+<p>If you're passionate about cybersecurity and want to work independently, freelancing can be a rewarding career option. Here are some remote job roles and opportunities in the field:</p>
+<h2 id="1-ethical-hacker"><a class="header" href="#1-ethical-hacker">1. Ethical Hacker</a></h2>
+<ul>
+<li><strong>Role:</strong> Ethical hackers, also known as white-hat hackers, use their skills to identify and fix security vulnerabilities.</li>
+<li><strong>Freelancing Opportunity:</strong> Offer your services to organizations looking to assess and enhance their cybersecurity.</li>
+</ul>
+<h2 id="2-white-hat-hacker"><a class="header" href="#2-white-hat-hacker">2. White Hat Hacker</a></h2>
+<ul>
+<li><strong>Role:</strong> Similar to ethical hackers, white-hat hackers focus on security testing and vulnerability assessment.</li>
+<li><strong>Freelancing Opportunity:</strong> Provide penetration testing and security consulting services to clients remotely.</li>
+</ul>
+<h2 id="3-cybersecurity-expertspecialist"><a class="header" href="#3-cybersecurity-expertspecialist">3. Cybersecurity Expert/Specialist</a></h2>
+<ul>
+<li><strong>Role:</strong> Cybersecurity experts are well-versed in various aspects of cybersecurity, from threat analysis to risk management.</li>
+<li><strong>Freelancing Opportunity:</strong> Offer expertise in cybersecurity strategy and implementation to businesses seeking protection.</li>
+</ul>
+<h2 id="4-bug-bounty-hunter"><a class="header" href="#4-bug-bounty-hunter">4. Bug Bounty Hunter</a></h2>
+<ul>
+<li><strong>Role:</strong> Bug bounty hunters actively seek and report security vulnerabilities in software and websites.</li>
+<li><strong>Freelancing Opportunity:</strong> Participate in bug bounty programs offered by companies and platforms, earning rewards for finding and responsibly disclosing vulnerabilities.</li>
+</ul>
+<h2 id="5-pentester-penetration-tester"><a class="header" href="#5-pentester-penetration-tester">5. Pentester (Penetration Tester)</a></h2>
+<ul>
+<li><strong>Role:</strong> Pentesters simulate cyberattacks to identify weaknesses in a system's defenses.</li>
+<li><strong>Freelancing Opportunity:</strong> Freelance pentesters are in demand for assessing and securing networks, applications, and websites.</li>
+</ul>
+<p>Explore these freelance opportunities in cybersecurity to leverage your skills and help organizations strengthen their digital defenses while enjoying the flexibility of remote work.</p>
+<h1 id="vulnerability-scoring-systems-and-databases"><a class="header" href="#vulnerability-scoring-systems-and-databases">Vulnerability Scoring Systems and Databases</a></h1>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAHu_a9C1liAgyIb8JdR6gvCG6cZRKAT_EjQ&amp;usqp=CAU" alt="myImage" /></p>
+<p>In the field of cybersecurity, vulnerability scoring systems and databases play a crucial role in identifying, categorizing, and prioritizing security vulnerabilities. Here are some prominent ones:</p>
+<h2 id="common-vulnerability-scoring-system-cvss"><a class="header" href="#common-vulnerability-scoring-system-cvss">Common Vulnerability Scoring System (CVSS)</a></h2>
+<ul>
+<li><strong>Description:</strong> CVSS is a standardized system for assessing the severity and potential impact of security vulnerabilities.</li>
+<li><strong>Use:</strong> It assigns a numeric score to vulnerabilities, helping organizations prioritize and address them based on their criticality.</li>
+<li><strong>Website:</strong> <a href="https://www.first.org/cvss/">CVSS Official Website</a></li>
+</ul>
+<h2 id="common-vulnerabilities-and-exposures-cve"><a class="header" href="#common-vulnerabilities-and-exposures-cve">Common Vulnerabilities and Exposures (CVE)</a></h2>
+<ul>
+<li><strong>Description:</strong> CVE is a dictionary of publicly known information security vulnerabilities and exposures.</li>
+<li><strong>Use:</strong> Each CVE entry provides a unique identifier for a vulnerability, making it easier to track and reference vulnerabilities across the cybersecurity community.</li>
+<li><strong>Website:</strong> <a href="https://cve.mitre.org/">CVE Official Website</a></li>
+</ul>
+<h2 id="national-vulnerability-database-nvd"><a class="header" href="#national-vulnerability-database-nvd">National Vulnerability Database (NVD)</a></h2>
+<ul>
+<li><strong>Description:</strong> NVD is the U.S. government repository of standards-based vulnerability management data.</li>
+<li><strong>Use:</strong> It provides a comprehensive database of vulnerabilities, including CVSS scores, making it a valuable resource for security professionals.</li>
+<li><strong>Website:</strong> <a href="https://nvd.nist.gov/">NVD Official Website</a></li>
+</ul>
+<h2 id="common-weakness-enumeration-cwe"><a class="header" href="#common-weakness-enumeration-cwe">Common Weakness Enumeration (CWE)</a></h2>
+<ul>
+<li><strong>Description:</strong> CWE is a community-developed list of common software weaknesses.</li>
+<li><strong>Use:</strong> It helps identify vulnerabilities and design flaws in software by providing a standardized language for discussing security weaknesses.</li>
+<li><strong>Website:</strong> <a href="https://cwe.mitre.org/">CWE Official Website</a></li>
+</ul>
+<p>These vulnerability scoring systems and databases are essential tools for cybersecurity professionals and organizations to stay informed about vulnerabilities, assess their severity, and take appropriate measures to secure their systems and data.</p>
+<h1 id="want-to-become-an-ethical-hacker"><a class="header" href="#want-to-become-an-ethical-hacker">Want to Become an Ethical Hacker?</a></h1>
+<h2 id="একজন-হযাকারের-যা-জানা-থাকা-দরকার"><a class="header" href="#একজন-হযাকারের-যা-জানা-থাকা-দরকার">একজন হ্যাকারের যা জানা থাকা দরকার</a></h2>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDUgkB5-OkFW2OJrf0KrPM9d8SEdzNspDWjA&amp;usqp=CAU" alt="myImage" /></p>
+<p>If you aspire to become an ethical hacker, there are essential skills and knowledge areas you need to focus on:</p>
+<ol>
+<li>
+<p><strong>Programming is Important!</strong></p>
+<ul>
+<li>Programming languages like Python, JavaScript, and C/C++ are essential for creating tools, scripts, and understanding the inner workings of software.</li>
+</ul>
+</li>
+<li>
+<p><strong>Have a Hacker's Mindset</strong></p>
+<ul>
+<li>Think like a hacker by exploring systems, seeking vulnerabilities, and understanding how things can be exploited.</li>
+</ul>
+</li>
+<li>
+<p><strong>Be Verbose, But Don't Talk Much</strong></p>
+<ul>
+<li>Effective communication is crucial. Document your findings and share them with your team, but avoid revealing too much publicly.</li>
+</ul>
+</li>
+<li>
+<p><strong>Logical Thinking</strong></p>
+<ul>
+<li>Develop strong problem-solving skills and the ability to think logically to uncover vulnerabilities and devise secure solutions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Don't Learn It All, But Know It All</strong></p>
+<ul>
+<li>Cybersecurity is a vast field. Focus on mastering specific areas like network security, web application security, or penetration testing.</li>
+</ul>
+</li>
+<li>
+<p><strong>Computer Basics: Hardware, Software, Processing Methodology</strong></p>
+<ul>
+<li>Understand the fundamentals of computer hardware, software, and how data processing works.</li>
+</ul>
+</li>
+<li>
+<p><strong>Web and Internet</strong></p>
+<ul>
+<li>Learn about protocols like HTTP, DNS, Web Servers, FTP, and SMTP to understand web technologies and potential attack vectors.</li>
+</ul>
+</li>
+<li>
+<p><strong>Networking</strong></p>
+<ul>
+<li>Master TCP/IP, ARP, network devices, types of networks, and routing and switching concepts for comprehensive network security.</li>
+</ul>
+</li>
+<li>
+<p><strong>Operating Systems</strong></p>
+<ul>
+<li>Familiarize yourself with various operating systems, including Linux distributions (e.g., Kali, Parrot, Red Hat), Windows, Android, iOS, and macOS.</li>
+</ul>
+</li>
+</ol>
+<p>Embarking on a journey to become an ethical hacker requires dedication and continuous learning. Start with the basics, build a strong foundation, and gradually specialize in areas that align with your interests and career goals.</p>
+<p>Remember that ethical hacking is about safeguarding systems and data, so always prioritize ethical conduct and respect legal boundaries in your cybersecurity endeavors.</p>
+<h1 id="some-very-common-hacking-tools"><a class="header" href="#some-very-common-hacking-tools">Some Very Common Hacking Tools</a></h1>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF81vFph0pylN-H9VFUoyA0UDP0VFb89CeSA&amp;usqp=CAU" alt="myImage" /></p>
+<p>Here are some widely used hacking tools that security professionals and ethical hackers employ for various cybersecurity tasks:</p>
+<ol>
+<li>
+<p><strong>Nessus Vulnerability Scanner</strong></p>
+<ul>
+<li>A network vulnerability scanner that detects security flaws in a wide range of systems and applications.</li>
+</ul>
+</li>
+<li>
+<p><strong>Kismet</strong></p>
+<ul>
+<li>A wireless network analyzer that monitors wireless network traffic to identify potential security issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>John The Ripper</strong></p>
+<ul>
+<li>A password cracking tool capable of cracking Unix, Windows, and encrypted passwords.</li>
+</ul>
+</li>
+<li>
+<p><strong>Unicornscan</strong></p>
+<ul>
+<li>A fast and lightweight network scanner that identifies open ports, service versions, and network information.</li>
+</ul>
+</li>
+<li>
+<p><strong>Netsparker</strong></p>
+<ul>
+<li>A web application vulnerability scanner used to identify vulnerabilities in websites and web applications.</li>
+</ul>
+</li>
+<li>
+<p><strong>Burp Suite</strong></p>
+<ul>
+<li>A comprehensive web application security testing tool, including scanning, crawling, and application attack testing.</li>
+</ul>
+</li>
+<li>
+<p><strong>Sqlmap</strong></p>
+<ul>
+<li>Detects and exploits SQL injection vulnerabilities in web applications.</li>
+</ul>
+</li>
+<li>
+<p><strong>Nikto Website Vulnerability Scanner</strong></p>
+<ul>
+<li>Scans web servers for vulnerabilities and security issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>SuperScan</strong></p>
+<ul>
+<li>A powerful network scanner that detects open ports, vulnerabilities, and network information.</li>
+</ul>
+</li>
+<li>
+<p><strong>Metasploit</strong></p>
+<ul>
+<li>A penetration testing framework for identifying and exploiting vulnerabilities in various systems and applications.</li>
+</ul>
+</li>
+<li>
+<p><strong>Nmap</strong></p>
+<ul>
+<li>A comprehensive network scanner that identifies open ports, vulnerabilities, and network information.</li>
+</ul>
+</li>
+<li>
+<p><strong>Aircrack-ng</strong></p>
+<ul>
+<li>Used to crack Wi-Fi network authentication keys.</li>
+</ul>
+</li>
+<li>
+<p><strong>Acunetix</strong></p>
+<ul>
+<li>A web application security scanner that identifies vulnerabilities and security issues in websites and web applications.</li>
+</ul>
+</li>
+<li>
+<p><strong>Wireshark</strong></p>
+<ul>
+<li>A network protocol analyzer for troubleshooting network issues and detecting security threats.</li>
+</ul>
+</li>
+<li>
+<p><strong>Hashcat</strong></p>
+<ul>
+<li>A password cracking tool supporting a wide range of password types and hash algorithms.</li>
+</ul>
+</li>
+<li>
+<p><strong>Maltego</strong></p>
+<ul>
+<li>Software for open-source intelligence and forensic analysis of threat actors.</li>
+</ul>
+</li>
+<li>
+<p><strong>Social-Engineer Toolkit</strong></p>
+<ul>
+<li>Used for performing social engineering attacks, such as phishing and spear-phishing.</li>
+</ul>
+</li>
+</ol>
+<p>These tools are essential for cybersecurity professionals to identify vulnerabilities, assess security risks, and enhance the overall security posture of systems and networks.</p>
+<h1 id="common-hacking-techniques"><a class="header" href="#common-hacking-techniques">Common Hacking Techniques</a></h1>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7O9dHvmXsntwYTcD_z6jCSpgnMlyJ6vtpw&amp;usqp=CAU" alt="myImage" /></p>
+<p>In the world of cybersecurity, understanding common hacking techniques is essential for identifying vulnerabilities and protecting against cyber threats. Here are some widely used hacking techniques:</p>
+<ol>
+<li>
+<p><strong>Phishing</strong></p>
+<ul>
+<li>Description: Trick users into revealing sensitive information (e.g., passwords, credit card details) by posing as a trustworthy entity in electronic communication.</li>
+</ul>
+</li>
+<li>
+<p><strong>Malware</strong></p>
+<ul>
+<li>Description: Software designed to gain unauthorized access or cause damage to a computer system.</li>
+</ul>
+</li>
+<li>
+<p><strong>Keylogger</strong></p>
+<ul>
+<li>Description: Malware that records keystrokes, potentially stealing sensitive information like passwords and credit card numbers.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cross-Site Scripting (XSS)</strong></p>
+<ul>
+<li>Description: Exploits vulnerabilities in web applications to inject malicious code into web pages, compromising user data and server security.</li>
+</ul>
+</li>
+<li>
+<p><strong>SQL Injection (SQLi)</strong></p>
+<ul>
+<li>Description: Exploits database vulnerabilities in web applications, allowing attackers to inject SQL commands and steal sensitive data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Denial of Service (DoS) / Distributed Denial of Service (DDoS) Attacks</strong></p>
+<ul>
+<li>Description: Overwhelm a system or network to make it unavailable to users, often by flooding it with traffic.</li>
+</ul>
+</li>
+<li>
+<p><strong>Social Engineering</strong></p>
+<ul>
+<li>Description: Manipulating individuals to divulge sensitive information, data, or access to a system or network.</li>
+</ul>
+</li>
+<li>
+<p><strong>Card Skimming</strong></p>
+<ul>
+<li>Description: Installing discreet devices on ATMs to steal card data when users insert or swipe their cards.</li>
+</ul>
+</li>
+<li>
+<p><strong>ATM Hacking</strong></p>
+<ul>
+<li>Description: Exploiting vulnerabilities or using hardware hacks to gain unauthorized access to ATMs, stealing card data and PINs.</li>
+</ul>
+</li>
+<li>
+<p><strong>System Hacking</strong></p>
+<ul>
+<li>Description: Exploiting vulnerabilities in operating systems or applications to gain unauthorized access, steal data, or perform malicious actions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Web Server Hacking</strong></p>
+<ul>
+<li>Description: Exploiting vulnerabilities in web servers to gain unauthorized access, steal data, or carry out other malicious activities.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cryptography</strong></p>
+<ul>
+<li>Description: Securing communication by converting data into an unreadable format that can't be easily intercepted or understood by unauthorized persons.</li>
+</ul>
+</li>
+<li>
+<p><strong>Sniffing</strong></p>
+<ul>
+<li>Description: Intercepting and monitoring network traffic to steal sensitive data, such as passwords and other transmitted information.</li>
+</ul>
+</li>
+<li>
+<p><strong>Session Hijacking</strong></p>
+<ul>
+<li>Description: Taking control of an active user session in a web application, allowing attackers to access restricted areas, steal data, or perform fraudulent actions.</li>
+</ul>
+</li>
+</ol>
+<p>Understanding these hacking techniques is crucial for safeguarding systems, networks, and sensitive data against cyber threats and attacks.</p>
+<h1 id="hacking-devices"><a class="header" href="#hacking-devices">Hacking Devices</a></h1>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxZyBK5ndghRxzlAXeZ8lSgCQNxD0yEA8B7w&amp;usqp=CAU" alt="myImage" /></p>
+<p>In the realm of cybersecurity, various hacking devices are employed for research, penetration testing, and security analysis. These devices have diverse applications, from identifying vulnerabilities to testing system resilience. Here are some notable hacking devices:</p>
+<ol>
+<li>
+<p><strong>USB Rubber Ducky</strong></p>
+<ul>
+<li>Description: A small USB device for automated keystroke injection attacks. It emulates a keyboard and executes programmed sequences of commands.</li>
+</ul>
+</li>
+<li>
+<p><strong>Raspberry Pi</strong></p>
+<ul>
+<li>Description: A low-cost, versatile, credit card-sized computer used for penetration testing, network monitoring, and data privacy.</li>
+</ul>
+</li>
+<li>
+<p><strong>HackRF One</strong></p>
+<ul>
+<li>Description: An open-source software-defined radio platform that enables analysis and emulation of various wireless protocols like Bluetooth, FM radio, and GSM.</li>
+</ul>
+</li>
+<li>
+<p><strong>USB Killer</strong></p>
+<ul>
+<li>Description: A malicious USB device that delivers a high-voltage electrical surge to test the durability and security of electrical devices.</li>
+</ul>
+</li>
+<li>
+<p><strong>Proxmark3 Kit</strong></p>
+<ul>
+<li>Description: A tool for RFID research and attacks, capable of interacting with, reading, and cloning RFID cards and tags.</li>
+</ul>
+</li>
+<li>
+<p><strong>WiFi Pineapple</strong></p>
+<ul>
+<li>Description: A device for wireless penetration testing and reconnaissance, used to create fake Wi-Fi access points, collect client-side information, and perform man-in-the-middle attacks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Hardware Keylogger</strong></p>
+<ul>
+<li>Description: A small device attached to a keyboard to record keystrokes. Useful for monitoring user activity and security testing.</li>
+</ul>
+</li>
+<li>
+<p><strong>Alfa Network Board</strong></p>
+<ul>
+<li>Description: A wireless network adapter for wireless penetration testing, network analysis, and reconnaissance, often used to capture packets and perform wireless attacks.</li>
+</ul>
+</li>
+</ol>
+<p>These hacking devices are indispensable tools for cybersecurity professionals, penetration testers, and researchers. They enable comprehensive assessments and analysis of systems, networks, and components to uncover vulnerabilities and weaknesses. It's crucial to use them responsibly, respecting privacy and safety considerations.</p>
+<h1 id="hacker-lab-setup"><a class="header" href="#hacker-lab-setup">Hacker Lab Setup</a></h1>
+<p>Setting up a hacker lab with virtual machines allows you to experiment with different operating systems and software without risking your primary environment. Here's a guide on enabling virtualization and downloading essential tools for your hacker lab.</p>
+<h2 id="enable-virtualization-in-windows-10"><a class="header" href="#enable-virtualization-in-windows-10">Enable Virtualization in Windows 10</a></h2>
+<ul>
+<li>Virtualization allows you to run virtual machines (VMs).</li>
+<li>To enable it, access your BIOS/UEFI settings, look for Virtualization, and enable it.</li>
+<li>Confirm that your CPU supports virtualization technology.</li>
+</ul>
+<h2 id="download-virtualization-software"><a class="header" href="#download-virtualization-software">Download Virtualization Software</a></h2>
+<ol>
+<li>
+<p><strong>VMware</strong></p>
+<ul>
+<li><a href="https://www.vmware.com/products/workstation-pro.html">Download VMware</a></li>
+</ul>
+</li>
+<li>
+<p><strong>VirtualBox</strong></p>
+<ul>
+<li><a href="https://www.virtualbox.org/">Download VirtualBox</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="for-mac-users"><a class="header" href="#for-mac-users">For Mac Users</a></h2>
+<ul>
+<li>You can use VMware or VirtualBox to set up virtual machines on macOS.</li>
+</ul>
+<h3 id="download-kali-linux-vmware--virtualbox"><a class="header" href="#download-kali-linux-vmware--virtualbox">Download Kali Linux (VMware / VirtualBox)</a></h3>
+<ul>
+<li><a href="https://www.kali.org/downloads/">Kali Linux Download</a></li>
+</ul>
+<h3 id="download-parrot-os"><a class="header" href="#download-parrot-os">Download Parrot OS</a></h3>
+<ul>
+<li><a href="https://parrotsec.org/download/">Parrot Security Download</a></li>
+</ul>
+<h3 id="how-to-install-parrot-os-on-vmware"><a class="header" href="#how-to-install-parrot-os-on-vmware">How to Install Parrot OS on VMware</a></h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=YOUR_VIDEO_LINK">Watch Installation Tutorial</a></li>
+</ul>
+<h2 id="windows-os"><a class="header" href="#windows-os">Windows OS</a></h2>
+<h3 id="windows-sandbox"><a class="header" href="#windows-sandbox">Windows Sandbox</a></h3>
+<ul>
+<li>Enable Windows Sandbox by following this <a href="https://youtu.be/YOUR_VIDEO_LINK">video tutorial</a>.</li>
+</ul>
+<h3 id="cloud-linux-os"><a class="header" href="#cloud-linux-os">Cloud Linux OS</a></h3>
+<ul>
+<li>Explore Linux in the cloud using <a href="https://cloud.google.com/shell">Google Cloud Shell</a>.</li>
+</ul>
+<h3 id="kali-linux---online-in-the-cloud"><a class="header" href="#kali-linux---online-in-the-cloud">Kali Linux - Online in the Cloud</a></h3>
+<ul>
+<li>Try Kali Linux online using <a href="https://www.onworks.net/os-distributions/debian-based/free-kali-linux-online">OnWorks</a>.</li>
+</ul>
+<h2 id="android-vmware"><a class="header" href="#android-vmware">Android (VMware)</a></h2>
+<ul>
+<li>Download Android-x86 from <a href="https://www.fosshub.com/Android-x86.html">FossHub</a> or <a href="https://www.osboxes.org/android-x86/">OSBoxes</a>.</li>
+<li>Follow this <a href="https://youtu.be/Pet4LZnZhDU">tutorial</a> for setup.</li>
+<li><a href="https://www.youtube.com/watch?v=NdvE7c2E64&amp;t=561s">Bangla Tutorial</a> is also available.</li>
+</ul>
+<h2 id="android-virtualbox"><a class="header" href="#android-virtualbox">Android (VirtualBox)</a></h2>
+<ul>
+<li>Download Android-x86 from <a href="https://www.fosshub.com/Android-x86.html">FossHub</a> or <a href="https://www.osboxes.org/android-x86/">OSBoxes</a>.</li>
+<li>Follow this <a href="https://www.youtube.com/watch?v=137iBpJniNs&amp;t=20s">tutorial</a> for setup.</li>
+<li>Explore <a href="https://www.youtube.com/watch?v=NdvE7c2E64&amp;t=561s">Bangla Tutorial</a> if needed.</li>
+</ul>
+<h2 id="android-emulator"><a class="header" href="#android-emulator">Android Emulator</a></h2>
+<ul>
+<li>LDPlayer: <a href="https://www.ldplayer.net">Download LDPlayer</a></li>
+<li>Noxplayer: <a href="https://www.bignox.com">Download Noxplayer</a></li>
+<li>Gameloop: <a href="https://www.gameloop.com/">Download Gameloop</a></li>
+</ul>
+<p>Set up your hacker lab with these tools and enjoy a secure and isolated environment for cybersecurity experimentation.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next prefetch" href="foodprinting_and_reconnaissances.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next prefetch" href="foodprinting_and_reconnaissances.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

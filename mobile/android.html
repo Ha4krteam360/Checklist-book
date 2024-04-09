@@ -1,0 +1,518 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Android - Checklist</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../foodprinting_and_reconnaissances.html"><strong aria-hidden="true">1.</strong> Foodprinting and Reconnaissances</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Checklist</li><li class="chapter-item expanded "><a href="../Checklist/Web-App-Pentest-Checklist.html"><strong aria-hidden="true">2.</strong> Web Application</a></li><li class="chapter-item expanded "><a href="../Checklist/report_writing.html"><strong aria-hidden="true">3.</strong> Report Writing</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Recon</li><li class="chapter-item expanded "><a href="../recon/public-info-gathering.html"><strong aria-hidden="true">4.</strong> Public info gathering</a></li><li class="chapter-item expanded "><a href="../recon/domain-enum.html"><strong aria-hidden="true">5.</strong> Root domains</a></li><li class="chapter-item expanded "><a href="../recon/subdomain-enum/index.html"><strong aria-hidden="true">6.</strong> Subdomain Enum</a></li><li class="chapter-item expanded "><a href="../recon/subdomain-enum/subdomain-takeover.html"><strong aria-hidden="true">7.</strong> Subdomain Takeover</a></li><li class="chapter-item expanded "><a href="../recon/webs-recon.html"><strong aria-hidden="true">8.</strong> Webs recon</a></li><li class="chapter-item expanded "><a href="../recon/network-scanning.html"><strong aria-hidden="true">9.</strong> Network Scanning</a></li><li class="chapter-item expanded "><a href="../recon/host-scanning.html"><strong aria-hidden="true">10.</strong> Host Scanning</a></li><li class="chapter-item expanded "><a href="../recon/packet-scanning.html"><strong aria-hidden="true">11.</strong> Packet Scanning</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Enumeration</li><li class="chapter-item expanded "><a href="../enumeration/files.html"><strong aria-hidden="true">12.</strong> Files</a></li><li class="chapter-item expanded "><a href="../enumeration/ssl-tls.html"><strong aria-hidden="true">13.</strong> SSL/TLS</a></li><li class="chapter-item expanded "><a href="../enumeration/ports.html"><strong aria-hidden="true">14.</strong> Ports</a></li><li class="chapter-item expanded affix "><li class="part-title">Web</li><li class="chapter-item expanded "><a href="../enumeration/web/index.html"><strong aria-hidden="true">15.</strong> Web Attacks</a></li><li class="chapter-item expanded "><a href="../enumeration/web/general-info.html"><strong aria-hidden="true">16.</strong> General Info</a></li><li class="chapter-item expanded "><a href="../enumeration/web/quick-tricks.html"><strong aria-hidden="true">17.</strong> Quick tricks</a></li><li class="chapter-item expanded "><a href="../enumeration/web/header-injections.html"><strong aria-hidden="true">18.</strong> Header injections</a></li><li class="chapter-item expanded "><a href="../enumeration/web/bruteforcing.html"><strong aria-hidden="true">19.</strong> Bruteforcing</a></li><li class="chapter-item expanded "><a href="../enumeration/web/online-hashes-cracked.html"><strong aria-hidden="true">20.</strong> Online hashes cracked</a></li><li class="chapter-item expanded "><a href="../enumeration/web/crawl-fuzz.html"><strong aria-hidden="true">21.</strong> Crawl/Fuzz</a></li><li class="chapter-item expanded "><a href="../enumeration/web/lfi-rfi.html"><strong aria-hidden="true">22.</strong> LFI/RFI</a></li><li class="chapter-item expanded "><a href="../enumeration/web/upload-bypasses.html"><strong aria-hidden="true">23.</strong> File upload</a></li><li class="chapter-item expanded "><a href="../enumeration/web/sqli.html"><strong aria-hidden="true">24.</strong> SQLi</a></li><li class="chapter-item expanded "><a href="../enumeration/web/ssrf.html"><strong aria-hidden="true">25.</strong> SSRF</a></li><li class="chapter-item expanded "><a href="../enumeration/web/open-redirects.html"><strong aria-hidden="true">26.</strong> Open redirects</a></li><li class="chapter-item expanded "><a href="../enumeration/web/xss.html"><strong aria-hidden="true">27.</strong> XSS</a></li><li class="chapter-item expanded "><a href="../enumeration/web/csp.html"><strong aria-hidden="true">28.</strong> CSP</a></li><li class="chapter-item expanded "><a href="../enumeration/web/xxe.html"><strong aria-hidden="true">29.</strong> XXE</a></li><li class="chapter-item expanded "><a href="../enumeration/web/cookie-padding.html"><strong aria-hidden="true">30.</strong> Cookie Padding</a></li><li class="chapter-item expanded "><a href="../enumeration/web/web-shells.html"><strong aria-hidden="true">31.</strong> Webshells</a></li><li class="chapter-item expanded "><a href="../enumeration/web/cors.html"><strong aria-hidden="true">32.</strong> CORS</a></li><li class="chapter-item expanded "><a href="../enumeration/web/csrf.html"><strong aria-hidden="true">33.</strong> CSRF</a></li><li class="chapter-item expanded "><a href="../enumeration/web/web-cache-poisoning.html"><strong aria-hidden="true">34.</strong> Web Cache Poisoning</a></li><li class="chapter-item expanded "><a href="../enumeration/web/broken-links.html"><strong aria-hidden="true">35.</strong> Broken Links</a></li><li class="chapter-item expanded "><a href="../enumeration/web/clickjacking.html"><strong aria-hidden="true">36.</strong> Clickjacking</a></li><li class="chapter-item expanded "><a href="../enumeration/web/request-smuggling.html"><strong aria-hidden="true">37.</strong> HTTP Request Smuggling</a></li><li class="chapter-item expanded "><a href="../enumeration/web/web-sockets.html"><strong aria-hidden="true">38.</strong> Web Sockets</a></li><li class="chapter-item expanded "><a href="../enumeration/web/crlf.html"><strong aria-hidden="true">39.</strong> CRLF</a></li><li class="chapter-item expanded "><a href="../enumeration/web/idor.html"><strong aria-hidden="true">40.</strong> IDOR</a></li><li class="chapter-item expanded "><a href="../enumeration/web/web-cache-deception.html"><strong aria-hidden="true">41.</strong> Web Cache Deception</a></li><li class="chapter-item expanded "><a href="../enumeration/web/session-fixation.html"><strong aria-hidden="true">42.</strong> Session fixation</a></li><li class="chapter-item expanded "><a href="../enumeration/web/email-attacks.html"><strong aria-hidden="true">43.</strong> Email attacks</a></li><li class="chapter-item expanded "><a href="../enumeration/web/pastejacking.html"><strong aria-hidden="true">44.</strong> Pastejacking</a></li><li class="chapter-item expanded "><a href="../enumeration/web/parameter-pollution.html"><strong aria-hidden="true">45.</strong> HTTP Parameter pollution</a></li><li class="chapter-item expanded "><a href="../enumeration/web/ssti.html"><strong aria-hidden="true">46.</strong> SSTI</a></li><li class="chapter-item expanded "><a href="../enumeration/web/prototype-pollution.html"><strong aria-hidden="true">47.</strong> Prototype Pollution</a></li><li class="chapter-item expanded "><a href="../enumeration/web/command-injection.html"><strong aria-hidden="true">48.</strong> Command Injection</a></li><li class="chapter-item expanded "><a href="../enumeration/web/deserialization.html"><strong aria-hidden="true">49.</strong> Deserialization</a></li><li class="chapter-item expanded "><a href="../enumeration/web/dns-rebinding.html"><strong aria-hidden="true">50.</strong> DNS rebinding</a></li><li class="chapter-item expanded affix "><li class="part-title">Web-Service</li><li class="chapter-item expanded "><a href="../enumeration/webservices/index.html"><strong aria-hidden="true">51.</strong> Web Technologies</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/apis.html"><strong aria-hidden="true">52.</strong> APIs</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/js.html"><strong aria-hidden="true">53.</strong> JS</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/.net.html"><strong aria-hidden="true">54.</strong> ASP.NET</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/jwt.html"><strong aria-hidden="true">55.</strong> JWT</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/github.html"><strong aria-hidden="true">56.</strong> GitHub</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/gitlab.html"><strong aria-hidden="true">57.</strong> GitLab</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/wafs.html"><strong aria-hidden="true">58.</strong> WAFs</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/firebird.html"><strong aria-hidden="true">59.</strong> Firebird</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/wordpress.html"><strong aria-hidden="true">60.</strong> Wordpress</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/webdav.html"><strong aria-hidden="true">61.</strong> WebDav</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/joomla.html"><strong aria-hidden="true">62.</strong> Joomla</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/jenkins.html"><strong aria-hidden="true">63.</strong> Jenkins</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/iis.html"><strong aria-hidden="true">64.</strong> IIS</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/vhosts.html"><strong aria-hidden="true">65.</strong> VHosts</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/firebase.html"><strong aria-hidden="true">66.</strong> Firebase</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/owa.html"><strong aria-hidden="true">67.</strong> OWA</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/oauth.html"><strong aria-hidden="true">68.</strong> OAuth</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/flask.html"><strong aria-hidden="true">69.</strong> Flask</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/symfony-and-and-twig.html"><strong aria-hidden="true">70.</strong> Symfony && Twig</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/drupal.html"><strong aria-hidden="true">71.</strong> Drupal</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/nosql-and-and-mongodb.html"><strong aria-hidden="true">72.</strong> NoSQL (MongoDB, CouchDB)</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/php.html"><strong aria-hidden="true">73.</strong> PHP</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/ror-ruby-on-rails.html"><strong aria-hidden="true">74.</strong> RoR (Ruby on Rails)</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/jboss-java-deserialization.html"><strong aria-hidden="true">75.</strong> JBoss - Java Deserialization</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/onelogin-saml-login.html"><strong aria-hidden="true">76.</strong> OneLogin - SAML Login</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/flash-swf.html"><strong aria-hidden="true">77.</strong> Flash SWF</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/nginx.html"><strong aria-hidden="true">78.</strong> Nginx</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/python.html"><strong aria-hidden="true">79.</strong> Python</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/tomcat.html"><strong aria-hidden="true">80.</strong> Tomcat</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/adobe-aem.html"><strong aria-hidden="true">81.</strong> Adobe AEM</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/magento.html"><strong aria-hidden="true">82.</strong> Magento</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/sap.html"><strong aria-hidden="true">83.</strong> SAP</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/mfa.html"><strong aria-hidden="true">84.</strong> MFA</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/gwt.html"><strong aria-hidden="true">85.</strong> GWT</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/jira.html"><strong aria-hidden="true">86.</strong> Jira</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/oidc-open-id-connect.html"><strong aria-hidden="true">87.</strong> OIDC (Open ID Connect)</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/elk.html"><strong aria-hidden="true">88.</strong> ELK</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/sharepoint.html"><strong aria-hidden="true">89.</strong> Sharepoint</a></li><li class="chapter-item expanded "><a href="../enumeration/webservices/others.html"><strong aria-hidden="true">90.</strong> Others</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud</li><li class="chapter-item expanded "><a href="../enumeration/cloud/index.html"><strong aria-hidden="true">91.</strong> Cloud</a></li><li class="chapter-item expanded "><a href="../enumeration/cloud/general.html"><strong aria-hidden="true">92.</strong> General</a></li><li class="chapter-item expanded "><a href="../enumeration/cloud/cloud-info-recon.html"><strong aria-hidden="true">93.</strong> Cloud Info Gathering</a></li><li class="chapter-item expanded "><a href="../enumeration/cloud/aws.html"><strong aria-hidden="true">94.</strong> AWS</a></li><li class="chapter-item expanded "><a href="../enumeration/cloud/azure.html"><strong aria-hidden="true">95.</strong> Azure</a></li><li class="chapter-item expanded "><a href="../enumeration/cloud/gcp.html"><strong aria-hidden="true">96.</strong> GCP</a></li><li class="chapter-item expanded "><a href="../enumeration/cloud/docker-and-and-kubernetes.html"><strong aria-hidden="true">97.</strong> Docker && Kubernetes</a></li><li class="chapter-item expanded "><a href="../enumeration/cloud/cdn-comain-fronting.html"><strong aria-hidden="true">98.</strong> CDN - Comain Fronting</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Exploitation</li><li class="chapter-item expanded "><a href="../exploitation/payloads.html"><strong aria-hidden="true">99.</strong> Payloads</a></li><li class="chapter-item expanded "><a href="../exploitation/reverse-shells.html"><strong aria-hidden="true">100.</strong> Reverse Shells</a></li><li class="chapter-item expanded "><a href="../exploitation/file-transfer.html"><strong aria-hidden="true">101.</strong> File transfer</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Post-Exploitation</li><li class="chapter-item expanded "><a href="../post-exploitation/linux.html"><strong aria-hidden="true">102.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../post-exploitation/pivoting.html"><strong aria-hidden="true">103.</strong> Pivoting</a></li><li class="chapter-item expanded "><a href="../post-exploitation/windows/index.html"><strong aria-hidden="true">104.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../post-exploitation/windows/ad/index.html"><strong aria-hidden="true">105.</strong> AD</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../post-exploitation/windows/ad/kerberos-attacks.html"><strong aria-hidden="true">105.1.</strong> Kerberos</a></li></ol></li><li class="chapter-item expanded "><a href="../post-exploitation/windows/ps-tips-and-tricks.html"><strong aria-hidden="true">106.</strong> PS tips & tricks</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Mobile</li><li class="chapter-item expanded "><a href="../mobile/general.html"><strong aria-hidden="true">107.</strong> General</a></li><li class="chapter-item expanded "><a href="../mobile/android.html" class="active"><strong aria-hidden="true">108.</strong> Android</a></li><li class="chapter-item expanded "><a href="../mobile/ios.html"><strong aria-hidden="true">109.</strong> iOS</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Others</li><li class="chapter-item expanded "><a href="../others/burp.html"><strong aria-hidden="true">110.</strong> Burp Suite</a></li><li class="chapter-item expanded "><a href="../others/password-cracking.html"><strong aria-hidden="true">111.</strong> Password cracking</a></li><li class="chapter-item expanded "><a href="../others/virtualbox.html"><strong aria-hidden="true">112.</strong> VirtualBox</a></li><li class="chapter-item expanded "><a href="../others/code-review.html"><strong aria-hidden="true">113.</strong> Code review</a></li><li class="chapter-item expanded "><a href="../others/web-checklist.html"><strong aria-hidden="true">114.</strong> Pentesting Web checklist</a></li><li class="chapter-item expanded "><a href="../others/internal-pentest.html"><strong aria-hidden="true">115.</strong> Internal Pentest</a></li><li class="chapter-item expanded "><a href="../others/web-fuzzers-comparision.html"><strong aria-hidden="true">116.</strong> Web fuzzers review</a></li><li class="chapter-item expanded "><a href="../others/recon-suites-review.html"><strong aria-hidden="true">117.</strong> Recon suites review</a></li><li class="chapter-item expanded "><a href="../others/subdomain-tools-review.html"><strong aria-hidden="true">118.</strong> Subdomain tools review</a></li><li class="chapter-item expanded "><a href="../others/dictionaries.html"><strong aria-hidden="true">119.</strong> Random</a></li><li class="chapter-item expanded "><a href="../others/master-assessment-mindmap.html"><strong aria-hidden="true">120.</strong> Master assessment mindmaps</a></li><li class="chapter-item expanded "><a href="../others/bugbounty.html"><strong aria-hidden="true">121.</strong> BugBounty</a></li><li class="chapter-item expanded "><a href="../others/exploiting.html"><strong aria-hidden="true">122.</strong> Exploiting</a></li><li class="chapter-item expanded "><a href="../others/tools-everywhere.html"><strong aria-hidden="true">123.</strong> tools everywhere</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Checklist</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="android"><a class="header" href="#android">Android</a></h1>
+<h2 id="tools"><a class="header" href="#tools">Tools</a></h2>
+<h3 id="extract"><a class="header" href="#extract">Extract</a></h3>
+<pre><code># Jadx - decompiler gui
+jadx-gui
+# Jadx - decomp cli (with deobf)
+jadx -d path/to/extract/ --deobf app_name.apk
+
+# Apkx decompiler
+apkx example.apk 
+
+# Apktool
+apktool d app_name.apk
+</code></pre>
+<h3 id="get-sensitive-info"><a class="header" href="#get-sensitive-info">Get sensitive info</a></h3>
+<pre><code># Urls and secrets
+# https://github.com/dwisiswant0/apkleaks
+python apkleaks.py -f ~/path/to/file.apk
+
+# Analyze URLs in apk:
+# https://github.com/shivsahni/APKEnum
+python APKEnum.py -p ~/Downloads/app-debug.apk
+
+# Quick wins tool (go branch)
+# https://github.com/mzfr/slicer
+slicer -d path/to/extact/apk
+
+# Unpack apk and find interesting strings
+apktool d app_name.apk
+cd apk_folder
+grep -EHirn "accesskey|admin|aes|api_key|apikey|checkClientTrusted|crypt|http:|https:|password|pinning|secret|SHA256|SharedPreferences|superuser|token|X509TrustManager|insert into"
+grep -Phro "(https?://)[\w\.-/]+[\"'\`]" | sed 's#"##g' | anew | grep -v "w3\|android\|github\|http://schemas.android\|google\|http://goo.gl"
+
+# Apk analyzer
+# https://github.com/Cyber-Buddy/APKHunt
+
+# Regex FCM Server Keys for push notification services control
+AAAA[A-Za-z0-9_-]{7}:[A-Za-z0-9_-]{140}
+AIza[0-9A-Za-z_-]{35}
+
+# FCM Google Server Keys Validation
+# https://github.com/adarshshetty18/fcm_server_key
+python3 fcmserverkey.py file.apk
+
+# Facebook Static Analysis Tool
+https://github.com/facebook/mariana-trench/
+
+# Manifest.xml findings:
+android:allowBackup = TRUE
+android:debuggable = TRUE
+andorid:exported= TRUE or not set (within &lt;provider&gt;-Tag) --&gt; allows external app to access data
+android.permission.WRITE_EXTERNAL_STORAGE / READ_EXTERNAL_STORAGE (ONLY IF sensitive data was stored/read externally)
+Use of permissions
+            e.g. the app opens website in external browser (not inApp), however requires "android.permission.INTERNET" --&gt; false usage of permissions. (over-privileged)
+            "android:protectionLevel" was not set properly (&lt;permission android:name="my_custom_permission_name" android:protectionLevel="signature"/&gt;)
+            missing android:permission (permission tags limit exposure to other apps)
+</code></pre>
+<h3 id="static-analyzers"><a class="header" href="#static-analyzers">Static analyzers</a></h3>
+<pre><code># Android Malware Analyzer
+# https://github.com/quark-engine/quark-engine
+pipenv shell
+quark -a test.apk -r rules/ --detail
+
+# Androtickler
+https://github.com/ernw/AndroTickler
+java -jar AndroTickler.jar
+
+# androbugs.py
+python androbugs.py -f /root/android.apk
+
+# MobSF
+# https://github.com/MobSF/Mobile-Security-Framework-MobSF
+
+- Findings:
+Cleartext credentials (includes base64 encoded or weak encrypted ones)
+Credentials cracked (brute-force, guessing, decrypted with stored cryptographic-key, ...)
+File permission MODE_WORLD_READABLE / MODE_WORLD_WRITEABLE (other apps/users are able to read/write)
+If http is in use (no SSL)
+Anything that shouldn't be there (debug info, comments wiht info disclosure, ...)
+</code></pre>
+<h2 id="manual-analysis-adb-frida-objection-etc"><a class="header" href="#manual-analysis-adb-frida-objection-etc">Manual analysis (adb, frida, objection, etc...)</a></h2>
+<pre><code># Good Checklist
+https://mobexler.com/checklist.htm#android
+
+# Adb
+# https://developer.android.com/studio/command-line/adb?hl=es-419
+adb connect IP:PORT/ID
+adb devices
+adb shell
+adb push
+adb install
+adb shell pm list packages # List all installed packages
+adb shell pm path xx.package.name
+
+
+# DeviceId
+adb shell
+settings get secure android_id
+adb shell sqlite3 /data/data/com.android.providers.settings/databases/settings.db "select value from secure where name = 'android_id'"
+
+# Frida (rooted device method)
+# https://github.com/frida/frida/releases
+adb root
+adb push /root/Downloads/frida-server-12.7.24-android-arm /data/local/tmp/. # Linux
+adb push C:\Users\username\Downloads\frida-server-12.8.11-android-arm /data/local/tmp/. # Windows
+adb root
+adb shell "chmod 755 /data/local/tmp/frida-server &amp;&amp; /data/local/tmp/frida-server &amp;"
+frida-ps -U # Check frida running correctly
+# Run Frida script
+frida -U -f com.vendor.app.version -l PATH\fridaScript.js --no-pause
+
+# Easy way to load Frida Server in Rooted Device
+https://github.com/dineshshetty/FridaLoader
+
+# Frida (NON rooted device) a.k.a. patch the apk
+# a) Lief injector method
+# https://gitlab.com/jlajara/frida-gadget-lief-injector
+# b) Objection and dalvik bytecode method
+https://github.com/sensepost/objection/wiki/Patching-Android-Applications#patching---patching-an-apk
+
+# Frida resources
+https://codeshare.frida.re/
+https://github.com/dweinstein/awesome-frida
+https://rehex.ninja/posts/frida-cheatsheet/
+https://github.com/androidmalware/android_frida_scripts
+
+# Objection
+# https://github.com/sensepost/objection
+objection --gadget com.vendor.app.xx explore
+android sslpinning disable
+
+# Android Backup files (*.ab files)
+( printf "\x1f\x8b\x08\x00\x00\x00\x00\x00" ; tail -c +25 backup.ab ) |  tar xfvz -
+
+# Useful apps:
+# Xposed Framework
+# RootCloak
+# SSLUnpinning
+
+# Check Info Stored
+find /data/app -type f -exec grep --color -Hsiran "FINDTHIS" {} \;
+find /storage/sdcard0/Android/ -maxdepth 7 -exec ls -dl \{\} \;
+
+/data/data/com.app/database/keyvalue.db
+/data/data/com.app/database/sqlite
+/data/app/
+/data/user/0/
+/storage/emulated/0/Android/data/
+/storage/emulated/0/Android/obb/
+/assets
+/res/raw
+/target/global/Constants.java
+
+# Check logs during app usage
+https://github.com/JakeWharton/pidcat
+
+# Download apks
+https://apkpure.com
+https://apps.evozi.com/apk-downloader/
+https://apkcombo.com/
+</code></pre>
+<h3 id="burp-cert-installation--android--70"><a class="header" href="#burp-cert-installation--android--70">Burp Cert Installation &gt; Android  7.0</a></h3>
+<pre><code class="language-bash">#!/bin/bash
+# Export only certificate in burp as DER format
+openssl x509 -inform DER -in cacert.der -out cacert.pem
+export CERT_HASH=$(openssl x509 -inform PEM -subject_hash_old -in cacert.pem | head -1)
+adb root &amp;&amp; adb remount
+adb push cacert.pem "/sdcard/${CERT_HASH}.0"
+adb shell su -c "mv /sdcard/${CERT_HASH}.0 /system/etc/security/cacerts"
+adb shell su -c "chmod 644 /system/etc/security/cacerts/${CERT_HASH}.0"
+rm -rf cacert.*
+# Reboot device
+</code></pre>
+<h2 id="tips"><a class="header" href="#tips">Tips</a></h2>
+<pre><code>Recon:
+- AndroidManifest.xml (basically a blueprint for the application)
+Find exported components, api keys, custom deep link schemas, schema endpoints etc.
+- resources.arsc/strings.xml
+Developers are encouraged to store strings in this file instead of hard coding in application.
+- res/xml/file_paths.xml
+Shows file save paths.
+- Search source code recursively
+Especially BuildConfig files.
+- Look for firebase DB:
+Decompiled apk: Resources/resources.arsc/res/values/strings.xml, search for "firebsae.io" and try to access:
+https://*.firebase.io/.json
+
+API Keys:
+- String references in Android Classes
+getString(R.string.cmVzb3VyY2VzX3lv)
+cmVzb3VyY2VzX3lv is the string resource label.
+- Find these string references in strings.xml
+apikeyhere
+- Piece together the domains and required params in source code
+
+Exported components:
+- Activities - Entry points for application interactions of components specified in AndroidManifest.xml.
+    Has several states managed by callbacks such as onCreate().
+   →  Access to protected intents via exported Activities
+    One exported activity that accepts a user provided intent can expose protected intents.
+   → Access to sensitive data via exported Activity
+    Often combined with deep links to steal data via unvalidated parameters. Write session tokens to an
+    external file.
+   → Access to sensitive files, stealing files, replacing imported files via exported Activities
+    external-files-path, external-path
+    Public app directories
+   → Look for "content://" in source code
+- Service - Supplies additional functionality in the background.
+   → Custom file upload service example that is vulnerable because android:exported="true". When exported by third party
+  applications can send data to the service or steal sensitive data from applications depending on the services   function. Check if params and intent data can be set with proof of concept application.
+- Broadcast receivers - Receives broadcasts from events of interest. Usually specified broadcasted intents in the broadcast receiver activity.
+   → Vulnerable when receiver is exported and accepts user provided broadcasts.
+   → Any application, including malicious ones, can send an intent to this broadcast receiver causing it to be triggered without any restrictions.
+- Content providers - Helps applications manage access to stored data and ways to share data with other Android applications
+   → Content providers that connect to sqlite can be exploited via SQL injection by third party apps.
+
+Deep links
+- In Android, a deep link is a link that takes you directly to a specific destination within an app.
+- Think of deep links as Android urls to specific parts of the application.
+- Usually mirrors web application except with a different schema that navigate directory to specific Android activities.
+- Verified deep links can only use http and https schemas. Sometimes developers keep custom schemas for testing new
+features.
+- Type of vulnerabilities are based on how the scheme://, host://, and parameters are validated
+   → CSRF - Test when autoVerify=”true” is not present in AndroidManifest.xml It’s easier.
+   → Open redirect - Test when custom schemes do not verify endpoint parameters or hosts
+   → XSS - Test when endpoint parameters or host not validated, addJavaScriptInterface and
+   → setJavascriptEnabled(true); is used.
+   → LFI - Test when deep link parameters aren’t validated. appschema://app/goto?file=
+   
+Database encryption
+- Check database is encrypted under /data/data/&lt;package_name&gt;/
+- Check in source code for database credentials
+
+Allowed backup
+- Lead to sensitive information disclosure
+- adb backup com.vendor.app
+
+Logging Enabled
+- Check logcat when login and any action performed
+
+Storing Sensitive Data in External Storage
+- Check data stored after usage /sdcard/android/data/com.vendor.app/
+
+Weak Hashing Algorithms 
+- MD5 is a weak algorythm and have collisions
+
+Predictable Random Number Generator (PRNG)
+- The java.util.Random function is predictable
+
+Hard-coded Data
+- Hard-coded user authentication information (credentials, PINs, etc.)
+- Hard-coded cryptographic keys.
+- Hard-coded keys used for encrypted databases.
+- Hard-coded API keys/private
+- Hard-coded keys that have been encoded or encrypted (e.g. base64 encoded, XOR encrypted, etc.).
+- Hard-coded server IP addresses.
+
+Debug Mode enabled
+- Start a shell on Android and gain an interactive shell with run-as command
+- run-as com.vendor.app
+- adb exec-out run-as com.vendor.app cat databases/appName &gt; appNameDB-copy
+
+If you get built-in WebView and try to access:
+appscheme://webview?url=https://google.com
+appscheme://webview?url=javascript:document.write(document.domain)
+
+If install apk in Genymotion fails with "INSTALL_FAILED_NO_MATCHING_ABIS":
+- Apk is compiled only for ARM
+- Download zip for your Android version here https://github.com/m9rco/Genymotion_ARM_Translation
+- Move zip to VM and flash
+https://pentester.land/tips-n-tricks/2018/10/19/installing-arm-android-apps-on-genymotion-devices.html
+</code></pre>
+<h2 id="mindmaps"><a class="header" href="#mindmaps">Mindmaps</a></h2>
+<p><img src="../.gitbook/assets/image%20(47).png" alt="" /></p>
+<p><img src="../.gitbook/assets/image%20(38).png" alt="" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../mobile/general.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../mobile/ios.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../mobile/general.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../mobile/ios.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
